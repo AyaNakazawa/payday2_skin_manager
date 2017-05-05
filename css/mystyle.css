@@ -13,8 +13,13 @@ body {
 	font-family: Verdana, Arial, sans-serif;
 }
 
+a {
+  transition: all .3s;
+}
+
 a:hover {
   text-decoration: none;
+  transition: all .3s;
 }
 
 .display-none {
