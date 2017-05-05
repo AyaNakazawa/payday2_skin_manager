@@ -1,4 +1,6 @@
 
+const logView = true;
+
 $(() => {
   
   let settingView = new SettingView();
@@ -11,6 +13,12 @@ $(() => {
 // Functions
 function initPopover() {
   $('[data-toggle="popover"]').popover();
+}
+
+function log(_obj = '') {
+  if (logView) {
+    console.log(_obj);
+  }
 }
 
 // ----------------------------------------------------------------
