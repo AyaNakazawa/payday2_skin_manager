@@ -98,6 +98,12 @@ main {
   margin-bottom: 0;
 }
 
+/* setting */
+
+#setting-area .help-icon {
+  margin-right: 8px;
+}
+
 /* Tablet */
 
 @media (min-width: 768px) {
