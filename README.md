@@ -4,8 +4,6 @@
 ## Description
 PAYDAY 2 Skin Managerは、PAYDAY 2のスキンを管理できるウェブアプリケーションです。
 
-## Usage
-
 ## Licence
 
 [MIT License](/LICENSE)
