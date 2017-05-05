@@ -1,21 +1,10 @@
 
-const logView = true;
-
 $(() => {
   
   let settingView = new SettingView();
   let helpView = new HelpView();
   
 });
-
-// ----------------------------------------------------------------
-// Functions
-
-function log(_obj = '') {
-  if (logView) {
-    console.log(_obj);
-  }
-}
 
 // ----------------------------------------------------------------
 // Classes
@@ -107,5 +96,16 @@ class DatePlus {
     _format = _format.replace('%M', ("0" + _date.getMinutes()).slice(-2));
     _format = _format.replace('%S', ("0" + _date.getSeconds()).slice(-2));
     return _format;
+  }
+}
+
+// ----------------------------------------------------------------
+// Debug
+
+const logView = true;
+
+function log(_obj = '') {
+  if (logView) {
+    console.log(_obj);
   }
 }
