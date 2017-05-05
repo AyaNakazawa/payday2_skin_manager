@@ -84,4 +84,14 @@ class DatePlus {
     format = format.replace('%S', ("0" + this.date.getSeconds()).slice(-2));
     return format;
   }
+  static getDateString(date = new Date(), format = '%Y/%m/%d %H:%M:%S') {
+    format = format.replace('%Y', ("000" + date.getFullYear()).slice(-4));
+    format = format.replace('%y', ("0" + date.getFullYear()).slice(-2));
+    format = format.replace('%m', ("0" + (date.getMonth() + 1)).slice(-2));
+    format = format.replace('%d', ("0" + date.getDate()).slice(-2));
+    format = format.replace('%H', ("0" + date.getHours()).slice(-2));
+    format = format.replace('%M', ("0" + date.getMinutes()).slice(-2));
+    format = format.replace('%S', ("0" + date.getSeconds()).slice(-2));
+    return format;
+  }
 }
