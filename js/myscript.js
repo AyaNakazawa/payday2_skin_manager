@@ -72,6 +72,19 @@ class SettingView extends CommonView {
   }
 }
 
+class HelpView extends CommonView {
+    constructor() {
+      super();
+      
+      this.$SETTING_STEAMID_HELP.attr('data-content', '18桁の steamid か CustomURL を入力してください。');
+      this.$SETTING_FILTER_HELP.attr('data-content', '表示するスキンを制限することができます。');
+      this.$SETTING_GROUP_HELP.attr('data-content', 'グループ化して表示することができます。');
+      this.$SETTING_QUALITY_HELP.attr('data-content', 'チェックを入れると、全てのクオリティを表示します。');
+      
+      $('[data-toggle="popover"]').popover();
+    }
+}
+
 class DatePlus {
   constructor(_date = new Date()) {
     this.date = new Date(_date);
