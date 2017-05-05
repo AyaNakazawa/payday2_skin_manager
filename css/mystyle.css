@@ -52,10 +52,12 @@ footer {
   cursor: pointer;
   margin: 0 10px;
   border-bottom: 2px solid rgba(0,0,0,0);
+  transition: all .3s;
 }
 
 .navbar-default .navbar-nav li:hover {
   border-bottom: 2px solid #ccc;
+  transition: all .3s;
 }
 
 .navbar-nav li.current {
