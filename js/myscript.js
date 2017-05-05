@@ -37,10 +37,10 @@ class CommonView {
     this.$SETTING_AREA = $('#setting-area');
     
     // setting help
-    this.$SETTING_STEAMID_DESC = $('#setting-steamid-desc');
-    this.$SETTING_FILTER_DESC = $('#setting-filter-desc');
-    this.$SETTING_GROUP_DESC = $('#setting-group-desc');
-    this.$SETTING_QUALITY_DESC = $('#setting-quality-desc');
+    this.$SETTING_STEAMID_HELP = $('#setting-steamid-help');
+    this.$SETTING_FILTER_HELP = $('#setting-filter-help');
+    this.$SETTING_GROUP_HELP = $('#setting-group-help');
+    this.$SETTING_QUALITY_HELP = $('#setting-quality-help');
   }
 }
 
