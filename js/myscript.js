@@ -30,11 +30,8 @@ class CommonView {
     this.DISPLAY_NONE = 'display-none';
     this.CURRENT = 'current';
     
-    this.VIEW_SWITCH_ID = '#action-setting';
-    this.$VIEW_SWITCH = $(this.VIEW_SWITCH_ID);
-    
-    this.SETTING_AREA_ID = '#setting-area';
-    this.$SETTING_AREA = $(this.SETTING_AREA_ID);
+    this.$VIEW_SWITCH = $('#action-setting');
+    this.$SETTING_AREA = $('#setting-area');
   }
 }
 
