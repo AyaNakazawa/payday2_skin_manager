@@ -31,7 +31,8 @@ class CommonView {
     this.CURRENT = 'current';
     
     // navbar
-    this.$VIEW_SWITCH = $('#action-setting');
+    this.VIEW_SWITCH_ID = '#action-setting';
+    this.$VIEW_SWITCH = $(this.VIEW_SWITCH_ID);
     
     // content
     this.$SETTING_AREA = $('#setting-area');
