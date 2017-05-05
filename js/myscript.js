@@ -14,6 +14,14 @@ function initPopover() {
 // ----------------------------------------------------------------
 // Classes
 
+class SettingView {
+  
+  constructor() {
+    let settingViewFlg = true;
+  }
+  
+}
+
 class DatePlus {
   constructor(_date = new Date()) {
     this.date = new Date(_date);
