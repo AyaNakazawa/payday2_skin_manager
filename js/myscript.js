@@ -30,7 +30,10 @@ class CommonView {
     this.DISPLAY_NONE = 'display-none';
     this.CURRENT = 'current';
     
+    // navbar
     this.$VIEW_SWITCH = $('#action-setting');
+    
+    // content
     this.$SETTING_AREA = $('#setting-area');
   }
 }
