@@ -44,8 +44,13 @@
     <!-- main -->
     <main>
       <div class="content">
+        <div class="content-item setting-item form-inline" id="setting-steamid-area">
+          <label for="setting-steamid">Steam ID</label>
+          <span class="fa fa-question-circle" data-toggle="popover" data-content="18桁のsteamidかCustomURLを入力してください。"></span>
+          <input type="text" id="setting-steamid" placeholder="Enter the Steam ID" class="form-control">
+        </div>
         <div class="content-item setting-item form-inline" id="setting-filter-area">
-          <label for="setting-filter">スキンのフィルタ</label>
+          <label for="setting-filter">Filter</label>
           <span class="fa fa-question-circle" data-toggle="popover" data-content="表示するスキンを制限することができます。"></span>
           <select class="form-control" id="setting-filter">
             <option id="setting-filter-option1">全てのスキン</option>
