@@ -35,6 +35,12 @@ class CommonView {
     
     // content
     this.$SETTING_AREA = $('#setting-area');
+    
+    // setting help
+    this.$SETTING_STEAMID_DESC = $('#setting-steamid-desc');
+    this.$SETTING_FILTER_DESC = $('#setting-filter-desc');
+    this.$SETTING_GROUP_DESC = $('#setting-group-desc');
+    this.$SETTING_QUALITY_DESC = $('#setting-quality-desc');
   }
 }
 
