@@ -1,6 +1,8 @@
 
 $(() => {
   
+  let settingView = new SettingView();
+  
   initPopover();
   
 });
