@@ -14,23 +14,39 @@ function initPopover() {
 // ----------------------------------------------------------------
 // Classes
 
-class SettingView {
-  
+class CommonView {
   constructor() {
-    let settingViewFlg = true;
+    this.DISPLAY_NONE = 'display-none';
+    this.CURRENT = 'current';
+    this.VIEW_SWITCH_ID = '#action-setting';
+    this.SETTING_AREA_ID = '#setting-area';
+    this.$VIEW_SWITCH = $(this.VIEW_SWITCH_ID);
+    this.$SETTING_AREA = $(this.SETTING_AREA_ID);
+  }
+}
+
+class SettingView extends CommonView {
+  constructor() {
+    super();
+    this.viewFlg = true;
+    $(document).on('click', this.VIEW_SWITCH_ID, () => {this.switchView()});
   }
   
   switchView() {
-    settingViewFlg = setView(!settingViewFlg);
+    // console.log(`Switch Setting-content view`);
+    this.setView(!this.viewFlg);
   }
   
   setView(_viewFlg = true) {
+    // console.log(`Set Setting-content view: ${_viewFlg}`);
     if (_viewFlg) {
-      $('#setting-area').removeClass("display-none");
+      this.$VIEW_SWITCH.addClass(this.CURRENT);
+      this.$SETTING_AREA.removeClass(this.DISPLAY_NONE);
     } else {
-      $('#setting-area').addClass("display-none");
+      this.$VIEW_SWITCH.removeClass(this.CURRENT);
+      this.$SETTING_AREA.addClass(this.DISPLAY_NONE);
     }
-    return !_viewFlg;
+    this.viewFlg = _viewFlg;
   }
 }
 
