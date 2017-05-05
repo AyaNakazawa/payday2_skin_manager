@@ -102,6 +102,7 @@ main {
 
 #setting-area .help-icon {
   margin-right: 8px;
+  cursor: pointer;
 }
 
 /* Tablet */
