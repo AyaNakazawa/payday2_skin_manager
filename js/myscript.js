@@ -65,9 +65,11 @@ class DatePlus {
   constructor(_date = new Date()) {
     this.date = new Date(_date);
   }
+  
   getString(format = '%Y/%m/%d %H:%M:%S') {
     return DatePlus.getDateString(this.date, format);
   }
+  
   static getDateString(date = new Date(), format = '%Y/%m/%d %H:%M:%S') {
     // Dateオブジェクトからゼロ埋めした日付文字列を生成
     // format: '%Y/%m/%d %H:%M:%S'
