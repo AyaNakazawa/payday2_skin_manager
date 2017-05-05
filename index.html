@@ -46,12 +46,12 @@
       <div class="content" id="setting-area">
         <div class="content-item setting-item form-inline" id="setting-steamid-area">
           <label for="setting-steamid">Steam ID</label>
-          <span class="help-icon fa fa-question-circle" data-toggle="popover" data-content="18桁の steamid か CustomURL を入力してください。"></span>
+          <span class="help-icon fa fa-question-circle" id="setting-steamid-desc" data-toggle="popover" data-content="18桁の steamid か CustomURL を入力してください。"></span>
           <input type="text" id="setting-steamid" placeholder="Enter the Steam ID" class="form-control">
         </div>
         <div class="content-item setting-item form-inline" id="setting-filter-area">
           <label for="setting-filter">Filter</label>
-          <span class="help-icon fa fa-question-circle" data-toggle="popover" data-content="表示するスキンを制限することができます。"></span>
+          <span class="help-icon fa fa-question-circle" id="setting-filter-desc" data-toggle="popover" data-content="表示するスキンを制限することができます。"></span>
           <select class="form-control" id="setting-filter">
             <option id="setting-filter-all">all</option>
             <option id="setting-filter-have">have</option>
@@ -60,7 +60,7 @@
         </div>
         <div class="content-item setting-item form-inline" id="setting-group-area">
           <label for="setting-group">Group</label>
-          <span class="help-icon fa fa-question-circle" data-toggle="popover" data-content="グループ化して表示することができます。"></span>
+          <span class="help-icon fa fa-question-circle" id="setting-group-desc" data-toggle="popover" data-content="グループ化して表示することができます。"></span>
           <select class="form-control" id="setting-group">
             <option id="setting-group-no">none</option>
             <option id="setting-group-no">Safe</option>
@@ -73,7 +73,7 @@
         </div>
         <div class="content-item setting-item form-inline" id="setting-quality-area">
           <label for="setting-quality">Quality</label>
-          <span class="help-icon fa fa-question-circle" data-toggle="popover" data-content="チェックを入れると、全てのクオリティを表示します。"></span>
+          <span class="help-icon fa fa-question-circle" id="setting-quality-desc" data-toggle="popover" data-content="チェックを入れると、全てのクオリティを表示します。"></span>
           <div class="checkbox">
             <label><input type="checkbox" id="setting-quality"> Distinguish Quality</label>
           </div>
