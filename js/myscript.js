@@ -20,6 +20,10 @@ class SettingView {
     let settingViewFlg = true;
   }
   
+  switchView() {
+    settingViewFlg = setView(!settingViewFlg);
+  }
+  
   setView(_viewFlg = true) {
     if (_viewFlg) {
       $('#setting-area').removeClass("display-none");
