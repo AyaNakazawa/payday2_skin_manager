@@ -51,12 +51,12 @@ class SettingView extends CommonView {
   }
   
   switchView() {
-    // console.log(`Switch Setting-content view`);
+    log(`Switch Setting-content view`);
     this.setView(!this.viewFlg);
   }
   
   setView(_viewFlg = true) {
-    // console.log(`Set Setting-content view: ${_viewFlg}`);
+    log(`Set Setting-content view: ${_viewFlg}`);
     if (_viewFlg) {
       this.$VIEW_SWITCH.addClass(this.CURRENT);
     } else {
