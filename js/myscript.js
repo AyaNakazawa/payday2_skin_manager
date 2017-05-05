@@ -4,8 +4,7 @@ const logView = true;
 $(() => {
   
   let settingView = new SettingView();
-  
-  initPopover();
+  let helpView = new HelpView();
   
 });
 
