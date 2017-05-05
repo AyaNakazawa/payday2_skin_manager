@@ -20,6 +20,14 @@ class SettingView {
     let settingViewFlg = true;
   }
   
+  setView(_viewFlg = true) {
+    if (_viewFlg) {
+      $('#setting-area').removeClass("display-none");
+    } else {
+      $('#setting-area').addClass("display-none");
+    }
+    return !_viewFlg;
+  }
 }
 
 class DatePlus {
