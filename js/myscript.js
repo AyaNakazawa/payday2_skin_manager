@@ -11,6 +11,7 @@ $(() => {
 
 // ----------------------------------------------------------------
 // Functions
+
 function initPopover() {
   $('[data-toggle="popover"]').popover();
 }
