@@ -41,6 +41,9 @@ class CommonView {
     this.$SETTING_FILTER_HELP = $('#setting-filter-help');
     this.$SETTING_GROUP_HELP = $('#setting-group-help');
     this.$SETTING_QUALITY_HELP = $('#setting-quality-help');
+    
+    // popover
+    this.$POPOVER = $('[data-toggle="popover"]');
   }
 }
 
