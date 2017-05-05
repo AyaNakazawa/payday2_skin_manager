@@ -33,7 +33,7 @@ textarea {
 /* header */
 
 header {
-  margin: 40px 60px 20px;
+  margin: 40px 60px 0;
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
@@ -41,7 +41,7 @@ header {
 /* footer */
 
 footer {
-  margin: 40px 60px 20px;
+  margin: 40px 60px;
   text-align: right;
 }
 
