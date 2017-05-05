@@ -11,10 +11,6 @@ $(() => {
 // ----------------------------------------------------------------
 // Functions
 
-function initPopover() {
-  $('[data-toggle="popover"]').popover();
-}
-
 function log(_obj = '') {
   if (logView) {
     console.log(_obj);
