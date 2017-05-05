@@ -55,15 +55,15 @@ footer {
 }
 
 .navbar-default .navbar-nav li:hover {
-  border-bottom: 2px solid #aaa;
+  border-bottom: 2px solid #ccc;
 }
 
 .navbar-nav li.current {
-  border-bottom: 2px solid #aaa;
+  border-bottom: 2px solid #666;
 }
 
 .navbar-nav li.current a {
-  color: #333;
+  color: #111;
 }
 
 /* main */
