@@ -122,6 +122,56 @@ main {
   z-index: 10;
 }
 
+/* pd2item */
+
+#pd2item-area .pd2item-group {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+#pd2item-area .pd2item-group-header {
+  width: 100%;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  overflow: hidden;
+}
+
+#pd2item-area .pd2item-header-name {
+  height: 34px;
+  line-height: 34px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+#pd2item-area .pd2item-header-caret {
+  height: 34px;
+  float: right;
+}
+
+#pd2item-area .pd2item-group-list {
+  width: 100%;
+}
+
+#pd2item-area .pd2item-item {
+  width: 100px;
+  margin: 8px;
+  display: inline-table;
+}
+
+#pd2item-area .pd2item-item-img {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 0 2px 2px #eee inset;
+}
+
+#pd2item-area .pd2item-item-name {
+  width: 100%;
+  text-align: center;
+}
+
 /* Tablet */
 
 @media (min-width: 768px) {
