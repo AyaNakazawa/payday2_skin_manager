@@ -135,6 +135,70 @@ class SettingView extends SwitchView {
     
     super.setOn();
   }
+  
+  getStyle() {
+    return 0;
+  }
+  
+  getSize() {
+    return 0;
+  }
+  
+  getSteamId() {
+    return 0;
+  }
+  
+  getQuality() {
+    return 0;
+  }
+  
+  getSearch() {
+    return 0;
+  }
+  
+  getFilter() {
+    return 0;
+  }
+  
+  getGroup() {
+    return 0;
+  }
+  
+  getSort() {
+    return 0;
+  }
+  
+  updateStyle(_val = 'Normal') {
+    
+  }
+  
+  updateSize(_val = 'Normal') {
+    
+  }
+  
+  updateSteamId(_val = '') {
+    
+  }
+  
+  updateQuality(_val = false) {
+    
+  }
+  
+  updateSearch(_val = '') {
+    
+  }
+  
+  updateFilter(_val = 'all') {
+    
+  }
+  
+  updateGroup(_val = 'none') {
+    
+  }
+  
+  updateSort(_val = 'default') {
+    
+  }
 }
 
 class ItemView extends SwitchView {
