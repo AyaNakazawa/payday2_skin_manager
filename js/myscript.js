@@ -3,6 +3,7 @@ $(() => {
   
   let settingView = new SettingView(true);
   let itemView = new ItemView(true);
+  let detailView = new DetailView(true);
   let itemGroupView = new ItemGroupView(true);
   let helpView = new HelpView();
   
