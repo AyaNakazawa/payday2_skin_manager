@@ -115,31 +115,66 @@ class CommonView extends LocalStorage {
 }
 
 class ConfirmView extends CommonView {
-    constructor() {
-      super();
-      this.confirmMessage = '確認';
-    }
-    confirm() {
-      return true;
-    }
+  constructor() {
+    super();
+    this.confirmId = 'confirm-id';
+    this.confirmTitle = 'title';
+    this.confirmMessage = 'content';
+  }
+  
+  initConfirm() {
+    this.modalObject = `<div id="${this.confirmId}" class="modal fade" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" id="${this.confirmId}-close"><span><i class="fa fa-close"></i></span></button><h4 class="modal-title">${this.confirmTitle}</h4></div><div class="modal-body">${this.confirmMessage}</div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal" id="${this.confirmId}-yes">はい</button><button type="button" class="btn btn-default" data-dismiss="modal" id="${this.confirmId}-no">いいえ</button></div></div></div></div>`;
+    
+    $('body').append(this.modalObject);
+  }
+  
+  setOn(_event = 'click', _selector = '*', _function = 'this.confirm()') {
+    this.argEvent = _event;
+    this.argSelector = _selector;
+    this.argFunction = _function;
+    $(document).on(_event, _selector, () => {eval(_function)});
+    $(document).on('click', `#${this.confirmId}-yes`, () => {this.yes()});
+    $(document).on('click', `#${this.confirmId}-no`, () => {this.no()});
+    $(document).on('click', `#${this.confirmId}-close`, () => {this.close()});
+  }
+  
+  confirm() {
+    $(`#${this.confirmId}`).modal();
+  }
+  
+  yes() {
+    log(`Confirm: ${this.confirmTitle} <- Yes`);
+    this.close();
+  }
+  
+  no() {
+    log(`Confirm: ${this.confirmTitle} <- No`);
+    this.close();
+  }
+  
+  close() {
+    log(`Confirm: ${this.confirmTitle} <- Close`);
+  }
+  
+  destroy() {
+    $(`#${this.confirmId}`).remove();
+    this.close();
+  }
 }
 
 class ResetStorageView extends ConfirmView {
   constructor() {
     super();
+    this.confirmId = 'reset-storage';
+    this.confirmTitle = '設定の初期化';
     this.confirmMessage = '全ての設定を初期化し、再読込してもよろしいですか？';
-    $(document).on('click', '#action-reset', () => {this.resetStorage()});
+    super.initConfirm();
+    super.setOn('click', '#action-reset');
   }
   
-  resetStorage() {
-    if (!localStorage) {
-      return;
-    }
-    const result = super.confirm();
-    if (result) {
-      log(`LS: All clear.`);
-      localStorage.clear();
-    }
+  yes() {
+    super.yes();
+    super.LSClear();
   }
 }
 
