@@ -32,6 +32,10 @@ textarea {
   resize: vertical;
 }
 
+.btn {
+  transition: all .3s;
+}
+
 /* header */
 
 header {
