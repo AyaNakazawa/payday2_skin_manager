@@ -110,7 +110,7 @@ main {
 #setting-area .help-icon {
   margin-left: 4px;
   cursor: pointer;
-  position:relative;
+  position: relative;
 }
 
 /* Tablet */
@@ -122,7 +122,7 @@ main {
   #setting-area .setting-label {
     width: 120px;
     display: inline-table;
-    position:relative;
+    position: relative;
     z-index: 10;
   }
   
@@ -131,7 +131,7 @@ main {
     margin-left: -150px;
     padding-left: 150px;
     display: inline-table;
-    position:relative;
+    position: relative;
     z-index: 6;
   }
   
