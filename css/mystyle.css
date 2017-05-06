@@ -169,6 +169,21 @@ body.steam-view .content-item button:hover {
   color: #ebebeb;
 }
 
+body.steam-view .popover {
+  color: #ebebeb;
+  background: #1f1f1f;
+}
+
+body.steam-view .arrow {
+  border-color: transparent !important;
+  border-right-color: #333 !important;
+}
+
+body.steam-view .arrow::after {
+  border-color: transparent !important;
+  border-right-color: #1f1f1f !important;
+}
+
 body.steam-view #pd2item-area .pd2item-item:hover {
   background: #444;
 }
