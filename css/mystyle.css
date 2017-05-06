@@ -107,10 +107,16 @@ main {
 
 /* setting */
 
+#setting-area .setting-label {
+  display: inline-table;
+}
+
 #setting-area .help-icon {
-  margin-left: 4px;
+  margin-right: 8px;
   cursor: pointer;
+  display: inline-table;
   position: relative;
+  z-index: 10;
 }
 
 /* Tablet */
@@ -120,19 +126,18 @@ main {
   /* setting */
   
   #setting-area .setting-label {
-    width: 120px;
-    display: inline-table;
     position: relative;
-    z-index: 10;
+    z-index: 8;
   }
   
   #setting-area .setting-input {
     width: 100%;
-    margin-left: -150px;
-    padding-left: 150px;
+    margin-left: -120px;
+    padding-left: 120px;
     display: inline-table;
     position: relative;
     z-index: 6;
+    float: right;
   }
   
   #setting-area .setting-input > input,
