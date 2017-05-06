@@ -171,15 +171,42 @@ class SettingView extends SwitchView {
     this.lsKeySize = 'Size';
     this.lsKeyStyle = 'Style';
     
-    const lsValSteamId = super.LSGetItem(this.lsKeySteamId);
-    const lsValSearch = super.LSGetItem(this.lsKeySearch);
-    const lsValFilter = super.LSGetItem(this.lsKeyFilter);
-    const lsValGroup = super.LSGetItem(this.lsKeyGroup);
-    const lsValSort = super.LSGetItem(this.lsKeySort);
-    const lsValSortMode = super.LSGetItem(this.lsKeySortMode);
-    const lsValQuality = super.LSGetItem(this.lsKeyQuality);
-    const lsValSize = super.LSGetItem(this.lsKeySize);
-    const lsValStyle = super.LSGetItem(this.lsKeyStyle);
+    let lsValSteamId = super.LSGetItem(this.lsKeySteamId);
+    if (lsValSteamId == null) {
+      lsValSteamId = this.getSteamId();
+    }
+    let lsValSearch = super.LSGetItem(this.lsKeySearch);
+    if (lsValSearch == null) {
+      lsValSearch = this.getSearch();
+    }
+    let lsValFilter = super.LSGetItem(this.lsKeyFilter);
+    if (lsValFilter == null) {
+      lsValFilter = this.getFilter();
+    }
+    let lsValGroup = super.LSGetItem(this.lsKeyGroup);
+    if (lsValGroup == null) {
+      lsValGroup = this.getGroup();
+    }
+    let lsValSort = super.LSGetItem(this.lsKeySort);
+    if (lsValSort == null) {
+      lsValSort = this.getSort();
+    }
+    let lsValSortMode = super.LSGetItem(this.lsKeySortMode);
+    if (lsValSortMode == null) {
+      lsValSortMode = this.getSortMode();
+    }
+    let lsValQuality = super.LSGetItem(this.lsKeyQuality);
+    if (lsValQuality == null) {
+      lsValQuality = this.getQuality();
+    }
+    let lsValSize = super.LSGetItem(this.lsKeySize);
+    if (lsValSize == null) {
+      lsValSize = this.getSize();
+    }
+    let lsValStyle = super.LSGetItem(this.lsKeyStyle);
+    if (lsValStyle == null) {
+      lsValStyle = this.getStyle();
+    }
     
     this.setStyle(lsValStyle);
     this.setSize(lsValSize);
