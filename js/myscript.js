@@ -404,18 +404,25 @@ class SettingView extends SwitchView {
   
   updateSort(_sortMode = this.getSortMode(), _sort = this.getSort()) {
     this.updateSortMode(_sortMode);
-    super.LSSetItem(this.lsKeySortMode, _sortMode);
+    super.LSSetItem(this.lsKeySort, _sort);
   }
   
   updateSortMode(_sortMode = this.getSortMode()) {
-    super.LSSetItem(this.lsKeySortMode, _sortMode);
+    let currentSortMode = super.LSGetItem(this.lsKeySortMode);
+    if (currentSortMode == _sortMode) {
+      return;
+    }
+    
     if (_sortMode == 'asc') {
-      
+      this.$SETTING_SORT_DESC.removeClass('active');
+      this.$SETTING_SORT_ASC.addClass('active');
     } else if (_sortMode == 'desc') {
-      
+      this.$SETTING_SORT_DESC.addClass('active');
+      this.$SETTING_SORT_ASC.removeClass('active');
     } else {
       log(`error: updateSortMode: _sortMode: ${_sortMode}`);
     }
+    super.LSSetItem(this.lsKeySortMode, _sortMode);
   }
 }
 
