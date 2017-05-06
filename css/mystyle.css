@@ -155,21 +155,20 @@ main {
 }
 
 #pd2item-area .pd2item-item {
-  width: 100px;
   margin: 8px;
   display: inline-table;
 }
 
 #pd2item-area .pd2item-item-sm {
   width: 64px;
-  margin: 8px;
-  display: inline-table;
+}
+
+#pd2item-area .pd2item-item-nor {
+  width: 100px;
 }
 
 #pd2item-area .pd2item-item-lg {
   width: 200px;
-  margin: 8px;
-  display: inline-table;
 }
 
 #pd2item-area .pd2item-item-img {
