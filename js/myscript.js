@@ -112,6 +112,19 @@ class ItemView extends SwitchView {
   }
 }
 
+class DetailView extends SwitchView {
+  constructor(_viewFlg = true) {
+    super(_viewFlg);
+    
+    this.NAME = 'Detail';
+    this.VIEW_SWITCH_ID = this.VIEW_DETAIL_SWITCH_ID;
+    this.$VIEW_SWITCH = this.$VIEW_DETAIL_SWITCH;
+    this.$SWITCH_AREA = this.$DETAIL_AREA;
+    
+    super.setOn();
+  }
+}
+
 class ItemGroupView extends SwitchView {
   constructor(_viewFlg = true, _name = 'Group', _switchId = '#pd2item-group-test .pd2item-group-header', _areaId = '#pd2item-group-list-test') {
     super(_viewFlg);
