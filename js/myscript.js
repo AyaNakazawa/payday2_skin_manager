@@ -25,6 +25,7 @@ class CommonView {
     this.$SETTING_STEAMID_HELP = $('#setting-steamid-help');
     this.$SETTING_FILTER_HELP = $('#setting-filter-help');
     this.$SETTING_GROUP_HELP = $('#setting-group-help');
+    this.$SETTING_SORT_HELP = $('#setting-sort-help');
     this.$SETTING_QUALITY_HELP = $('#setting-quality-help');
     
     // popover
@@ -63,6 +64,7 @@ class HelpView extends CommonView {
       this.$SETTING_STEAMID_HELP.attr('data-content', '18桁の steamid か CustomURL を入力してください。');
       this.$SETTING_FILTER_HELP.attr('data-content', '表示するスキンを制限することができます。');
       this.$SETTING_GROUP_HELP.attr('data-content', 'グループ化して表示することができます。');
+      this.$SETTING_SORT_HELP.attr('data-content', '指定した順序で並び替えることができます。');
       this.$SETTING_QUALITY_HELP.attr('data-content', 'チェックを入れると、全てのクオリティを表示します。');
       
       $('[data-toggle="popover"]').popover();
