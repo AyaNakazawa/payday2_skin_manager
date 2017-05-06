@@ -228,9 +228,11 @@ main {
   }
   
   #setting-area .setting-input > input,
-  #setting-area .setting-input > select,
-  #setting-area .setting-input > label {
+  #setting-area .setting-input > select {
     width: 100%;
+  }
+  
+  #setting-area .setting-input > label {
     line-height: 34px;
   }
   
