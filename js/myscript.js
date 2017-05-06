@@ -167,53 +167,14 @@ class SettingView extends SwitchView {
     this.lsValSize = super.LSGetItem(this.lsKeySize);
     this.lsValStyle = super.LSGetItem(this.lsKeyStyle);
     
-    // Style
-    if (this.lsValStyle == null) {
-      super.LSSetItem(this.lsKeyStyle, this.getStyle());
-    }
-    this.updateStyle(this.lsValStyle);
-    
-    // Size
-    if (this.lsValSize == null) {
-      super.LSSetItem(this.lsKeySize, this.getSize());
-    }
-    this.updateSize(this.lsValSize);
-    
-    // SteamId
-    if (this.lsValSteamId == null) {
-      super.LSSetItem(this.lsKeySteamId, this.getSteamId());
-    }
-    this.updateSteamId(this.lsValSteamId);
-    
-    // Quality
-    if (this.lsValQuality == null) {
-      super.LSSetItem(this.lsKeyQuality, this.getQuality());
-    }
-    this.updateQuality(this.lsValQuality);
-    
-    // Search
-    if (this.lsValSearch == null) {
-      super.LSSetItem(this.lsKeySearch, this.getSearch());
-    }
-    this.updateSearch(this.lsValSearch);
-    
-    // Filter
-    if (this.lsValFilter == null) {
-      super.LSSetItem(this.lsKeyFilter, this.getFilter());
-    }
-    this.updateFilter(this.lsValFilter);
-    
-    // Group
-    if (this.lsValGroup == null) {
-      super.LSSetItem(this.lsKeyGroup, this.getGroup());
-    }
-    this.updateGroup(this.lsValGroup);
-    
-    // Sort
-    if (this.lsValSort == null) {
-      super.LSSetItem(this.lsKeySort, this.getSort());
-    }
-    this.updateSort(this.lsValSort);
+    this.updateStyle();
+    this.updateSize();
+    this.updateSteamId();
+    this.updateQuality();
+    this.updateSearch();
+    this.updateFilter();
+    this.updateGroup();
+    this.updateSort();
   }
   
   getStyle() {
@@ -249,35 +210,43 @@ class SettingView extends SwitchView {
   }
   
   updateStyle(_val = 'Normal') {
-    
+    let val = this.getStyle();
+    super.LSSetItem(this.lsKeyStyle, val);
   }
   
   updateSize(_val = 'Normal') {
-    
+    let val = this.getSize();
+    super.LSSetItem(this.lsKeySize, val);
   }
   
   updateSteamId(_val = '') {
-    
+    let val = this.getSteamId();
+    super.LSSetItem(this.lsKeySteamId, val);
   }
   
   updateQuality(_val = false) {
-    
+    let val = this.getQuality();
+    super.LSSetItem(this.lsKeyQuality, val);
   }
   
   updateSearch(_val = '') {
-    
+    let val = this.getSearch();
+    super.LSSetItem(this.lsKeySearch, val);
   }
   
   updateFilter(_val = 'all') {
-    
+    let val = this.getFilter();
+    super.LSSetItem(this.lsKeyFilter, val);
   }
   
   updateGroup(_val = 'none') {
-    
+    let val = this.getGroup();
+    super.LSSetItem(this.lsKeyGroup, val);
   }
   
   updateSort(_val = 'default') {
-    
+    let val = this.getSort();
+    super.LSSetItem(this.lsKeySort, val);
   }
 }
 
