@@ -134,6 +134,76 @@ class SettingView extends SwitchView {
     this.$SWITCH_AREA = this.$SETTING_AREA;
     
     super.setOn();
+    
+    this.initSetting();
+  }
+  
+  initSetting() {
+    this.lsKeySteamId = 'SteamId';
+    this.lsKeySearch = 'Search';
+    this.lsKeyFilter = 'Filter';
+    this.lsKeyGroup = 'Group';
+    this.lsKeySort = 'Sort';
+    this.lsKeyQuality = 'Quality';
+    this.lsKeySize = 'Size';
+    this.lsKeyStyle = 'Style';
+    
+    this.lsValSteamId = super.LSGetItem(this.lsKeySteamId);
+    this.lsValSearch = super.LSGetItem(this.lsKeySearch);
+    this.lsValFilter = super.LSGetItem(this.lsKeyFilter);
+    this.lsValGroup = super.LSGetItem(this.lsKeyGroup);
+    this.lsValSort = super.LSGetItem(this.lsKeySort);
+    this.lsValQuality = super.LSGetItem(this.lsKeyQuality);
+    this.lsValSize = super.LSGetItem(this.lsKeySize);
+    this.lsValStyle = super.LSGetItem(this.lsKeyStyle);
+    
+    // Style
+    if (this.lsValStyle == null) {
+      super.LSSetItem(this.lsKeyStyle, this.getStyle());
+    }
+    this.updateStyle(this.lsValStyle);
+    
+    // Size
+    if (this.lsValSize == null) {
+      super.LSSetItem(this.lsKeySize, this.getSize());
+    }
+    this.updateSize(this.lsValSize);
+    
+    // SteamId
+    if (this.lsValSteamId == null) {
+      super.LSSetItem(this.lsKeySteamId, this.getSteamId());
+    }
+    this.updateSteamId(this.lsValSteamId);
+    
+    // Quality
+    if (this.lsValQuality == null) {
+      super.LSSetItem(this.lsKeyQuality, this.getQuality());
+    }
+    this.updateQuality(this.lsValQuality);
+    
+    // Search
+    if (this.lsValSearch == null) {
+      super.LSSetItem(this.lsKeySearch, this.getSearch());
+    }
+    this.updateSearch(this.lsValSearch);
+    
+    // Filter
+    if (this.lsValFilter == null) {
+      super.LSSetItem(this.lsKeyFilter, this.getFilter());
+    }
+    this.updateFilter(this.lsValFilter);
+    
+    // Group
+    if (this.lsValGroup == null) {
+      super.LSSetItem(this.lsKeyGroup, this.getGroup());
+    }
+    this.updateGroup(this.lsValGroup);
+    
+    // Sort
+    if (this.lsValSort == null) {
+      super.LSSetItem(this.lsKeySort, this.getSort());
+    }
+    this.updateSort(this.lsValSort);
   }
   
   getStyle() {
