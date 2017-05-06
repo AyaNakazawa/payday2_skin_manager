@@ -85,7 +85,9 @@ class CommonView extends LocalStorage {
     this.SETTING_GROUP_ID = '#setting-group';
     this.$SETTING_SORT = $('#setting-sort');
     this.SETTING_SORT_ID = '#setting-sort';
+    this.$SETTING_SORT_ASC = $('#setting-sort-asc');
     this.SETTING_SORT_ASC_ID = '#setting-sort-asc';
+    this.$SETTING_SORT_DESC = $('#setting-sort-desc');
     this.SETTING_SORT_DESC_ID = '#setting-sort-desc';
     this.$SETTING_QUALITY = $('#setting-quality');
     this.SETTING_QUALITY_ID = '#setting-quality';
@@ -201,35 +203,54 @@ class SettingView extends SwitchView {
   }
   
   getStyle() {
-    return 0;
+    let style = this.$SETTING_STYLE.val();
+    return style;
   }
   
   getSize() {
-    return 0;
+    let size = this.$SETTING_SIZE.val();
+    return size;
   }
   
   getSteamId() {
-    return 0;
+    let steamId = this.$SETTING_STEAMID.val();
+    return steamId;
   }
   
   getQuality() {
-    return 0;
+    let quality = this.$SETTING_QUALITY.prop('checked');
+    return quality;
   }
   
   getSearch() {
-    return 0;
+    let search = this.$SETTING_SEARCH.val();
+    return search;
   }
   
   getFilter() {
-    return 0;
+    let filter = this.$SETTING_FILTER.val();
+    return filter;
   }
   
   getGroup() {
-    return 0;
+    let group = this.$SETTING_GROUP.val();
+    return group;
   }
   
   getSort() {
-    return 0;
+    let sort = this.$SETTING_SORT.val();
+    return sort;
+  }
+  
+  getSortMode() {
+    let sortAsc = this.$SETTING_SORT_ASC.hasClass('active');
+    let result = '';
+    if (sortAsc) {
+      result = 'asc'
+    } else {
+      result = 'desc'
+    }
+    return result;
   }
   
   updateStyle(_style = this.getStyle()) {
@@ -260,7 +281,7 @@ class SettingView extends SwitchView {
     super.LSSetItem(this.lsKeyGroup, _group);
   }
   
-  updateSort(_sortMode = this.getSort(), _sort = this.getSort()) {
+  updateSort(_sortMode = this.getSortMode(), _sort = this.getSort()) {
     super.LSSetItem(this.lsKeySortMode, _sortMode);
     super.LSSetItem(this.lsKeySort, _sort);
   }
