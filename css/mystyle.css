@@ -108,7 +108,7 @@ main {
 /* setting */
 
 #setting-area .help-icon {
-  margin: 0 4px;
+  margin-left: 4px;
   cursor: pointer;
   position:relative;
 }
@@ -128,8 +128,8 @@ main {
   
   #setting-area .setting-input {
     width: 100%;
-    margin-left: -158px;
-    padding-left: 158px;
+    margin-left: -150px;
+    padding-left: 150px;
     display: inline-table;
     position:relative;
     z-index: 6;
