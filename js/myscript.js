@@ -11,6 +11,10 @@ $(() => {
 
 class CommonView {
   constructor() {
+    // common setting
+    this.TOGGLE_SPEED_MS = 300;
+    
+    //class
     this.DISPLAY_NONE = 'display-none';
     this.CURRENT = 'current';
     
