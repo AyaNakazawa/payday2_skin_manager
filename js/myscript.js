@@ -117,11 +117,25 @@ class SwitchView extends CommonView {
     super();
     // each setting
     this.NAME = 'SwitchView';
+    this.lsKeyView = 'PD2SM.View.Switch';
     this.VIEW_SWITCH_ID = '';
     this.$VIEW_SWITCH = $(document);
     this.$SWITCH_AREA = $(document);
+  }
+  
+  initView() {
+    let lsValView = super.LSGetItem(this.lsKeyView);
+    if (lsValView == null) {
+      lsValView = true;
+    } else if (lsValView == 'true') {
+      lsValView = true;
+    } else if (lsValView == 'false') {
+      lsValView = false;
+    }
     
-    this.viewFlg = _viewFlg;
+    this.setView(lsValView);
+    this.setOn();
+    
   }
   
   setOn() {
@@ -130,19 +144,25 @@ class SwitchView extends CommonView {
   
   switchView() {
     log(`Switch ${this.NAME} view`);
-    this.setView(!this.viewFlg);
+    let viewFlg = super.LSGetItem(this.lsKeyView);
+    if (viewFlg == 'true') {
+      viewFlg = false;
+    } else if (viewFlg == 'false') {
+      viewFlg = true;
+    }
+    this.setView(viewFlg);
   }
   
-  setView(_viewFlg = true) {
-    log(`Set ${this.NAME} view: ${_viewFlg}`);
+  setView(_viewFlg = true, _speed = this.TOGGLE_SPEED_MS) {
+    log(`View: ${this.NAME} <- ${_viewFlg}`);
     if (_viewFlg) {
       this.$VIEW_SWITCH.addClass(this.CURRENT);
-      this.$SWITCH_AREA.show(this.TOGGLE_SPEED_MS);
+      this.$SWITCH_AREA.show(_speed);
     } else {
       this.$VIEW_SWITCH.removeClass(this.CURRENT);
-      this.$SWITCH_AREA.hide(this.TOGGLE_SPEED_MS);
+      this.$SWITCH_AREA.hide(_speed);
     }
-    this.viewFlg = _viewFlg;
+    super.LSSetItem(this.lsKeyView, _viewFlg);
   }
 }
 
