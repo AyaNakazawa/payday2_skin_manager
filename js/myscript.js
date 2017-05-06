@@ -20,25 +20,25 @@ class LocalStorage {
     }
   }
   
-  clear() {
+  LSClear() {
     if (this.LOCAL_STORAGE) {
       localStorage.clear();
     }
   }
   
-  getItem(_key = 'key') {
+  LSGetItem(_key = 'key') {
     if (this.LOCAL_STORAGE) {
       localStorage.getItem(_key);
     }
   }
   
-  setItem(_key = 'key', _val = 'val') {
+  LSSetItem(_key = 'key', _val = 'val') {
     if (this.LOCAL_STORAGE) {
       localStorage.setItem(_key, _val);
     }
   }
   
-  removeItem(_key = 'key') {
+  LSRemoveItem(_key = 'key') {
     if (this.LOCAL_STORAGE) {
       localStorage.removeItem(_key);
     }
