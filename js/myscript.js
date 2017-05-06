@@ -1,7 +1,7 @@
 
 $(() => {
   
-  let settingView = new SettingView();
+  let settingView = new SettingView(true);
   let helpView = new HelpView();
   
 });
@@ -19,8 +19,8 @@ class CommonView {
     this.CURRENT = 'current';
     
     // navbar
-    this.VIEW_SWITCH_ID = '#action-setting';
-    this.$VIEW_SWITCH = $(this.VIEW_SWITCH_ID);
+    this.VIEW_SETTING_SWITCH_ID = '#action-setting';
+    this.$VIEW_SETTING_SWITCH = $(this.VIEW_SETTING_SWITCH_ID);
     
     // content
     this.$SETTING_AREA = $('#setting-area');
@@ -44,27 +44,50 @@ class CommonView {
   }
 }
 
-class SettingView extends CommonView {
-  constructor() {
+class SwitchView extends CommonView {
+  constructor(_viewFlg = true) {
     super();
-    this.viewFlg = true;
+    // each setting
+    this.NAME = 'SwitchView';
+    this.VIEW_SWITCH_ID = '';
+    this.$VIEW_SWITCH = $(document);
+    this.$SWITCH_AREA = $(document);
+    
+    this.viewFlg = _viewFlg;
+  }
+  
+  setOn() {
     $(document).on('click', this.VIEW_SWITCH_ID, () => {this.switchView()});
   }
   
   switchView() {
-    log(`Switch Setting view`);
+    log(`Switch ${this.NAME} view`);
     this.setView(!this.viewFlg);
   }
   
   setView(_viewFlg = true) {
-    log(`Set Setting view: ${_viewFlg}`);
+    log(`Set ${this.NAME} view: ${_viewFlg}`);
     if (_viewFlg) {
       this.$VIEW_SWITCH.addClass(this.CURRENT);
+      this.$SWITCH_AREA.show(this.TOGGLE_SPEED_MS);
     } else {
       this.$VIEW_SWITCH.removeClass(this.CURRENT);
+      this.$SWITCH_AREA.hide(this.TOGGLE_SPEED_MS);
     }
-    this.$SETTING_AREA.toggle(this.TOGGLE_SPEED_MS);
     this.viewFlg = _viewFlg;
+  }
+}
+
+class SettingView extends SwitchView {
+  constructor(_viewFlg = true) {
+    super(_viewFlg);
+    
+    this.NAME = 'Setting';
+    this.VIEW_SWITCH_ID = this.VIEW_SETTING_SWITCH_ID;
+    this.$VIEW_SWITCH = this.$VIEW_SETTING_SWITCH;
+    this.$SWITCH_AREA = this.$SETTING_AREA;
+    
+    super.setOn();
   }
 }
 
