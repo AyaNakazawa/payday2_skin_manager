@@ -152,7 +152,11 @@ body.steam-view .content-item {
   border-radius: 4px;
 }
 
-body.steam-view .content-item * {
+body.steam-view .content-item input,
+body.steam-view .content-item select,
+body.steam-view .content-item label,
+body.steam-view .content-item button,
+body.steam-view .content-item a {
   color: #ebebeb;
   background: #1f1f1f;
 }
@@ -260,7 +264,6 @@ body.steam-view .content-item * {
   width: 100%;
   border: 1px solid #ddd;
   border-radius: 4px;
-  box-shadow: 0 0 2px 2px #eee inset;
 }
 
 #pd2item-area .pd2item-item-name {
@@ -286,13 +289,13 @@ body.steam-view .content-item * {
   width: 75%;
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-shadow: 0 0 2px 2px #eee inset;
+  border: 0;
 }
 
 #detail-area #detail-img img {
   width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
 #detail-area .detail-label {
