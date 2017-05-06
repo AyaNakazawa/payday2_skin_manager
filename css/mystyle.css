@@ -160,6 +160,18 @@ main {
   display: inline-table;
 }
 
+#pd2item-area .pd2item-item-sm {
+  width: 64px;
+  margin: 8px;
+  display: inline-table;
+}
+
+#pd2item-area .pd2item-item-lg {
+  width: 200px;
+  margin: 8px;
+  display: inline-table;
+}
+
 #pd2item-area .pd2item-item-img {
   width: 100%;
   border: 1px solid #ddd;
