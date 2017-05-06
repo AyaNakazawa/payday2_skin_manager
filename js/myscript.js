@@ -122,6 +122,25 @@ class ConfirmView extends CommonView {
     }
 }
 
+class ResetStorageView extends ConfirmView {
+  constructor() {
+    super();
+    this.confirmMessage = '全ての設定を初期化し、再読込してもよろしいですか？';
+    $(document).on('click', '#action-reset', () => {this.resetStorage()});
+  }
+  
+  resetStorage() {
+    if (!localStorage) {
+      return;
+    }
+    const result = super.confirm();
+    if (result) {
+      log(`LS: All clear.`);
+      localStorage.clear();
+    }
+  }
+}
+
 class SwitchView extends CommonView {
   constructor(_viewFlg = true) {
     super();
