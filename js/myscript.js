@@ -235,8 +235,8 @@ class SettingView extends SwitchView {
     $(document).on('change', this.SETTING_FILTER_ID, () => {this.updateFilter()});
     $(document).on('change', this.SETTING_GROUP_ID, () => {this.updateGroup()});
     $(document).on('change', this.SETTING_SORT_ID, () => {this.updateSort()});
-    $(document).on('click', this.SETTING_SORT_ASC_ID, () => {this.updateSort('asc')});
-    $(document).on('click', this.SETTING_SORT_DESC_ID, () => {this.updateSort('desc')});
+    $(document).on('click', this.SETTING_SORT_ASC_ID, () => {this.updateSortMode('asc')});
+    $(document).on('click', this.SETTING_SORT_DESC_ID, () => {this.updateSortMode('desc')});
   }
   
   getStyle() {
@@ -366,9 +366,11 @@ class SettingView extends SwitchView {
     if (_sortMode == 'asc') {
       this.$SETTING_SORT_DESC.removeClass('active');
       this.$SETTING_SORT_ASC.addClass('active');
-    } else {
+    } else if (_sortMode == 'desc')  {
       this.$SETTING_SORT_DESC.addClass('active');
       this.$SETTING_SORT_ASC.removeClass('active');
+    } else {
+      log(`error: setSortMode: _sortMode: ${_sortMode}`);
     }
   }
   
@@ -401,8 +403,19 @@ class SettingView extends SwitchView {
   }
   
   updateSort(_sortMode = this.getSortMode(), _sort = this.getSort()) {
+    this.updateSortMode(_sortMode);
     super.LSSetItem(this.lsKeySortMode, _sortMode);
-    super.LSSetItem(this.lsKeySort, _sort);
+  }
+  
+  updateSortMode(_sortMode = this.getSortMode()) {
+    super.LSSetItem(this.lsKeySortMode, _sortMode);
+    if (_sortMode == 'asc') {
+      
+    } else if (_sortMode == 'desc') {
+      
+    } else {
+      log(`error: updateSortMode: _sortMode: ${_sortMode}`);
+    }
   }
 }
 
