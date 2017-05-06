@@ -110,7 +110,7 @@ class ItemView extends SwitchView {
 }
 
 class ItemGroupView extends SwitchView {
-  constructor(_viewFlg = true, _name = 'Group', _switchId = '#pd2item-group-test .pd2item-header-caret', _areaId = '#pd2item-group-list-test') {
+  constructor(_viewFlg = true, _name = 'Group', _switchId = '#pd2item-group-test .pd2item-group-header', _areaId = '#pd2item-group-list-test') {
     super(_viewFlg);
     
     this.NAME = _name;
