@@ -141,6 +141,17 @@ main {
     width: 100%;
   }
   
+  /* setting-sort */
+  
+  #setting-area .setting-input.input-group #setting-sort {
+    width: 100%;
+    margin-right: -76px;
+    padding-right: 76px;
+  }
+  
+  #setting-area .setting-input.input-group .input-group-btn {
+    width: 76px;
+  }
 }
 
 /* Medium desktop */
