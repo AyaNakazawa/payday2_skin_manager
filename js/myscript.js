@@ -74,6 +74,16 @@ class CommonView extends LocalStorage {
     this.$ITEM_AREA = $('#pd2item-area');
     this.$DETAIL_AREA = $('#detail-area');
     
+    // setting
+    this.$SETTING_STEAMID = $('#setting-steamid');
+    this.$SETTING_SEARCH = $('#setting-search');
+    this.$SETTING_FILTER = $('#setting-filter');
+    this.$SETTING_GROUP = $('#setting-group');
+    this.$SETTING_SORT = $('#setting-sort');
+    this.$SETTING_QUALITY = $('#setting-quality');
+    this.$SETTING_SIZE = $('#setting-size');
+    this.$SETTING_STYLE = $('#setting-style');
+    
     // setting help
     this.$SETTING_STEAMID_HELP = $('#setting-steamid-help');
     this.$SETTING_SEARCH_HELP = $('#setting-search-help');
