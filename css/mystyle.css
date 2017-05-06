@@ -139,6 +139,7 @@ main {
 #pd2item-area .pd2item-group-header {
   width: 100%;
   padding: 0 8px 8px;
+  border-bottom: 1px solid #ddd;
   overflow: hidden;
 }
 
@@ -150,13 +151,13 @@ main {
 }
 
 #pd2item-area .pd2item-header-caret {
+  background: #fff;
   height: 34px;
   float: right;
 }
 
 #pd2item-area .pd2item-group-list {
   width: 100%;
-  border-top: 1px solid #ddd;
 }
 
 #pd2item-area .pd2item-item {
