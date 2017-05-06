@@ -430,8 +430,8 @@ main {
 body:before {
   content: '- Mobile -';
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 8px;
+  left: 8px;
   overflow: hidden;
 }
 
