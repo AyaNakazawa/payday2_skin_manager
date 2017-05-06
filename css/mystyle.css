@@ -112,14 +112,23 @@ main {
 /* setting */
 
 #setting-area .setting-label {
+  line-height: 34px;
   display: inline-table;
 }
 
+#setting-area .setting-label label {
+  margin: 0;
+}
+
 #setting-area .help-icon {
-  margin-right: 8px;
+  line-height: 34px;
   cursor: pointer;
   position: relative;
   z-index: 10;
+}
+
+#setting-area .setting-input > * {
+  line-height: 34px;
 }
 
 /* pd2item */
