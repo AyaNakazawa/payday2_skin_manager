@@ -146,6 +146,7 @@ main {
   padding: 0 8px 8px;
   border-bottom: 1px solid #ddd;
   overflow: hidden;
+  cursor: pointer;
 }
 
 #pd2item-area .pd2item-header-name {
@@ -156,17 +157,8 @@ main {
 }
 
 #pd2item-area .pd2item-header-caret {
-  background: #fff;
   height: 34px;
   float: right;
-}
-
-#pd2item-area .pd2item-header-caret:hover {
-  background: #d4d4d4;
-}
-
-#pd2item-area .pd2item-header-caret.current {
-  background: #e6e6e6;
 }
 
 #pd2item-area .pd2item-group-list {
