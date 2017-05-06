@@ -36,6 +36,7 @@ class CommonView {
     
     // setting help
     this.$SETTING_STEAMID_HELP = $('#setting-steamid-help');
+    this.$SETTING_SEARCH_HELP = $('#setting-search-help');
     this.$SETTING_FILTER_HELP = $('#setting-filter-help');
     this.$SETTING_GROUP_HELP = $('#setting-group-help');
     this.$SETTING_SORT_HELP = $('#setting-sort-help');
@@ -144,6 +145,7 @@ class HelpView extends CommonView {
       super();
       
       this.$SETTING_STEAMID_HELP.attr('data-content', '18桁の steamid か CustomURL を入力してください。');
+      this.$SETTING_SEARCH_HELP.attr('data-content', '表示するアイテムを制限することができます。空の場合は全て表示されます。');
       this.$SETTING_FILTER_HELP.attr('data-content', '表示するアイテムを制限することができます。');
       this.$SETTING_GROUP_HELP.attr('data-content', 'グループ化して表示することができます。');
       this.$SETTING_SORT_HELP.attr('data-content', '指定した順序で並び替えることができます。');
