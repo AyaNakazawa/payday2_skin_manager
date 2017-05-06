@@ -85,6 +85,8 @@ class CommonView extends LocalStorage {
     this.SETTING_GROUP_ID = '#setting-group';
     this.$SETTING_SORT = $('#setting-sort');
     this.SETTING_SORT_ID = '#setting-sort';
+    this.SETTING_SORT_ASC_ID = '#setting-sort-asc';
+    this.SETTING_SORT_DESC_ID = '#setting-sort-desc';
     this.$SETTING_QUALITY = $('#setting-quality');
     this.SETTING_QUALITY_ID = '#setting-quality';
     this.$SETTING_SIZE = $('#setting-size');
@@ -162,6 +164,7 @@ class SettingView extends SwitchView {
     this.lsKeyFilter = 'Filter';
     this.lsKeyGroup = 'Group';
     this.lsKeySort = 'Sort';
+    this.lsKeySortMode = 'SortMode';
     this.lsKeyQuality = 'Quality';
     this.lsKeySize = 'Size';
     this.lsKeyStyle = 'Style';
@@ -176,14 +179,14 @@ class SettingView extends SwitchView {
     const lsValSize = super.LSGetItem(this.lsKeySize);
     const lsValStyle = super.LSGetItem(this.lsKeyStyle);
     
-    this.updateStyle(lsValSteamId);
-    this.updateSize(lsValSearch);
-    this.updateSteamId(lsValFilter);
-    this.updateQuality(lsValGroup);
-    this.updateSearch(lsValSort);
-    this.updateFilter(lsValQuality);
-    this.updateGroup(lsValSize);
-    this.updateSort(lsValStyle);
+    this.updateStyle(lsValStyle);
+    this.updateSize(lsValSize);
+    this.updateSteamId(lsValSteamId);
+    this.updateQuality(lsValQuality);
+    this.updateSearch(lsValSearch);
+    this.updateFilter(lsValFilter);
+    this.updateGroup(lsValGroup);
+    this.updateSort(lsValSortMode, lsValSort);
     
     $(document).on('change', this.SETTING_STYLE_ID, () => {this.updateStyle()});
     $(document).on('change', this.SETTING_SIZE_ID, () => {this.updateSize()});
