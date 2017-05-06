@@ -15,25 +15,33 @@ $(() => {
 class LocalStorage {
   constructor() {
     this.LOCAL_STORAGE = true;
-    if(!this.LOCAL_STORAGE) {
+    if (!this.LOCAL_STORAGE) {
       this.LOCAL_STORAGE = false;
     }
   }
   
   clear() {
-    localStorage.clear();
+    if (this.LOCAL_STORAGE) {
+      localStorage.clear();
+    }
   }
   
   getItem(_key = 'key') {
-    localStorage.getItem(_key);
+    if (this.LOCAL_STORAGE) {
+      localStorage.getItem(_key);
+    }
   }
   
   setItem(_key = 'key', _val = 'val') {
-    localStorage.setItem(_key, _val);
+    if (this.LOCAL_STORAGE) {
+      localStorage.setItem(_key, _val);
+    }
   }
   
   removeItem(_key = 'key') {
-    localStorage.removeItem(_key);
+    if (this.LOCAL_STORAGE) {
+      localStorage.removeItem(_key);
+    }
   }
 }
 
