@@ -75,17 +75,21 @@
         <div class="content-item setting-item form-inline" id="setting-sort-area">
           <label for="setting-sort">Sort</label>
           <span class="help-icon fa fa-question-circle" id="setting-sort-help" data-toggle="popover"></span>
-          <select class="form-control" id="setting-sort">
-            <option id="setting-sort-no">default</option>
-            <option id="setting-sort-no">Safe</option>
-            <option id="setting-sort-no">Weapon</option>
-            <option id="setting-sort-no">Kind</option>
-            <option id="setting-sort-no">Rarity</option>
-            <option id="setting-sort-no">Quality</option>
-            <option id="setting-sort-no">Boost</option>
-          </select>
-          <button class="btn btn-default" id="setting-sort-asc"><i class="fa fa-sort-alpha-asc"></i></button>
-          <button class="btn btn-default" id="setting-sort-desc"><i class="fa fa-sort-alpha-desc"></i></button>
+          <div class="input-group">
+            <select class="form-control" id="setting-sort">
+              <option id="setting-sort-no">default</option>
+              <option id="setting-sort-no">Safe</option>
+              <option id="setting-sort-no">Weapon</option>
+              <option id="setting-sort-no">Kind</option>
+              <option id="setting-sort-no">Rarity</option>
+              <option id="setting-sort-no">Quality</option>
+              <option id="setting-sort-no">Boost</option>
+            </select>
+            <span class="input-group-btn">
+              <button class="btn btn-default" id="setting-sort-asc"><i class="fa fa-sort-alpha-asc"></i></button>
+              <button class="btn btn-default" id="setting-sort-desc"><i class="fa fa-sort-alpha-desc"></i></button>
+            </span>
+          </div>
         </div>
         <div class="content-item setting-item form-inline" id="setting-quality-area">
           <label for="setting-quality">Quality</label>
