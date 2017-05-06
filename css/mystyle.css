@@ -116,6 +116,28 @@ main {
 
 @media (min-width: 768px) {
   
+  /* setting */
+  
+  #setting-area .setting-label {
+    width: 120px;
+    display: inline-table;
+    position:relative;
+  }
+  
+  #setting-area .setting-input {
+    width: 100%;
+    margin-left: -158px;
+    padding-left: 158px;
+    display: inline-table;
+    position:relative;
+  }
+  
+  #setting-area .setting-input > input,
+  #setting-area .setting-input > select {
+    margin: 0;
+    width: 100%;
+  }
+  
 }
 
 /* Medium desktop */
