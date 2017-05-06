@@ -47,11 +47,6 @@ class CommonView {
     // popover
     this.$POPOVER = $('[data-toggle="popover"]');
     
-    // localStorage
-    this.LOCAL_STORAGE = true;
-    if(!localStorage) {
-      this.LOCAL_STORAGE = false;
-    }
   }
 }
 
