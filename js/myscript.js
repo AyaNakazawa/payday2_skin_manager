@@ -56,7 +56,7 @@ class SettingView extends CommonView {
     } else {
       this.$VIEW_SWITCH.removeClass(this.CURRENT);
     }
-    this.$SETTING_AREA.toggle(300);
+    this.$SETTING_AREA.toggle(this.TOGGLE_SPEED_MS);
     this.viewFlg = _viewFlg;
   }
 }
