@@ -171,7 +171,7 @@ body.steam-view .content-item button:hover {
 
 body.steam-view .popover {
   color: #ebebeb;
-  background: #1f1f1f;
+  background: #171a21;
 }
 
 body.steam-view .arrow {
@@ -181,7 +181,7 @@ body.steam-view .arrow {
 
 body.steam-view .arrow::after {
   border-color: transparent !important;
-  border-right-color: #1f1f1f !important;
+  border-right-color: #171a21 !important;
 }
 
 body.steam-view #pd2item-area .pd2item-item:hover {
