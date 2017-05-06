@@ -91,6 +91,71 @@ main {
   border-bottom: 1px solid #ddd;
 }
 
+/* steam view */
+
+body.steam-view {
+  color: #8F98A0;
+  background: #171a21;
+}
+
+body.steam-view header {
+  border-color: #333;
+}
+
+body.steam-view .navbar {
+  color: #8F98A0;
+  background: #171a21;
+}
+
+body.steam-view .nav li a {
+  background: #171a21;
+}
+
+body.steam-view a {
+  color: #b8b6b4 !important;
+}
+
+body.steam-view a:hover {
+  color: #fff !important;
+}
+
+body.steam-view .btn:hover {
+  background: #444 !important;
+}
+
+body.steam-view .btn:hover * {
+  background: #444 !important;
+  transition: all .3s;
+}
+
+body.steam-view .btn * {
+  transition: all .3s;
+}
+
+body.steam-view main {
+  color: #ebebeb;
+  background: #1b2838;
+  border-color: #333;
+}
+
+body.steam-view main * {
+  border-color: #333 !important;
+}
+
+body.steam-view .content {
+  background: #1f1f1f;
+}
+
+body.steam-view .content-item {
+  background: #1f1f1f;
+  border-radius: 4px;
+}
+
+body.steam-view .content-item * {
+  color: #ebebeb;
+  background: #1f1f1f;
+}
+
 /* content */
 
 .content {
