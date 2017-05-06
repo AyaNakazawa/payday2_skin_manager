@@ -120,7 +120,8 @@ main {
 }
 
 #setting-area .help-icon {
-  line-height: 34px;
+  line-height: 22px;
+  padding: 6px;
   cursor: pointer;
   position: relative;
   z-index: 10;
