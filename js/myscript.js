@@ -253,6 +253,88 @@ class SettingView extends SwitchView {
     return result;
   }
   
+  setStyle(_style = null) {
+    if (_style == null) {
+      return;
+    }
+    log(`set Style _style: ${_style}`);
+    this.$SETTING_STYLE.val(_style);
+  }
+  
+  setSize(_size = null) {
+    if (_size == null) {
+      return;
+    }
+    log(`set Size _size: ${_size}`);
+    this.$SETTING_SIZE.val(_size);
+  }
+  
+  setSteamId(_steamId = null) {
+    if (_steamId == null) {
+      return;
+    }
+    log(`set SteamId _steamId: ${_steamId}`);
+    this.$SETTING_STEAMID.val(_steamId);
+  }
+  
+  setQuality(_quality = null) {
+    if (_quality == null) {
+      return;
+    }
+    log(`set Quality _quality: ${_quality}`);
+    if (_quality == 'true') {
+      this.$SETTING_QUALITY.prop('checked', true);
+    } else {
+      this.$SETTING_QUALITY.prop('checked', false);
+    }
+  }
+  
+  setSearch(_search = null) {
+    if (_search == null) {
+      return;
+    }
+    log(`set Search _search: ${_search}`);
+    this.$SETTING_SEARCH.val(_search);
+  }
+  
+  setFilter(_filter = null) {
+    if (_filter == null) {
+      return;
+    }
+    log(`set Filter _filter: ${_filter}`);
+    this.$SETTING_FILTER.val(_filter);
+  }
+  
+  setGroup(_group = null) {
+    if (_group == null) {
+      return;
+    }
+    log(`set Group _group: ${_group}`);
+    this.$SETTING_GROUP.val(_group);
+  }
+  
+  setSort(_sort = null) {
+    if (_sort == null) {
+      return;
+    }
+    log(`set Sort _sort: ${_sort}`);
+    this.$SETTING_SORT.val(_sort);
+  }
+  
+  setSortMode(_sortMode = null) {
+    if (_sortMode == null) {
+      return;
+    }
+    log(`set SortMode _sortMode: ${_sortMode}`);
+    if (_sortMode == 'asc') {
+      this.$SETTING_SORT_DESC.removeClass('active');
+      this.$SETTING_SORT_ASC.addClass('active');
+    } else {
+      this.$SETTING_SORT_DESC.addClass('active');
+      this.$SETTING_SORT_ASC.removeClass('active');
+    }
+  }
+  
   updateStyle(_style = this.getStyle()) {
     super.LSSetItem(this.lsKeyStyle, _style);
   }
