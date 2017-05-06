@@ -22,24 +22,28 @@ class LocalStorage {
   
   LSClear() {
     if (this.LOCAL_STORAGE) {
+      log(`LS: All clear.`);
       localStorage.clear();
     }
   }
   
   LSGetItem(_key = 'key') {
     if (this.LOCAL_STORAGE) {
+      log(`LS: ${_key} -> ${localStorage.getItem(_key)}`);
       return localStorage.getItem(_key);
     }
   }
   
   LSSetItem(_key = 'key', _val = 'val') {
     if (this.LOCAL_STORAGE) {
+      log(`LS: ${_key} <- ${_val}`);
       localStorage.setItem(_key, _val);
     }
   }
   
   LSRemoveItem(_key = 'key') {
     if (this.LOCAL_STORAGE) {
+      log(`LS: ${_key} -> ${localStorage.getItem(_key)} is remove.`);
       localStorage.removeItem(_key);
     }
   }
