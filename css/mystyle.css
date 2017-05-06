@@ -470,13 +470,13 @@ body.steam-view img {
     width: 100%;
     line-height: 34px;
     margin: 0;
-    margin-left: -420px;
-    padding-left: 420px;
+    margin-left: -360px;
+    padding-left: 360px;
     display: inline-table;
   }
   
   #detail-area .detail-link-info {
-    width: 400px;
+    width: 340px;
     margin: 0 auto;
     float: right;
   }
