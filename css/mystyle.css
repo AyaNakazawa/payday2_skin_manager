@@ -123,6 +123,7 @@ main {
     width: 120px;
     display: inline-table;
     position:relative;
+    z-index: 10;
   }
   
   #setting-area .setting-input {
@@ -131,6 +132,7 @@ main {
     padding-left: 158px;
     display: inline-table;
     position:relative;
+    z-index: 6;
   }
   
   #setting-area .setting-input > input,
