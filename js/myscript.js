@@ -15,7 +15,7 @@ $(() => {
 class LocalStorage {
   constructor() {
     this.LOCAL_STORAGE = true;
-    if (!this.LOCAL_STORAGE) {
+    if (!localStorage) {
       this.LOCAL_STORAGE = false;
     }
   }
@@ -110,6 +110,16 @@ class CommonView extends LocalStorage {
     this.$POPOVER = $('[data-toggle="popover"]');
     
   }
+}
+
+class ConfirmView extends CommonView {
+    constructor() {
+      super();
+      this.confirmMessage = '確認';
+    }
+    confirm() {
+      return true;
+    }
 }
 
 class SwitchView extends CommonView {
