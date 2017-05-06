@@ -7,6 +7,8 @@ $(() => {
   let itemGroupView = new ItemGroupView(true);
   let helpView = new HelpView();
   
+  let resetStorageView = new ResetStorageView();
+  
 });
 
 // ----------------------------------------------------------------
@@ -17,7 +19,7 @@ class LocalStorage {
     this.LOCAL_STORAGE = true;
     if (!localStorage) {
       this.LOCAL_STORAGE = false;
-    }
+    } 
   }
   
   LSClear() {
