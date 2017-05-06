@@ -67,7 +67,7 @@ class HelpView extends CommonView {
       this.$SETTING_SORT_HELP.attr('data-content', '指定した順序で並び替えることができます。');
       this.$SETTING_QUALITY_HELP.attr('data-content', 'チェックを入れると、全てのクオリティを表示します。');
       
-      $('[data-toggle="popover"]').popover();
+      this.$POPOVER.popover();
     }
 }
 
