@@ -230,21 +230,29 @@ body.steam-view .content-item * {
 }
 
 #pd2item-area .pd2item-item {
-  margin: 8px;
+  margin: 4px;
+  padding: 4px;
   display: inline-table;
   cursor: pointer;
+  border-radius: 4px;
+  transition: all .3s;
+}
+
+#pd2item-area .pd2item-item:hover {
+  background: #eee;
+  transition: all .3s;
 }
 
 #pd2item-area .pd2item-item-sm {
-  width: 64px;
+  width: 128px;
 }
 
 #pd2item-area .pd2item-item-nor {
-  width: 100px;
+  width: 180px;
 }
 
 #pd2item-area .pd2item-item-lg {
-  width: 200px;
+  width: 256px;
 }
 
 #pd2item-area .pd2item-item-img {
