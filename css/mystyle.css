@@ -176,6 +176,7 @@ main {
 #pd2item-area .pd2item-item {
   margin: 8px;
   display: inline-table;
+  cursor: pointer;
 }
 
 #pd2item-area .pd2item-item-sm {
