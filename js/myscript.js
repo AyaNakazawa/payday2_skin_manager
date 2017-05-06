@@ -161,15 +161,15 @@ class SettingView extends SwitchView {
   }
   
   initSetting() {
-    this.lsKeySteamId = 'SteamId';
-    this.lsKeySearch = 'Search';
-    this.lsKeyFilter = 'Filter';
-    this.lsKeyGroup = 'Group';
-    this.lsKeySort = 'Sort';
-    this.lsKeySortMode = 'SortMode';
-    this.lsKeyQuality = 'Quality';
-    this.lsKeySize = 'Size';
-    this.lsKeyStyle = 'Style';
+    this.lsKeySteamId = 'PD2SM.Setting.SteamId';
+    this.lsKeySearch = 'PD2SM.Setting.Search';
+    this.lsKeyFilter = 'PD2SM.Setting.Filter';
+    this.lsKeyGroup = 'PD2SM.Setting.Group';
+    this.lsKeySort = 'PD2SM.Setting.Sort';
+    this.lsKeySortMode = 'PD2SM.Setting.SortMode';
+    this.lsKeyQuality = 'PD2SM.Setting.Quality';
+    this.lsKeySize = 'PD2SM.Setting.Size';
+    this.lsKeyStyle = 'PD2SM.Setting.Style';
     
     let lsValSteamId = super.LSGetItem(this.lsKeySteamId);
     if (lsValSteamId == null) {
