@@ -114,7 +114,6 @@ main {
 #setting-area .help-icon {
   margin-right: 8px;
   cursor: pointer;
-  display: inline-table;
   position: relative;
   z-index: 10;
 }
@@ -134,7 +133,6 @@ main {
     width: 100%;
     margin-left: -120px;
     padding-left: 120px;
-    display: inline-table;
     position: relative;
     z-index: 6;
     float: right;
@@ -142,7 +140,6 @@ main {
   
   #setting-area .setting-input > input,
   #setting-area .setting-input > select {
-    margin: 0;
     width: 100%;
   }
   
