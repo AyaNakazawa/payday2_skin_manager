@@ -156,6 +156,10 @@ main {
   float: right;
 }
 
+#pd2item-area .pd2item-header-caret.current {
+  background: #e6e6e6;
+}
+
 #pd2item-area .pd2item-group-list {
   width: 100%;
 }
