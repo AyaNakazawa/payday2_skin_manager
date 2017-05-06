@@ -1,0 +1,92 @@
+
+/* steam view */
+
+body.steam {
+  color: #8F98A0;
+  background: #171a21;
+}
+
+body.steam header {
+  border-color: #333;
+}
+
+body.steam .navbar {
+  color: #8F98A0;
+  background: #171a21;
+}
+
+body.steam .nav li a {
+  background: #171a21;
+}
+
+body.steam a {
+  color: #b8b6b4 !important;
+}
+
+body.steam a:hover {
+  color: #fff !important;
+}
+
+body.steam .btn:hover {
+  background: #444 !important;
+}
+
+body.steam .btn:hover * {
+  background: #444 !important;
+  transition: all .3s;
+}
+
+body.steam main {
+  color: #ebebeb;
+  background: #1b2838;
+  border-color: #333;
+}
+
+body.steam main * {
+  border-color: #333 !important;
+}
+
+body.steam .content {
+  background: #1f1f1f;
+}
+
+body.steam .content-item {
+  background: #1f1f1f;
+  border-radius: 4px;
+}
+
+body.steam .content-item input,
+body.steam .content-item select,
+body.steam .content-item label,
+body.steam .content-item button,
+body.steam .content-item a {
+  color: #ebebeb;
+  background: #1f1f1f;
+}
+
+body.steam .content-item button:hover {
+  color: #ebebeb;
+}
+
+body.steam .popover {
+  color: #ebebeb;
+  background: #171a21;
+}
+
+body.steam .arrow {
+  border-color: transparent !important;
+  border-right-color: #333 !important;
+}
+
+body.steam .arrow::after {
+  border-color: transparent !important;
+  border-right-color: #171a21 !important;
+}
+
+body.steam #pd2item-area .pd2item-item:hover {
+  background: #444;
+}
+
+body.steam img {
+  box-shadow: 0 0 2px 2px #444 inset;
+}
