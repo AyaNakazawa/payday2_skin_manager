@@ -2,6 +2,7 @@
 $(() => {
   
   let settingView = new SettingView(true);
+  let itemView = new ItemView(true);
   let helpView = new HelpView();
   
 });
@@ -21,9 +22,12 @@ class CommonView {
     // navbar
     this.VIEW_SETTING_SWITCH_ID = '#action-setting';
     this.$VIEW_SETTING_SWITCH = $(this.VIEW_SETTING_SWITCH_ID);
+    this.VIEW_ITEM_SWITCH_ID = '#action-item';
+    this.$VIEW_ITEM_SWITCH = $(this.VIEW_ITEM_SWITCH_ID);
     
     // content
     this.$SETTING_AREA = $('#setting-area');
+    this.$ITEM_AREA = $('#pd2item-area');
     
     // setting help
     this.$SETTING_STEAMID_HELP = $('#setting-steamid-help');
@@ -86,6 +90,19 @@ class SettingView extends SwitchView {
     this.VIEW_SWITCH_ID = this.VIEW_SETTING_SWITCH_ID;
     this.$VIEW_SWITCH = this.$VIEW_SETTING_SWITCH;
     this.$SWITCH_AREA = this.$SETTING_AREA;
+    
+    super.setOn();
+  }
+}
+
+class ItemView extends SwitchView {
+  constructor(_viewFlg = true) {
+    super(_viewFlg);
+    
+    this.NAME = 'Item';
+    this.VIEW_SWITCH_ID = this.VIEW_ITEM_SWITCH_ID;
+    this.$VIEW_SWITCH = this.$VIEW_ITEM_SWITCH;
+    this.$SWITCH_AREA = this.$ITEM_AREA;
     
     super.setOn();
   }
