@@ -165,6 +165,10 @@ body.steam-view .content-item a {
   background: #1f1f1f;
 }
 
+body.steam-view .content-item button:hover {
+  color: #ebebeb;
+}
+
 body.steam-view #pd2item-area .pd2item-item:hover {
   background: #444;
 }
