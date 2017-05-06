@@ -28,7 +28,7 @@ class LocalStorage {
   
   LSGetItem(_key = 'key') {
     if (this.LOCAL_STORAGE) {
-      localStorage.getItem(_key);
+      return localStorage.getItem(_key);
     }
   }
   
