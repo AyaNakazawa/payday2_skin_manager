@@ -102,93 +102,93 @@ main {
 
 /* steam view */
 
-body.steam-view {
+body#steam-view {
   color: #8F98A0;
   background: #171a21;
 }
 
-body.steam-view header {
+body#steam-view header {
   border-color: #333;
 }
 
-body.steam-view .navbar {
+body#steam-view .navbar {
   color: #8F98A0;
   background: #171a21;
 }
 
-body.steam-view .nav li a {
+body#steam-view .nav li a {
   background: #171a21;
 }
 
-body.steam-view a {
+body#steam-view a {
   color: #b8b6b4 !important;
 }
 
-body.steam-view a:hover {
+body#steam-view a:hover {
   color: #fff !important;
 }
 
-body.steam-view .btn:hover {
+body#steam-view .btn:hover {
   background: #444 !important;
 }
 
-body.steam-view .btn:hover * {
+body#steam-view .btn:hover * {
   background: #444 !important;
   transition: all .3s;
 }
 
-body.steam-view main {
+body#steam-view main {
   color: #ebebeb;
   background: #1b2838;
   border-color: #333;
 }
 
-body.steam-view main * {
+body#steam-view main * {
   border-color: #333 !important;
 }
 
-body.steam-view .content {
+body#steam-view .content {
   background: #1f1f1f;
 }
 
-body.steam-view .content-item {
+body#steam-view .content-item {
   background: #1f1f1f;
   border-radius: 4px;
 }
 
-body.steam-view .content-item input,
-body.steam-view .content-item select,
-body.steam-view .content-item label,
-body.steam-view .content-item button,
-body.steam-view .content-item a {
+body#steam-view .content-item input,
+body#steam-view .content-item select,
+body#steam-view .content-item label,
+body#steam-view .content-item button,
+body#steam-view .content-item a {
   color: #ebebeb;
   background: #1f1f1f;
 }
 
-body.steam-view .content-item button:hover {
+body#steam-view .content-item button:hover {
   color: #ebebeb;
 }
 
-body.steam-view .popover {
+body#steam-view .popover {
   color: #ebebeb;
   background: #171a21;
 }
 
-body.steam-view .arrow {
+body#steam-view .arrow {
   border-color: transparent !important;
   border-right-color: #333 !important;
 }
 
-body.steam-view .arrow::after {
+body#steam-view .arrow::after {
   border-color: transparent !important;
   border-right-color: #171a21 !important;
 }
 
-body.steam-view #pd2item-area .pd2item-item:hover {
+body#steam-view #pd2item-area .pd2item-item:hover {
   background: #444;
 }
 
-body.steam-view img {
+body#steam-view img {
   box-shadow: 0 0 2px 2px #444 inset;
 }
 
