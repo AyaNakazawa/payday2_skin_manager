@@ -37,8 +37,11 @@ class LocalStorage {
   }
 }
 
-class CommonView {
+class CommonView extends LocalStorage {
   constructor() {
+    // super
+    super();
+    
     // common setting
     this.TOGGLE_SPEED_MS = 300;
     
