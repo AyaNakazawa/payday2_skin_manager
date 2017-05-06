@@ -181,6 +181,16 @@ class SettingView extends SwitchView {
     const lsValSize = super.LSGetItem(this.lsKeySize);
     const lsValStyle = super.LSGetItem(this.lsKeyStyle);
     
+    this.setStyle(lsValStyle);
+    this.setSize(lsValSize);
+    this.setSteamId(lsValSteamId);
+    this.setQuality(lsValQuality);
+    this.setSearch(lsValSearch);
+    this.setFilter(lsValFilter);
+    this.setGroup(lsValGroup);
+    this.setSort(lsValSort);
+    this.setSortMode(lsValSortMode);
+    
     this.updateStyle(lsValStyle);
     this.updateSize(lsValSize);
     this.updateSteamId(lsValSteamId);
