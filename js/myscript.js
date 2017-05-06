@@ -25,10 +25,13 @@ class CommonView {
     this.$VIEW_SETTING_SWITCH = $(this.VIEW_SETTING_SWITCH_ID);
     this.VIEW_ITEM_SWITCH_ID = '#action-item';
     this.$VIEW_ITEM_SWITCH = $(this.VIEW_ITEM_SWITCH_ID);
+    this.VIEW_DETAIL_SWITCH_ID = '#action-detail';
+    this.$VIEW_DETAIL_SWITCH = $(this.VIEW_DETAIL_SWITCH_ID);
     
     // content
     this.$SETTING_AREA = $('#setting-area');
     this.$ITEM_AREA = $('#pd2item-area');
+    this.$DETAIL_AREA = $('#detail-area');
     
     // setting help
     this.$SETTING_STEAMID_HELP = $('#setting-steamid-help');
