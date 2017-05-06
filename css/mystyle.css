@@ -35,6 +35,11 @@ textarea {
   -webkit-transition: all .3s;
 }
 
+.btn * {
+  transition: all .3s;
+  -webkit-transition: all .3s;
+}
+
 /* header */
 
 header {
@@ -125,10 +130,6 @@ body.steam-view .btn:hover {
 
 body.steam-view .btn:hover * {
   background: #444 !important;
-  transition: all .3s;
-}
-
-body.steam-view .btn * {
   transition: all .3s;
 }
 
