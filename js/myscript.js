@@ -171,11 +171,12 @@ class SettingView extends SwitchView {
     super(_viewFlg);
     
     this.NAME = 'Setting';
+    this.lsKeyView = 'PD2SM.View.Setting';
     this.VIEW_SWITCH_ID = this.VIEW_SETTING_SWITCH_ID;
     this.$VIEW_SWITCH = this.$VIEW_SETTING_SWITCH;
     this.$SWITCH_AREA = this.$SETTING_AREA;
     
-    super.setOn();
+    super.initView();
     
     this.initSetting();
   }
@@ -451,11 +452,12 @@ class ItemView extends SwitchView {
     super(_viewFlg);
     
     this.NAME = 'Item';
+    this.lsKeyView = 'PD2SM.View.Item';
     this.VIEW_SWITCH_ID = this.VIEW_ITEM_SWITCH_ID;
     this.$VIEW_SWITCH = this.$VIEW_ITEM_SWITCH;
     this.$SWITCH_AREA = this.$ITEM_AREA;
     
-    super.setOn();
+    super.initView();
   }
 }
 
@@ -464,24 +466,26 @@ class DetailView extends SwitchView {
     super(_viewFlg);
     
     this.NAME = 'Detail';
+    this.lsKeyView = 'PD2SM.View.Detail';
     this.VIEW_SWITCH_ID = this.VIEW_DETAIL_SWITCH_ID;
     this.$VIEW_SWITCH = this.$VIEW_DETAIL_SWITCH;
     this.$SWITCH_AREA = this.$DETAIL_AREA;
     
-    super.setOn();
+    super.initView();
   }
 }
 
 class ItemGroupView extends SwitchView {
-  constructor(_viewFlg = true, _name = 'Group', _switchId = '#pd2item-group-test .pd2item-group-header', _areaId = '#pd2item-group-list-test') {
+  constructor(_viewFlg = true, _name = 'Group', _switchId = '#pd2item-group-test .pd2item-group-header', _areaId = '#pd2item-group-list-test', _lsKeyView = 'PD2SM.View.Group') {
     super(_viewFlg);
     
     this.NAME = _name;
+    this.lsKeyView = _lsKeyView;
     this.VIEW_SWITCH_ID = _switchId;
     this.$VIEW_SWITCH = $(_switchId);
     this.$SWITCH_AREA = $(_areaId);
     
-    super.setOn();
+    super.initView();
   }
 }
 
