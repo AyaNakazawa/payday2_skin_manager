@@ -112,7 +112,6 @@ main {
 /* setting */
 
 #setting-area .setting-label {
-  line-height: 34px;
   display: inline-table;
 }
 
@@ -125,10 +124,6 @@ main {
   cursor: pointer;
   position: relative;
   z-index: 10;
-}
-
-#setting-area .setting-input > * {
-  line-height: 34px;
 }
 
 /* pd2item */
@@ -199,6 +194,7 @@ main {
   /* setting */
   
   #setting-area .setting-label {
+    line-height: 34px;
     position: relative;
     z-index: 8;
   }
@@ -213,8 +209,10 @@ main {
   }
   
   #setting-area .setting-input > input,
-  #setting-area .setting-input > select {
+  #setting-area .setting-input > select,
+  #setting-area .setting-input > label {
     width: 100%;
+    line-height: 34px;
   }
   
   /* setting-sort */
