@@ -156,8 +156,16 @@ main {
   float: right;
 }
 
+#pd2item-area .pd2item-header-caret:hover {
+  background: #f3f3f3;
+}
+
 #pd2item-area .pd2item-header-caret.current {
   background: #e6e6e6;
+}
+
+#pd2item-area .pd2item-header-caret.current:hover {
+  background: #f3f3f3;
 }
 
 #pd2item-area .pd2item-group-list {
