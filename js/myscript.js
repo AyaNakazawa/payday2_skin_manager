@@ -294,7 +294,7 @@ class SettingView extends SwitchView {
     if (_style == null) {
       return;
     }
-    log(`set Style _style: ${_style}`);
+    log(`View: Style <- ${_style}`);
     this.$SETTING_STYLE.val(_style);
   }
   
@@ -302,7 +302,7 @@ class SettingView extends SwitchView {
     if (_size == null) {
       return;
     }
-    log(`set Size _size: ${_size}`);
+    log(`View: Size <- ${_size}`);
     this.$SETTING_SIZE.val(_size);
   }
   
@@ -310,7 +310,7 @@ class SettingView extends SwitchView {
     if (_steamId == null) {
       return;
     }
-    log(`set SteamId _steamId: ${_steamId}`);
+    log(`View: SteamId <- ${_steamId}`);
     this.$SETTING_STEAMID.val(_steamId);
   }
   
@@ -318,7 +318,7 @@ class SettingView extends SwitchView {
     if (_quality == null) {
       return;
     }
-    log(`set Quality _quality: ${_quality}`);
+    log(`View: Quality <- ${_quality}`);
     if (_quality == 'true') {
       this.$SETTING_QUALITY.prop('checked', true);
     } else {
@@ -330,7 +330,7 @@ class SettingView extends SwitchView {
     if (_search == null) {
       return;
     }
-    log(`set Search _search: ${_search}`);
+    log(`View: Search <- ${_search}`);
     this.$SETTING_SEARCH.val(_search);
   }
   
@@ -338,7 +338,7 @@ class SettingView extends SwitchView {
     if (_filter == null) {
       return;
     }
-    log(`set Filter _filter: ${_filter}`);
+    log(`View: Filter <- ${_filter}`);
     this.$SETTING_FILTER.val(_filter);
   }
   
@@ -346,7 +346,7 @@ class SettingView extends SwitchView {
     if (_group == null) {
       return;
     }
-    log(`set Group _group: ${_group}`);
+    log(`View: Group <- ${_group}`);
     this.$SETTING_GROUP.val(_group);
   }
   
@@ -354,7 +354,7 @@ class SettingView extends SwitchView {
     if (_sort == null) {
       return;
     }
-    log(`set Sort _sort: ${_sort}`);
+    log(`View: Sort <- ${_sort}`);
     this.$SETTING_SORT.val(_sort);
   }
   
@@ -362,7 +362,7 @@ class SettingView extends SwitchView {
     if (_sortMode == null) {
       return;
     }
-    log(`set SortMode _sortMode: ${_sortMode}`);
+    log(`View: SortMode <- ${_sortMode}`);
     if (_sortMode == 'asc') {
       this.$SETTING_SORT_DESC.removeClass('active');
       this.$SETTING_SORT_ASC.addClass('active');
