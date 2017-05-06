@@ -1,0 +1,91 @@
+
+/* momo view */
+
+body.momo {
+  color: #454;
+  background: #f8f0f8;
+}
+
+body.momo header {
+  border-color: #dcd;
+}
+
+body.momo .navbar {
+  color: #454;
+  background: #f8f0f8;
+}
+
+body.momo .nav li a {
+  background: #f8f0f8;
+}
+
+body.momo a {
+  color: #8f808f !important;
+}
+
+body.momo a:hover {
+  color: #010501 !important;
+}
+
+body.momo .btn:hover {
+  background: #eeddee !important;
+}
+
+body.momo .btn:hover * {
+  background: #eeddee !important;
+  transition: all .3s;
+}
+
+body.momo main {
+  color: #333033;
+  background: #fcfcfc;
+  border-color: #dcd;
+}
+
+body.momo main * {
+  border-color: #dcd !important;
+}
+
+body.momo .content {
+  background: #fffdff;
+}
+
+body.momo .content-item {
+  background: #fffdff;
+}
+
+body.momo .content-item input,
+body.momo .content-item select,
+body.momo .content-item label,
+body.momo .content-item button,
+body.momo .content-item a {
+  color: #333033;
+  background: #fffdff;
+}
+
+body.momo .content-item button:hover {
+  color: #333033;
+}
+
+body.momo .popover {
+  color: #333033;
+  background: #f8f0f8;
+}
+
+body.momo .arrow {
+  border-color: transparent !important;
+  border-right-color: #dcd !important;
+}
+
+body.momo .arrow::after {
+  border-color: transparent !important;
+  border-right-color: #f8f0f8 !important;
+}
+
+body.momo #pd2item-area .pd2item-item:hover {
+  background: #eeddee;
+}
+
+body.momo img {
+  box-shadow: 0 0 2px 2px #eeddee inset;
+}
