@@ -30,6 +30,10 @@ textarea {
   resize: vertical;
 }
 
+img {
+  box-shadow: 0 0 2px 2px #eee inset;
+}
+
 .btn {
   transition: all .3s;
   -webkit-transition: all .3s;
