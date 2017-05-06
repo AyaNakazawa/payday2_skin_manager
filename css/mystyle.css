@@ -108,8 +108,9 @@ main {
 /* setting */
 
 #setting-area .help-icon {
-  margin-right: 8px;
+  margin: 0 4px;
   cursor: pointer;
+  position:relative;
 }
 
 /* Tablet */
