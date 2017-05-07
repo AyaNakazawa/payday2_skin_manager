@@ -1034,6 +1034,11 @@ class SteamInventoryEvent extends CommonEvent {
 $(() => {
   
   // ----------------------------------------------------------------
+  // Events
+
+  let steamInventoryEvent = new SteamInventoryEvent('218620');
+  
+  // ----------------------------------------------------------------
   // Controllers
 
   let help = new HelpController();
