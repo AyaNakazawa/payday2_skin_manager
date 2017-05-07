@@ -1052,19 +1052,7 @@ class SteamInventoryEvent extends CommonEvent {
       return;
     }
     
-    let steamInventoryJsonName = 'https://';
-    steamInventoryJsonName += 'steamcommunity.com/profiles/';
-    steamInventoryJsonName += `${_steamid}/`;
-    steamInventoryJsonName += 'inventory/';
-    steamInventoryJsonName += 'json/';
-    steamInventoryJsonName += `${_appid}/`;
-    steamInventoryJsonName += '2';
-    
     this.l.logClass(this.NAME, 'Load Steam Inventory');
-    this.l.logClass(this.NAME, steamInventoryJsonName);
-    
-    // $.getJSON(steamInventoryJsonName, function(_json, _textStatus) {
-    // });
     
   }
 }
