@@ -194,6 +194,9 @@ class CommonClass {
     this.ls = new LocalStorage();
     this.l = new Log();
     
+    // Each Setting
+    this.NAME = 'Common';
+    
   }
 }
 
@@ -205,9 +208,6 @@ class CommonModel extends CommonClass {
     super();
     this.obj = _obj;
     
-    // Each Setting
-    this.NAME = 'Common';
-    
     // Common Setting
     this.TOGGLE_SPEED_MS = 500;
     
@@ -215,6 +215,19 @@ class CommonModel extends CommonClass {
     this.DISPLAY_NONE = 'display-none';
     this.CURRENT = 'current';
     this.ACTIVE = 'active';
+    this.BODY = 'body';
+    this.$BODY = $(this.BODY);
+    
+    // Key
+    this.lsKeySteamId = 'PD2SM.Setting.SteamId';
+    this.lsKeySearch = 'PD2SM.Setting.Search';
+    this.lsKeyFilter = 'PD2SM.Setting.Filter';
+    this.lsKeyGroup = 'PD2SM.Setting.Group';
+    this.lsKeySort = 'PD2SM.Setting.Sort';
+    this.lsKeySortMode = 'PD2SM.Setting.SortMode';
+    this.lsKeyQuality = 'PD2SM.Setting.Quality';
+    this.lsKeySize = 'PD2SM.Setting.Size';
+    this.lsKeyStyle = 'PD2SM.Setting.Style';
   }
 }
 
@@ -452,19 +465,6 @@ class SettingModel extends SwitchModel {
     this.$SETTING_SIZE = $(this.SETTING_SIZE_ID);
     this.SETTING_STYLE_ID = '#setting-style';
     this.$SETTING_STYLE = $(this.SETTING_STYLE_ID);
-    
-    this.BODY = 'body';
-    this.$BODY = $(this.BODY);
-    
-    this.lsKeySteamId = 'PD2SM.Setting.SteamId';
-    this.lsKeySearch = 'PD2SM.Setting.Search';
-    this.lsKeyFilter = 'PD2SM.Setting.Filter';
-    this.lsKeyGroup = 'PD2SM.Setting.Group';
-    this.lsKeySort = 'PD2SM.Setting.Sort';
-    this.lsKeySortMode = 'PD2SM.Setting.SortMode';
-    this.lsKeyQuality = 'PD2SM.Setting.Quality';
-    this.lsKeySize = 'PD2SM.Setting.Size';
-    this.lsKeyStyle = 'PD2SM.Setting.Style';
   }
 }
 
@@ -688,7 +688,9 @@ class SettingView extends SwitchView {
       return;
     }
     this.model.ls.setItem(this.model.lsKeyStyle, _style);
-    if (beforeStyle == 'Normal') {
+    if (beforeStyle == null) {
+      // No remove
+    } else if (beforeStyle == 'Normal') {
       // No remove
     } else if (beforeStyle.length > 0) {
       this.model.$BODY.removeClass(beforeStyle.toLowerCase());
@@ -982,6 +984,9 @@ class SteamInventoryController extends CommonController {
 
 $(() => {
   
+  // ----------------------------------------------------------------
+  // Controllers
+
   let help = new HelpController();
   let resetStorage = new ResetStorageController();
   
@@ -989,7 +994,5 @@ $(() => {
   let item = new ItemController();
   let itemGroup = new ItemGroupController();
   let setting = new SettingController();
-  
-  let steamInventory = new SteamInventoryController();
   
 });
