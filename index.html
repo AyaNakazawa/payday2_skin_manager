@@ -334,6 +334,30 @@
         © 2017 <a href="https://github.com/AyaNakazawa/payday2_skin_manager" target="_blank">PAYDAY 2 Skin Manager</a> @ <a href="https://github.com/AyaNakazawa/" alt="Aya Nakazawa Github" target="_blank">Aya Nakazawa</a>
       </p>
     </footer>
+    <!-- confirm -->
+    <div id="confirm-view"></div>
+    <!-- template -->
+    <script type="text/template" id="confirm-view-template">
+      <div id="<%- confirmId %>" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" id="<%- confirmId %>-close">
+                <span>
+                  <i class="fa fa-close"></i>
+                </span>
+              </button>
+              <h4 class="modal-title"><%- confirmTitle %></h4>
+            </div>
+            <div class="modal-body"><%- confirmMessage %></div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" id="<%- confirmId %>-yes">はい</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal" id="<%- confirmId %>-no">いいえ</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </script>
     <!-- script -->
     <script src="js/underscore-min.js"></script>
     <script src="js/jquery-3.2.0.min.js"></script>
