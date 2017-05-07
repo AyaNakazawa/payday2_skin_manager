@@ -2,6 +2,7 @@
 print "Content-type: text/html\n\n";
 
 require 'cgi'
+require 'open-uri'
 require 'fileutils'
 
 objCgi = CGI.new
@@ -31,5 +32,15 @@ end
 saveJsonName = saveDirectory;
 saveJsonName += '/';
 saveJsonName += "#{_steamid}_#{_appid}.json";
+
+file = open(steamInventoryJsonName)
+code, message = file.status
+
+if code == '200'
+  result = 'true';
+  File.open(saveJsonName,'w') do |output|
+    output.puts(file.read)
+  end
+end
 
 puts result
