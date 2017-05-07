@@ -685,44 +685,76 @@ class SettingView extends SwitchView {
   }
   
   updateStyle(_style = this.getStyle()) {
+    const currentStyle = this.model.ls.getItem(this.model.lsKeyStyle);
+    if (currentStyle == _style) {
+      return;
+    }
     this.model.ls.setItem(this.model.lsKeyStyle, _style);
+    
   }
   
   updateSize(_size = this.getSize()) {
+    const currentSize = this.model.ls.getItem(this.model.lsKeySize);
+    if (currentSize == _size) {
+      return;
+    }
     this.model.ls.setItem(this.model.lsKeySize, _size);
   }
   
   updateSteamId(_steamId = this.getSteamId()) {
+    const currentSteamId = this.model.ls.getItem(this.model.lsKeySteamId);
+    if (currentSteamId == _steamId) {
+      return;
+    }
     this.model.ls.setItem(this.model.lsKeySteamId, _steamId);
   }
   
   updateQuality(_quality = this.getQuality()) {
+    const currentQuality = this.model.ls.getItem(this.model.lsKeyQuality);
+    if (currentQuality == _quality) {
+      return;
+    }
     this.model.ls.setItem(this.model.lsKeyQuality, _quality);
   }
   
   updateSearch(_search = this.getSearch()) {
+    const currentSearch = this.model.ls.getItem(this.model.lsKeySearch);
+    if (currentSearch == _search) {
+      return;
+    }
     this.model.ls.setItem(this.model.lsKeySearch, _search);
   }
   
   updateFilter(_filter = this.getFilter()) {
+    const currentFilter = this.model.ls.getItem(this.model.lsKeyFilter);
+    if (currentFilter == _filter) {
+      return;
+    }
     this.model.ls.setItem(this.model.lsKeyFilter, _filter);
   }
   
   updateGroup(_group = this.getGroup()) {
+    const currentGroup = this.model.ls.getItem(this.model.lsKeyGroup);
+    if (currentGroup == _group) {
+      return;
+    }
     this.model.ls.setItem(this.model.lsKeyGroup, _group);
   }
   
   updateSort(_sortMode = this.getSortMode(), _sort = this.getSort()) {
-    this.updateSortMode(_sortMode);
+    const currentSort = this.model.ls.getItem(this.model.lsKeySort);
+    const currentSortMode = this.model.ls.getItem(this.model.lsKeySortMode);
+    if (currentSort == _sort && currentSortMode == _sortMode) {
+      return;
+    }
     this.model.ls.setItem(this.model.lsKeySort, _sort);
   }
   
   updateSortMode(_sortMode = this.getSortMode()) {
-    let currentSortMode = this.model.ls.getItem(this.model.lsKeySortMode);
+    const currentSortMode = this.model.ls.getItem(this.model.lsKeySortMode);
     if (currentSortMode == _sortMode) {
       return;
     }
-    
     if (_sortMode == 'asc') {
       this.model.$SETTING_SORT_DESC.removeClass(this.model.ACTIVE);
       this.model.$SETTING_SORT_ASC.addClass(this.model.ACTIVE);
@@ -733,6 +765,7 @@ class SettingView extends SwitchView {
       this.l.logError('updateSortMode', '_sortMode', _sortMode);
     }
     this.model.ls.setItem(this.model.lsKeySortMode, _sortMode);
+    this.updateSort(_sortMode);
   }
 }
 
