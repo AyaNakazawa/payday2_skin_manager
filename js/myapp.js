@@ -1027,12 +1027,13 @@ class CommonEvent extends CommonClass {
 class SteamInventoryEvent extends CommonEvent {
   constructor(_appid = '218620') {
     super();
+    this.APPID = _appid;
+    this.STEAMID = this.getSteamId();
     
     this.NAME = 'SI Event';
     super.viewName();
     
-    const steamid = this.getSteamId();
-    $(window).on('loadSI', () => {this.getSteamInventory(_appid, steamid)});
+    $(window).on('loadSI', () => {this.getSteamInventory()});
   }
   
   getSteamId() {
@@ -1040,8 +1041,7 @@ class SteamInventoryEvent extends CommonEvent {
     return this.ls.getItem(controller.model.lsKeySteamId);
   }
   
-  getSteamInventory(_appid = '218620', _steamid = '') {
-    
+  getSteamInventory(_appid = this.APPID, _steamid = this.STEAMID) {
     this.l.logClass(this.NAME, 'Get Steam Inventory');
     this.l.logClassKey(this.NAME, 'Steam ID', _steamid);
     
