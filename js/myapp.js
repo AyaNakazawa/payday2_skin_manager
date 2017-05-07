@@ -969,12 +969,6 @@ class HelpController extends CommonController {
   }
 }
 
-// ----------------------------------------------------------------
-// Execute Controllers
-
-// ----------------------------------------------------------------
-// SteamInventory Controller
-
 class SteamInventoryController extends CommonController {
   constructor(_obj) {
     super();
