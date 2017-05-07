@@ -180,12 +180,14 @@ main {
   cursor: pointer;
   border-radius: 4px;
   transition: all .3s;
+  -webkit-transition: all .3s;
 }
 
 #pd2item-area .pd2item-item:hover {
   background: #f8f8f8;
   border: 1px solid #ddd;
   transition: all .3s;
+  -webkit-transition: all .3s;
 }
 
 #pd2item-area .pd2item-item-sm {
