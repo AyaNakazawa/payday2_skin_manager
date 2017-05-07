@@ -1038,6 +1038,25 @@ class SteamInventoryEvent extends CommonEvent {
   
   getSteamInventory(_appid = '218620', _steamid = '') {
     
+    this.l.logClass(this.NAME, 'Get Steam Inventory');
+    this.l.logClassKey(this.NAME, 'Steam ID', _steamid);
+    
+    if (_steamid.length != 17) {
+      this.l.logCaution('Steam ID', _steamid, _steamid.length, 'Not 17 digits.');
+      return;
+    }
+    
+    let steamInventoryJsonName = 'https://';
+    steamInventoryJsonName += 'steamcommunity.com/profiles/';
+    steamInventoryJsonName += `${_steamid}/`;
+    steamInventoryJsonName += 'inventory/';
+    steamInventoryJsonName += 'json/';
+    steamInventoryJsonName += `${_appid}/`;
+    steamInventoryJsonName += '2';
+    
+    this.l.logClass(this.NAME, 'Load Steam Inventory');
+    this.l.logClass(this.NAME, steamInventoryJsonName);
+    
   }
 }
 
