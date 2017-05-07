@@ -29,6 +29,10 @@ class Log {
     this.STYLE_ERROR_LINE = 'color:#f00;';
     this.STYLE_ERROR_HEADER = 'color:#a00;';
     this.STYLE_ERROR_CONTENT = 'color:#111;';
+    
+    this.STYLE_CAUTION_LINE = 'color:#aa0;';
+    this.STYLE_CAUTION_HEADER = 'color:#440;';
+    this.STYLE_CAUTION_CONTENT = 'color:#111;';
   }
   
   logError(...array) {
@@ -38,6 +42,15 @@ class Log {
       this.log(array[i], this.ALIGN_LEFT, this.STYLE_ERROR_CONTENT);
     }
     this.log(null, null, this.STYLE_ERROR_LINE);
+  }
+  
+  logCaution(...array) {
+    this.log(null, null, this.STYLE_CAUTION_LINE);
+    this.log('CAUTION', this.ALIGN_CENTER, this.STYLE_CAUTION_HEADER);
+    for (let i = 0; i < array.length; i++) {
+      this.log(array[i], this.ALIGN_LEFT, this.STYLE_CAUTION_CONTENT);
+    }
+    this.log(null, null, this.STYLE_CAUTION_LINE);
   }
   
   logObj(_obj) {
