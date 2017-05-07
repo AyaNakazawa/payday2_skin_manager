@@ -1054,6 +1054,22 @@ class SteamInventoryEvent extends CommonEvent {
     
     this.l.logClass(this.NAME, 'Load Steam Inventory');
     
+    $.ajax({
+      url: 'ruby/getSteamInventoryJson.rb',
+      data: {
+        steamid: _steamid,
+        appid: _appid
+      },
+      success: (_data, _datatype) => {
+        this.l.logClass(this.NAME, 'ajax load Steam Inventory JSON');
+        this.l.log(_data);
+        this.l.logClass(this.NAME, _datatype);
+      },
+      error: (_XMLHttpRequest, _textStatus, _errorThrown) => {
+        this.l.logClass(this.NAME, 'Load Steam Inventory JSON');
+        this.l.logCaution(_XMLHttpRequest, _textStatus, _errorThrown);
+      }
+    });
   }
 }
 
