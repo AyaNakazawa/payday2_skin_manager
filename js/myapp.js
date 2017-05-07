@@ -395,6 +395,11 @@ class SwitchView extends CommonView {
   setView(_view = true, _speed = this.model.TOGGLE_SPEED_MS) {
     this.l.logClassKey('View', this.model.NAME, _view, this.ARROW_INPUT);
     
+    let lsValView = this.model.ls.getItem(this.model.lsKeyView);
+    if (lsValView == _view) {
+      return;
+    }
+    
     if (_view) {
       this.model.$VIEW_SWITCH.addClass(this.model.CURRENT);
       this.model.$SWITCH_AREA.show(_speed);
