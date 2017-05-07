@@ -1009,6 +1009,17 @@ class SteamInventoryController extends CommonController {
 }
 
 // ----------------------------------------------------------------
+// Events
+
+class CommonEvent extends CommonClass {
+  constructor() {
+    super();
+    
+    this.NAME = 'Event';
+  }
+}
+
+// ----------------------------------------------------------------
 // Process
 
 $(() => {
