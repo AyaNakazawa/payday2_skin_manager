@@ -18,7 +18,7 @@ class Log {
     this.ARROW_OUTPUT = ' ---> ';
     this.ARROW_INPUT = ' <--- ';
     
-    this.CLASS_LENGTH = 8;
+    this.CLASS_LENGTH = 12;
     this.KEY_LENGTH = 24;
     
     this.LOG_LENGTH = _length;
