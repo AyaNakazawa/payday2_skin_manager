@@ -331,7 +331,7 @@ class ResetStorageView extends ConfirmView {
 // Switch Class
 
 class SwitchModel extends CommonModel {
-  constructor(_view = true, _obj) {
+  constructor(_view, _obj) {
     super(_obj);
     this.view = _view;
     
@@ -392,7 +392,7 @@ class SwitchView extends CommonView {
     this.setView(!this.model.view);
   }
   
-  setView(_view = true, _speed = this.model.TOGGLE_SPEED_MS) {
+  setView(_view, _speed = this.model.TOGGLE_SPEED_MS) {
     this.l.logClassKey('View', this.model.NAME, _view, this.l.ARROW_INPUT);
     
     const lsValView = this.model.ls.getItem(this.model.lsKeyView);
@@ -418,7 +418,7 @@ class SwitchView extends CommonView {
 // Setting Class
 
 class SettingModel extends SwitchModel {
-  constructor(_view = true) {
+  constructor(_view) {
     super(_view);
     
     this.NAME = 'Setting';
@@ -780,7 +780,7 @@ class SettingView extends SwitchView {
 // Item Class
 
 class ItemModel extends SwitchModel {
-  constructor(_view = true) {
+  constructor(_view) {
     super(_view);
     
     this.NAME = 'Item';
@@ -800,7 +800,7 @@ class ItemView extends SwitchView {
 // Detail Class
 
 class DetailModel extends SwitchModel {
-  constructor(_view = true) {
+  constructor(_view) {
     super(_view);
     
     this.NAME = 'Detail';
@@ -820,7 +820,7 @@ class DetailView extends SwitchView {
 // ItemGroup Class
 
 class ItemGroupModel extends SwitchModel {
-  constructor(_view = true, _name = 'Group', _switchId = '#pd2item-group-test .pd2item-group-header', _areaId = '#pd2item-group-list-test', _lsKeyView = 'PD2SM.View.Group') {
+  constructor(_view, _name = 'Group', _switchId = '#pd2item-group-test .pd2item-group-header', _areaId = '#pd2item-group-list-test', _lsKeyView = 'PD2SM.View.Group') {
     super(_view);
     
     this.NAME = _name;
@@ -985,10 +985,10 @@ $(() => {
   let help = new HelpController();
   let resetStorage = new ResetStorageController();
   
-  let detail = new DetailController(true);
-  let item = new ItemController(true);
-  let itemGroup = new ItemGroupController(true);
-  let setting = new SettingController(true);
+  let detail = new DetailController();
+  let item = new ItemController();
+  let itemGroup = new ItemGroupController();
+  let setting = new SettingController();
   
   let steamInventory = new SteamInventoryController();
   
