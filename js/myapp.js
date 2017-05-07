@@ -38,21 +38,25 @@ class Log {
   }
   
   logError(...array) {
-    this.log(null, null, this.STYLE_ERROR_LINE);
-    this.log('ERROR', this.ALIGN_CENTER, this.STYLE_ERROR_HEADER);
-    for (let i = 0; i < array.length; i++) {
-      this.log(array[i], this.ALIGN_LEFT, this.STYLE_ERROR_CONTENT);
+    if (LOG_VIEW_ERROR) {
+      this.log(null, null, this.STYLE_ERROR_LINE);
+      this.log('ERROR', this.ALIGN_CENTER, this.STYLE_ERROR_HEADER);
+      for (let i = 0; i < array.length; i++) {
+        this.log(array[i], this.ALIGN_LEFT, this.STYLE_ERROR_CONTENT);
+      }
+      this.log(null, null, this.STYLE_ERROR_LINE);
     }
-    this.log(null, null, this.STYLE_ERROR_LINE);
   }
   
   logCaution(...array) {
-    this.log(null, null, this.STYLE_CAUTION_LINE);
-    this.log('CAUTION', this.ALIGN_CENTER, this.STYLE_CAUTION_HEADER);
-    for (let i = 0; i < array.length; i++) {
-      this.log(array[i], this.ALIGN_LEFT, this.STYLE_CAUTION_CONTENT);
+    if (LOG_VIEW_CAUTION) {
+      this.log(null, null, this.STYLE_CAUTION_LINE);
+      this.log('CAUTION', this.ALIGN_CENTER, this.STYLE_CAUTION_HEADER);
+      for (let i = 0; i < array.length; i++) {
+        this.log(array[i], this.ALIGN_LEFT, this.STYLE_CAUTION_CONTENT);
+      }
+      this.log(null, null, this.STYLE_CAUTION_LINE);
     }
-    this.log(null, null, this.STYLE_CAUTION_LINE);
   }
   
   logObj(_obj) {
@@ -1056,6 +1060,9 @@ class SteamInventoryEvent extends CommonEvent {
     
     this.l.logClass(this.NAME, 'Load Steam Inventory');
     this.l.logClass(this.NAME, steamInventoryJsonName);
+    
+    // $.getJSON(steamInventoryJsonName, function(_json, _textStatus) {
+    // });
     
   }
 }
