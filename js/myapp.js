@@ -1043,7 +1043,7 @@ class SteamInventoryEvent extends CommonEvent {
     return this.ls.getItem(this.CONTROLLER.model.lsKeySteamId);
   }
   
-  getSteamInventory(_appid = this.APPID, _steamid = this.STEAMID) {
+  getSteamInventory(_appid = this.APPID, _steamid = this.getSteamId()) {
     this.l.logClass(this.NAME, 'Get Steam Inventory');
     this.l.logClassKey(this.NAME, 'Steam ID', _steamid);
     
