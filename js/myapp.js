@@ -1033,6 +1033,10 @@ class SteamInventoryEvent extends CommonEvent {
     const controller = new SteamInventoryController();
     return this.ls.getItem(controller.model.lsKeySteamId);
   }
+  
+  getSteamInventory(_appid = '218620', _steamid = '') {
+    
+  }
 }
 
 // ----------------------------------------------------------------
