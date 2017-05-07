@@ -376,7 +376,7 @@ class SwitchView extends CommonView {
   }
   
   switchView() {
-    this.l.logClass('Switch', `${this.model.NAME} VIEW`);
+    this.l.logClass('Switch', `${this.model.NAME} View`);
     
     if (this.model.view == null) {
       const lsValView = this.model.ls.getItem(this.model.lsKeyView);
@@ -393,7 +393,7 @@ class SwitchView extends CommonView {
   }
   
   setView(_view = true, _speed = this.model.TOGGLE_SPEED_MS) {
-    this.l.logClassKey('View', this.model.NAME, _view, this.ARROW_INPUT);
+    this.l.logClassKey('View', this.model.NAME, _view, this.l.ARROW_INPUT);
     
     const lsValView = this.model.ls.getItem(this.model.lsKeyView);
     if (lsValView == _view) {
