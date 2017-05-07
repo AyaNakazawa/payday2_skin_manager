@@ -38,7 +38,7 @@ class Log {
   }
   
   logError(...array) {
-    if (LOG_VIEW_ERROR) {
+    if (this.LOG_VIEW_ERROR) {
       this.log(null, null, this.STYLE_ERROR_LINE);
       this.log('ERROR', this.ALIGN_CENTER, this.STYLE_ERROR_HEADER);
       for (let i = 0; i < array.length; i++) {
@@ -49,7 +49,7 @@ class Log {
   }
   
   logCaution(...array) {
-    if (LOG_VIEW_CAUTION) {
+    if (this.LOG_VIEW_CAUTION) {
       this.log(null, null, this.STYLE_CAUTION_LINE);
       this.log('CAUTION', this.ALIGN_CENTER, this.STYLE_CAUTION_HEADER);
       for (let i = 0; i < array.length; i++) {
@@ -1062,12 +1062,16 @@ class SteamInventoryEvent extends CommonEvent {
       },
       success: (_data, _datatype) => {
         this.l.logClass(this.NAME, 'ajax load Steam Inventory JSON');
-        this.l.log(_data);
-        this.l.logClass(this.NAME, _datatype);
+        
+        if (~_data.indexOf('true')) {
+          this.l.logClass(this.NAME, 'Download JSON success.');
+        } else {
+          this.l.logCaution('SteamInventoryEvent', 'getSteamInventory', 'ajax success', 'download failed');
+        }
       },
       error: (_XMLHttpRequest, _textStatus, _errorThrown) => {
         this.l.logClass(this.NAME, 'Load Steam Inventory JSON');
-        this.l.logCaution(_XMLHttpRequest, _textStatus, _errorThrown);
+        this.l.logCaution('SteamInventoryEvent', 'getSteamInventory', 'ajax error', _XMLHttpRequest, _textStatus, _errorThrown);
       }
     });
   }
