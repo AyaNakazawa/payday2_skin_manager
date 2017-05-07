@@ -31,6 +31,10 @@ body.momo .btn:hover {
   background: #eeddee !important;
 }
 
+body.momo .btn.active {
+  background: #ffeeff;
+}
+
 body.momo .btn:hover * {
   background: #eeddee !important;
 }

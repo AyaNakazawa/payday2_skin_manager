@@ -24,11 +24,19 @@ body.steam a {
 }
 
 body.steam a:hover {
-  color: #fff !important;
+  color: #ebebeb !important;
+}
+
+body.steam .btn {
+  color: #ebebeb !important;
 }
 
 body.steam .btn:hover {
   background: #444 !important;
+}
+
+body.steam .btn.active {
+  background: #333;
 }
 
 body.steam .btn:hover * {
