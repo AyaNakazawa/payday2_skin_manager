@@ -22,16 +22,6 @@ class Log {
     this.LOG_LENGTH = _length;
     this.LOG_CHARACTER = _character;
     
-    this.STYLE_BLACK = 'color:black;';
-    this.STYLE_RED = 'color:red;';
-    this.STYLE_GREEN = 'color:green;';
-    this.STYLE_YELLOW = 'color:yellow;';
-    this.STYLE_BLUE = 'color:blue;';
-    this.STYLE_MAGENTA = 'color:magenta;';
-    this.STYLE_CYAN = 'color:cyan;';
-    this.STYLE_WHITE = 'color:white;';
-    this.STYLE_RESET = 'color:reset;';
-    
     this.STYLE_CLASS = 'color:#222;';
     this.STYLE_KEY = 'color:#828;';
     this.STYLE_VALUE = 'color:#228;';
