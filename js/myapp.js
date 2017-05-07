@@ -5,7 +5,7 @@
 class Log {
   constructor(_length = 64, _character = '-') {
     this.LOG_VIEW = true;
-    this.LOG_VIEW_OBJECT = true;
+    this.LOG_VIEW_OBJECT = false;
     this.LOG_VIEW_CLASS = true;
     this.LOG_VIEW_CLASS_KEY = true;
     
