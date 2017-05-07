@@ -14,7 +14,7 @@ class Log {
     this.logCharacter = _character;
   }
   
-  logobj(_obj) {
+  logObj(_obj) {
     if (this.LOG_VIEW_OBJECT) {
       console.log(_obj);
     }
@@ -169,7 +169,7 @@ class CommonView extends CommonClass {
     
     this.l.log();
     this.l.log(this.model.NAME, this.l.ALIGN_CENTER);
-    this.l.logobj(this.model);
+    this.l.logObj(this.model);
   }
 }
 
