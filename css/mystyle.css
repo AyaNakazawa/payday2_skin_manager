@@ -183,7 +183,8 @@ main {
 }
 
 #pd2item-area .pd2item-item:hover {
-  background: #eee;
+  background: #f8f8f8;
+  border: 1px solid #ddd;
   transition: all .3s;
 }
 
