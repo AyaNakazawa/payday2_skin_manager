@@ -458,6 +458,9 @@ class SettingModel extends SwitchModel {
     this.SETTING_STYLE_ID = '#setting-style';
     this.$SETTING_STYLE = $(this.SETTING_STYLE_ID);
     
+    this.BODY = 'body';
+    this.$BODY = $(this.BODY);
+    
     this.lsKeySteamId = 'PD2SM.Setting.SteamId';
     this.lsKeySearch = 'PD2SM.Setting.Search';
     this.lsKeyFilter = 'PD2SM.Setting.Filter';
@@ -526,14 +529,14 @@ class SettingView extends SwitchView {
     this.setSort(lsValSort);
     this.setSortMode(lsValSortMode);
     
-    this.updateStyle(lsValStyle);
-    this.updateSize(lsValSize);
-    this.updateSteamId(lsValSteamId);
-    this.updateQuality(lsValQuality);
-    this.updateSearch(lsValSearch);
-    this.updateFilter(lsValFilter);
-    this.updateGroup(lsValGroup);
-    this.updateSort(lsValSortMode, lsValSort);
+    this.updateStyle(lsValStyle, true);
+    this.updateSize(lsValSize, true);
+    this.updateSteamId(lsValSteamId, true);
+    this.updateQuality(lsValQuality, true);
+    this.updateSearch(lsValSearch, true);
+    this.updateFilter(lsValFilter, true);
+    this.updateGroup(lsValGroup, true);
+    this.updateSort(lsValSortMode, lsValSort, true);
     
     $(document).on('change', this.model.SETTING_STYLE_ID, () => {this.updateStyle()});
     $(document).on('change', this.model.SETTING_SIZE_ID, () => {this.updateSize()});
@@ -684,75 +687,84 @@ class SettingView extends SwitchView {
     }
   }
   
-  updateStyle(_style = this.getStyle()) {
+  updateStyle(_style = this.getStyle(), _overwrite = false) {
     const beforeStyle = this.model.ls.getItem(this.model.lsKeyStyle);
-    if (beforeStyle == _style) {
+    if (beforeStyle == _style && !_overwrite) {
       return;
     }
     this.model.ls.setItem(this.model.lsKeyStyle, _style);
-    
+    if (beforeStyle == 'Normal') {
+      // No remove
+    } else if (beforeStyle.length > 0) {
+      this.model.$BODY.removeClass(beforeStyle.toLowerCase());
+    }
+    if (_style == 'Normal') {
+      // No add
+    } else if (_style.length > 0) {
+      this.model.$BODY.addClass(_style.toLowerCase());
+    }
   }
   
-  updateSize(_size = this.getSize()) {
+  updateSize(_size = this.getSize(), _overwrite = false) {
     const beforeSize = this.model.ls.getItem(this.model.lsKeySize);
-    if (beforeSize == _size) {
+    if (beforeSize == _size && !_overwrite) {
       return;
     }
     this.model.ls.setItem(this.model.lsKeySize, _size);
   }
   
-  updateSteamId(_steamId = this.getSteamId()) {
+  updateSteamId(_steamId = this.getSteamId(), _overwrite = false) {
     const beforeSteamId = this.model.ls.getItem(this.model.lsKeySteamId);
-    if (beforeSteamId == _steamId) {
+    if (beforeSteamId == _steamId && !_overwrite) {
       return;
     }
     this.model.ls.setItem(this.model.lsKeySteamId, _steamId);
   }
   
-  updateQuality(_quality = this.getQuality()) {
+  updateQuality(_quality = this.getQuality(), _overwrite = false) {
     const beforeQuality = this.model.ls.getItem(this.model.lsKeyQuality);
-    if (beforeQuality == _quality) {
+    if (beforeQuality == _quality && !_overwrite) {
       return;
     }
     this.model.ls.setItem(this.model.lsKeyQuality, _quality);
   }
   
-  updateSearch(_search = this.getSearch()) {
+  updateSearch(_search = this.getSearch(), _overwrite = false) {
     const beforeSearch = this.model.ls.getItem(this.model.lsKeySearch);
-    if (beforeSearch == _search) {
+    if (beforeSearch == _search && !_overwrite) {
       return;
     }
     this.model.ls.setItem(this.model.lsKeySearch, _search);
   }
   
-  updateFilter(_filter = this.getFilter()) {
+  updateFilter(_filter = this.getFilter(), _overwrite = false) {
     const beforeFilter = this.model.ls.getItem(this.model.lsKeyFilter);
-    if (beforeFilter == _filter) {
+    if (beforeFilter == _filter && !_overwrite) {
       return;
     }
     this.model.ls.setItem(this.model.lsKeyFilter, _filter);
   }
   
-  updateGroup(_group = this.getGroup()) {
+  updateGroup(_group = this.getGroup(), _overwrite = false) {
     const beforeGroup = this.model.ls.getItem(this.model.lsKeyGroup);
-    if (beforeGroup == _group) {
+    if (beforeGroup == _group && !_overwrite) {
       return;
     }
     this.model.ls.setItem(this.model.lsKeyGroup, _group);
   }
   
-  updateSort(_sortMode = this.getSortMode(), _sort = this.getSort()) {
+  updateSort(_sortMode = this.getSortMode(), _sort = this.getSort(), _overwrite = false) {
     const beforeSort = this.model.ls.getItem(this.model.lsKeySort);
     const beforeSortMode = this.model.ls.getItem(this.model.lsKeySortMode);
-    if (beforeSort == _sort && beforeSortMode == _sortMode) {
+    if (beforeSort == _sort && beforeSortMode == _sortMode && !_overwrite) {
       return;
     }
     this.model.ls.setItem(this.model.lsKeySort, _sort);
   }
   
-  updateSortMode(_sortMode = this.getSortMode()) {
+  updateSortMode(_sortMode = this.getSortMode(), _overwrite = false) {
     const beforeSortMode = this.model.ls.getItem(this.model.lsKeySortMode);
-    if (beforeSortMode == _sortMode) {
+    if (beforeSortMode == _sortMode && !_overwrite) {
       return;
     }
     if (_sortMode == 'asc') {
