@@ -745,6 +745,7 @@ class SettingView extends SwitchView {
       return;
     }
     this.model.ls.setItem(this.model.lsKeySteamId, _steamId);
+    $(window).trigger('loadSI');
   }
   
   updateQuality(_quality = this.getQuality(), _overwrite = false) {
