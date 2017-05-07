@@ -1027,6 +1027,7 @@ class SteamInventoryEvent extends CommonEvent {
     super.viewName();
     
     const steamid = this.getSteamId();
+    $(window).on('loadSI', () => {this.getSteamInventory(_appid, steamid)});
   }
   
   getSteamId() {
