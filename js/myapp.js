@@ -5,7 +5,7 @@
 class Log {
   constructor(_length = 64, _character = '-') {
     this.LOG_VIEW = true;
-    this.LOG_VIEW_OBJECT = false;
+    this.LOG_VIEW_OBJECT = true;
     this.LOG_VIEW_CLASS = true;
     this.LOG_VIEW_CLASS_KEY = true;
     this.LOG_VIEW_ERROR = true;
@@ -1027,6 +1027,8 @@ class CommonEvent extends CommonClass {
 class SteamInventoryEvent extends CommonEvent {
   constructor(_appid = '218620') {
     super();
+    this.CONTROLLER = new SteamInventoryController();
+    
     this.APPID = _appid;
     this.STEAMID = this.getSteamId();
     
@@ -1037,8 +1039,7 @@ class SteamInventoryEvent extends CommonEvent {
   }
   
   getSteamId() {
-    const controller = new SteamInventoryController();
-    return this.ls.getItem(controller.model.lsKeySteamId);
+    return this.ls.getItem(this.CONTROLLER.model.lsKeySteamId);
   }
   
   getSteamInventory(_appid = this.APPID, _steamid = this.STEAMID) {
