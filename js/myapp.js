@@ -1025,6 +1025,13 @@ class SteamInventoryEvent extends CommonEvent {
     
     this.NAME = 'SI Event';
     super.viewName();
+    
+    const steamid = this.getSteamId();
+  }
+  
+  getSteamId() {
+    const controller = new SteamInventoryController();
+    return this.ls.getItem(controller.model.lsKeySteamId);
   }
 }
 
