@@ -219,7 +219,7 @@ class CommonModel extends CommonClass {
     this.NAME = 'Common';
     
     // Common Setting
-    this.TOGGLE_SPEED_MS = 300;
+    this.TOGGLE_SPEED_MS = 500;
     
     // Class
     this.DISPLAY_NONE = 'display-none';
