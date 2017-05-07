@@ -1019,6 +1019,15 @@ class CommonEvent extends CommonClass {
   }
 }
 
+class SteamInventoryEvent extends CommonEvent {
+  constructor(_appid = '218620') {
+    super();
+    
+    this.NAME = 'SI Event';
+    super.viewName();
+  }
+}
+
 // ----------------------------------------------------------------
 // Process
 
