@@ -1019,6 +1019,7 @@ class SteamInventoryController extends CommonController {
 class CommonEvent extends CommonClass {
   constructor() {
     super();
+    this.CONTROLLER = new CommonController();
     
     this.NAME = 'Event';
   }
