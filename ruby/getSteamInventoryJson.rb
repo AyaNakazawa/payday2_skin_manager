@@ -2,6 +2,7 @@
 print "Content-type: text/html\n\n";
 
 require 'cgi'
+require 'fileutils'
 
 objCgi = CGI.new
 
@@ -22,6 +23,10 @@ saveDirectory = File.expand_path("..", Dir.pwd);
 saveDirectory += '/';
 saveDirectory += 'downloads/';
 saveDirectory += 'json';
+
+if !File.exist?(saveDirectory)
+  FileUtils.mkdir_p(saveDirectory)
+end
 
 saveJsonName = saveDirectory;
 saveJsonName += '/';
