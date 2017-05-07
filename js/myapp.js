@@ -8,6 +8,8 @@ class Log {
     this.LOG_VIEW_OBJECT = false;
     this.LOG_VIEW_CLASS = true;
     this.LOG_VIEW_CLASS_KEY = true;
+    this.LOG_VIEW_ERROR = true;
+    this.LOG_VIEW_CAUTION = true;
     
     this.ALIGN_LEFT = 0;
     this.ALIGN_CENTER = 1;
@@ -211,6 +213,22 @@ class CommonClass {
     this.NAME = 'Common';
     
   }
+  
+  viewName() {
+    this.l.log();
+    this.l.log(this.NAME, this.l.ALIGN_CENTER);
+    if (this.model != null) {
+      this.l.logObj(this.model);
+    }
+  }
+  
+  viewModelName() {
+    this.l.log();
+    this.l.log(this.model.NAME, this.l.ALIGN_CENTER);
+    if (this.model != null) {
+      this.l.logObj(this.model);
+    }
+  }
 }
 
 // ----------------------------------------------------------------
@@ -249,9 +267,7 @@ class CommonView extends CommonClass {
     super();
     this.model = _model;
     
-    this.l.log();
-    this.l.log(this.model.NAME, this.l.ALIGN_CENTER);
-    this.l.logObj(this.model);
+    super.viewModelName();
   }
 }
 
@@ -332,7 +348,7 @@ class ConfirmView extends CommonView {
 class ResetStorageModel extends ConfirmModel {
   constructor(_obj) {
     super(_obj);
-    this.NAME = 'ResetStorage';
+    this.NAME = 'Reset Storage';
     this.confirmId = 'reset-storage';
     this.confirmTitle = '設定の初期化';
     this.confirmMessage = '全ての設定を初期化し、再読込してもよろしいですか？';
@@ -899,7 +915,7 @@ class SteamInventoryModel extends CommonModel {
   constructor() {
     super();
     
-    this.NAME = 'SteamInventory';
+    this.NAME = 'Steam Inventory';
   }
 }
 
