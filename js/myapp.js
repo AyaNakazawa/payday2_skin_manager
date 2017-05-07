@@ -141,10 +141,6 @@ class CommonModel extends CommonClass {
     super();
     this.obj = _obj;
     
-    // Log Setting
-    this.l.LOG_VIEW = true;
-    this.l.LOG_VIEW_OBJECT = true;
-    
     // Each Setting
     this.NAME = 'Common';
     
@@ -162,10 +158,6 @@ class CommonView extends CommonClass {
   constructor(_model = new CommonModel()) {
     super();
     this.model = _model;
-    
-    // Log Setting
-    this.l.LOG_VIEW = true;
-    this.l.LOG_VIEW_OBJECT = true;
     
     this.l.log();
     this.l.log(this.model.NAME, this.l.ALIGN_CENTER);
