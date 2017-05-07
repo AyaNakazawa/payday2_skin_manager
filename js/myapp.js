@@ -6,12 +6,48 @@ class Log {
   constructor(_length = 64, _character = '-') {
     this.LOG_VIEW = true;
     this.LOG_VIEW_OBJECT = true;
+    this.LOG_VIEW_CLASS = true;
+    this.LOG_VIEW_CLASS_KEY = true;
+    
     this.ALIGN_LEFT = 0;
     this.ALIGN_CENTER = 1;
     this.ALIGN_RIGHT = 2;
     
-    this.logLength = _length;
-    this.logCharacter = _character;
+    this.ARROW_OUTPUT = ' ---> ';
+    this.ARROW_INPUT = ' <--- ';
+    
+    this.CLASS_LENGTH = 8;
+    this.KEY_LENGTH = 24;
+    
+    this.LOG_LENGTH = _length;
+    this.LOG_CHARACTER = _character;
+    
+    this.STYLE_BLACK = 'color:black;';
+    this.STYLE_RED = 'color:red;';
+    this.STYLE_GREEN = 'color:green;';
+    this.STYLE_YELLOW = 'color:yellow;';
+    this.STYLE_BLUE = 'color:blue;';
+    this.STYLE_MAGENTA = 'color:magenta;';
+    this.STYLE_CYAN = 'color:cyan;';
+    this.STYLE_WHITE = 'color:white;';
+    this.STYLE_RESET = 'color:reset;';
+    
+    this.STYLE_CLASS = 'color:#222;';
+    this.STYLE_KEY = 'color:#828;';
+    this.STYLE_VALUE = 'color:#228;';
+    
+    this.STYLE_ERROR_LINE = 'color:#f00;';
+    this.STYLE_ERROR_HEADER = 'color:#a00;';
+    this.STYLE_ERROR_CONTENT = 'color:#111;';
+  }
+  
+  logError(...array) {
+    this.log(null, null, this.STYLE_ERROR_LINE);
+    this.log('ERROR', this.ALIGN_CENTER, this.STYLE_ERROR_HEADER);
+    for (let i = 0; i < array.length; i++) {
+      this.log(array[i], this.ALIGN_LEFT, this.STYLE_ERROR_CONTENT);
+    }
+    this.log(null, null, this.STYLE_ERROR_LINE);
   }
   
   logObj(_obj) {
@@ -20,12 +56,50 @@ class Log {
     }
   }
   
-  log(_string, _align = this.ALIGN_LEFT) {
+  logClass(_class = 'Class', _value = 'value', _style1 = this.STYLE_CLASS, _style2 = this.STYLE_VALUE) {
+    if (this.LOG_VIEW_CLASS) {
+      let result = '%c';
+      result += _class;
+      const classLength = _class.length;
+      for (let i = 0; i < this.CLASS_LENGTH - classLength; i++) {
+        result += ' ';
+      }
+      result += ': %c';
+      result += _value;
+      
+      console.log(result, _style1, _style2);
+    }
+  }
+  
+  logClassKey(_class = 'Class', _key = 'key', _value = 'value', _arrow = this.ARROW_OUTPUT, _style1 = this.STYLE_CLASS, _style2 = this.STYLE_KEY, _style3 = this.STYLE_VALUE) {
+    if (this.LOG_VIEW_CLASS_KEY) {
+      let result = '%c';
+      result += _class;
+      const classLength = _class.length;
+      for (let i = 0; i < this.CLASS_LENGTH - classLength; i++) {
+        result += ' ';
+      }
+      result += ': %c';
+      result += _key;
+      const keyLength = _key.length;
+      for (let i = 0; i < this.KEY_LENGTH - keyLength; i++) {
+        result += ' ';
+      }
+      result += '%c';
+      result += _arrow;
+      result += '%c';
+      result += _value;
+      
+      console.log(result, _style1, _style2, this.STYLE_RESET, _style3);
+    }
+  }
+  
+  log(_string, _align = this.ALIGN_LEFT, _style = this.STYLE_RESET) {
     if (this.LOG_VIEW) {
       let result = '';
       if (_string == null) {
-        for (let i = 0; i < this.logLength; i++) {
-          result += this.logCharacter;
+        for (let i = 0; i < this.LOG_LENGTH; i++) {
+          result += this.LOG_CHARACTER;
           
         }
       } else {
@@ -35,7 +109,7 @@ class Log {
         } else if (_align == this.ALIGN_CENTER) {
           const strLength = _string.length;
           
-          for (let i = 0; i < (this.logLength / 2) - (strLength / 2); i++) {
+          for (let i = 0; i < (this.LOG_LENGTH / 2) - (strLength / 2); i++) {
             result += ' ';
           }
           
@@ -43,14 +117,14 @@ class Log {
           
         } else if (_align == this.ALIGN_RIGHT) {
           const strLength = _string.length;
-          for (let i = 0; i < this.logLength - strLength; i++) {
+          for (let i = 0; i < this.LOG_LENGTH - strLength; i++) {
             result += ' ';
           }
           result += _string;
         }
       }
       
-      console.log(result);
+      console.log(`%c${result}`, _style);
     }
   }
 }
@@ -67,28 +141,28 @@ class LocalStorage {
   
   clear() {
     if (this.lsSupport) {
-      this.l.log(`LS: All clear.`);
+      this.l.logClass('LS', 'All Clear.');
       localStorage.clear();
     }
   }
   
   getItem(_key = 'key') {
     if (this.lsSupport) {
-      this.l.log(`LS: ${_key} -> ${localStorage.getItem(_key)}`);
+      this.l.logClassKey('LS', _key, localStorage.getItem(_key), this.l.ARROW_INPUT);
       return localStorage.getItem(_key);
     }
   }
   
   setItem(_key = 'key', _val = 'val') {
     if (this.lsSupport) {
-      this.l.log(`LS: ${_key} <- ${_val}`);
+      this.l.logClassKey('LS', _key, _val, this.l.ARROW_INPUT);
       localStorage.setItem(_key, _val);
     }
   }
   
   removeItem(_key = 'key') {
     if (this.lsSupport) {
-      this.l.log(`LS: ${_key} -> ${localStorage.getItem(_key)} is remove.`);
+      this.l.logClassKey('LS', _key, ' - null - ', this.l.ARROW_INPUT);
       localStorage.removeItem(_key);
     }
   }
@@ -215,15 +289,15 @@ class ConfirmView extends CommonView {
   }
   
   yes() {
-    this.l.log(`Confirm: ${this.model.confirmTitle} <- Yes`);
+    this.l.logClassKey('Confirm', this.model.confirmTitle, 'Yes', this.ARROW_INPUT);
   }
   
   no() {
-    this.l.log(`Confirm: ${this.model.confirmTitle} <- No`);
+    this.l.logClassKey('Confirm', this.model.confirmTitle, 'No', this.ARROW_INPUT);
   }
   
   close() {
-    this.l.log(`Confirm: ${this.model.confirmTitle} <- Close`);
+    this.l.logClassKey('Confirm', this.model.confirmTitle, 'Close', this.ARROW_INPUT);
   }
   
   destroy() {
@@ -231,7 +305,7 @@ class ConfirmView extends CommonView {
   }
   
   remove() {
-    this.l.log(`Confirm: ${this.model.confirmTitle} <- Destroy`);
+    this.l.logClassKey('Confirm', this.model.confirmTitle, 'Destroy', this.ARROW_INPUT);
     $(`#${this.model.confirmId}`).remove();
   }
 }
@@ -312,7 +386,7 @@ class SwitchView extends CommonView {
   }
   
   switchView() {
-    this.l.log(`Switch ${this.model.NAME} view`);
+    this.l.logClass('Switch', this.model.NAME);
     
     if (this.model.view == null) {
       let lsValView = this.model.ls.getItem(this.model.lsKeyView);
@@ -329,7 +403,7 @@ class SwitchView extends CommonView {
   }
   
   setView(_view = true, _speed = this.model.TOGGLE_SPEED_MS) {
-    this.l.log(`View: ${this.model.NAME} <- ${_view}`);
+    this.l.logClassKey('View', this.model.NAME, _view, this.ARROW_INPUT);
     
     if (_view) {
       this.model.$VIEW_SWITCH.addClass(this.model.CURRENT);
@@ -529,7 +603,7 @@ class SettingView extends SwitchView {
     if (_style == null) {
       return;
     }
-    this.l.log(`Setting: Style <- ${_style}`);
+    this.l.logClassKey('Setting', 'Style', _style, this.l.ARROW_INPUT);
     this.model.$SETTING_STYLE.val(_style);
   }
   
@@ -537,7 +611,7 @@ class SettingView extends SwitchView {
     if (_size == null) {
       return;
     }
-    this.l.log(`Setting: Size <- ${_size}`);
+    this.l.logClassKey('Setting', 'Size', _size, this.l.ARROW_INPUT);
     this.model.$SETTING_SIZE.val(_size);
   }
   
@@ -545,7 +619,7 @@ class SettingView extends SwitchView {
     if (_steamId == null) {
       return;
     }
-    this.l.log(`Setting: SteamId <- ${_steamId}`);
+    this.l.logClassKey('Setting', 'SteamId', _steamId, this.l.ARROW_INPUT);
     this.model.$SETTING_STEAMID.val(_steamId);
   }
   
@@ -553,7 +627,7 @@ class SettingView extends SwitchView {
     if (_quality == null) {
       return;
     }
-    this.l.log(`Setting: Quality <- ${_quality}`);
+    this.l.logClassKey('Setting', 'Quality', _quality, this.l.ARROW_INPUT);
     if (_quality == 'true') {
       this.model.$SETTING_QUALITY.prop('checked', true);
     } else {
@@ -565,7 +639,7 @@ class SettingView extends SwitchView {
     if (_search == null) {
       return;
     }
-    this.l.log(`Setting: Search <- ${_search}`);
+    this.l.logClassKey('Setting', 'Search', _search, this.l.ARROW_INPUT);
     this.model.$SETTING_SEARCH.val(_search);
   }
   
@@ -573,7 +647,7 @@ class SettingView extends SwitchView {
     if (_filter == null) {
       return;
     }
-    this.l.log(`Setting: Filter <- ${_filter}`);
+    this.l.logClassKey('Setting', 'Filter', _filter, this.l.ARROW_INPUT);
     this.model.$SETTING_FILTER.val(_filter);
   }
   
@@ -581,7 +655,7 @@ class SettingView extends SwitchView {
     if (_group == null) {
       return;
     }
-    this.l.log(`Setting: Group <- ${_group}`);
+    this.l.logClassKey('Setting', 'Group', _group, this.l.ARROW_INPUT);
     this.model.$SETTING_GROUP.val(_group);
   }
   
@@ -589,7 +663,7 @@ class SettingView extends SwitchView {
     if (_sort == null) {
       return;
     }
-    this.l.log(`Setting: Sort <- ${_sort}`);
+    this.l.logClassKey('Setting', 'Sort', _sort, this.l.ARROW_INPUT);
     this.model.$SETTING_SORT.val(_sort);
   }
   
@@ -597,7 +671,7 @@ class SettingView extends SwitchView {
     if (_sortMode == null) {
       return;
     }
-    this.l.log(`Setting: SortMode <- ${_sortMode}`);
+    this.l.logClassKey('Setting', 'SortMode', _sortMode, this.l.ARROW_INPUT);
     if (_sortMode == 'asc') {
       this.model.$SETTING_SORT_DESC.removeClass(this.model.ACTIVE);
       this.model.$SETTING_SORT_ASC.addClass(this.model.ACTIVE);
@@ -605,8 +679,8 @@ class SettingView extends SwitchView {
       this.model.$SETTING_SORT_DESC.addClass(this.model.ACTIVE);
       this.model.$SETTING_SORT_ASC.removeClass(this.model.ACTIVE);
     } else {
-      this.l.log(`error: setSortMode: _sortMode: ${_sortMode}`);
     }
+    this.l.logError('setSortMode', '_sortMode', _sortMode);
   }
   
   updateStyle(_style = this.getStyle()) {
@@ -655,7 +729,7 @@ class SettingView extends SwitchView {
       this.model.$SETTING_SORT_DESC.addClass(this.model.ACTIVE);
       this.model.$SETTING_SORT_ASC.removeClass(this.model.ACTIVE);
     } else {
-      this.l.log(`error: updateSortMode: _sortMode: ${_sortMode}`);
+      this.l.logError('updateSortMode', '_sortMode', _sortMode);
     }
     this.model.ls.setItem(this.model.lsKeySortMode, _sortMode);
   }
