@@ -386,7 +386,7 @@ class SwitchView extends CommonView {
   }
   
   switchView() {
-    this.l.logClass('Switch', this.model.NAME);
+    this.l.logClass('Switch', `${this.model.NAME} VIEW`);
     
     if (this.model.view == null) {
       let lsValView = this.model.ls.getItem(this.model.lsKeyView);
@@ -679,8 +679,8 @@ class SettingView extends SwitchView {
       this.model.$SETTING_SORT_DESC.addClass(this.model.ACTIVE);
       this.model.$SETTING_SORT_ASC.removeClass(this.model.ACTIVE);
     } else {
+      this.l.logError('setSortMode', '_sortMode', _sortMode);
     }
-    this.l.logError('setSortMode', '_sortMode', _sortMode);
   }
   
   updateStyle(_style = this.getStyle()) {
