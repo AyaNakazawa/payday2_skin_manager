@@ -148,7 +148,7 @@ class LocalStorage {
   
   getItem(_key = 'key') {
     if (this.lsSupport) {
-      this.l.logClassKey('LS', _key, localStorage.getItem(_key), this.l.ARROW_INPUT);
+      this.l.logClassKey('LS', _key, localStorage.getItem(_key), this.l.ARROW_OUTPUT);
       return localStorage.getItem(_key);
     }
   }
@@ -596,6 +596,7 @@ class SettingView extends SwitchView {
     if (desc) {
       return 'desc';
     }
+    this.l.logError('getSortMode', 'Non active asc & desc', `asc ${asc}`, `desc ${desc}`);
     return null;
   }
   
