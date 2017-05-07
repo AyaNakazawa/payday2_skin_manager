@@ -878,7 +878,24 @@ class HelpView extends CommonView {
 }
 
 // ----------------------------------------------------------------
-// Controllers
+// SteamInventory Class
+
+class SteamInventoryModel extends CommonModel {
+  constructor() {
+    super();
+    
+    this.NAME = 'SteamInventory';
+  }
+}
+
+class SteamInventoryView extends CommonView {
+  constructor(_model = new SteamInventoryModel()) {
+    super(_model);
+  }
+}
+
+// ----------------------------------------------------------------
+// No execute Controllers
 
 class CommonController extends CommonClass {
   constructor(_obj) {
@@ -953,6 +970,20 @@ class HelpController extends CommonController {
 }
 
 // ----------------------------------------------------------------
+// Execute Controllers
+
+// ----------------------------------------------------------------
+// SteamInventory Controller
+
+class SteamInventoryController extends CommonController {
+  constructor(_obj) {
+    super();
+    this.model = new SteamInventoryModel(_obj);
+    this.view = new SteamInventoryView(this.model);
+  }
+}
+
+// ----------------------------------------------------------------
 // Process
 
 $(() => {
@@ -964,5 +995,7 @@ $(() => {
   let item = new ItemController(true);
   let itemGroup = new ItemGroupController(true);
   let setting = new SettingController(true);
+  
+  let steamInventory = new SteamInventoryController();
   
 });
