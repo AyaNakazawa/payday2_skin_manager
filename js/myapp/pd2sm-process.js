@@ -42,7 +42,7 @@ class PD2SMProcess extends CommonProcess {
     Log.log();
     Log.log('Start up Events', Log.ALIGN_LEFT, Log.STYLE_COLOR_MAGENTA);
     // Setting
-    const evSetting = new SettingEvent();
+    new SettingEvent();
   }
   
   initController() {
@@ -53,43 +53,43 @@ class PD2SMProcess extends CommonProcess {
   initPopover() {
     Log.log();
     Log.log('Start up Popovers', Log.ALIGN_LEFT, Log.STYLE_COLOR_MAGENTA);
-    const conPopover = {
-      conSteamidPopover: new PopoverController({
+    {
+      new PopoverController({
         name: 'Steamid Popover',
         selector: '#setting-steamid-help',
         help: '18桁の steamid か CustomURL を入力してください。'
       }),
-      conSearchPopover: new PopoverController({
+      new PopoverController({
         name: 'Search Popover',
         selector: '#setting-search-help',
         help: '表示するアイテムを制限することができます。空の場合は全て表示されます。'
       }),
-      conFilterPopover: new PopoverController({
+      new PopoverController({
         name: 'Filter Popover',
         selector: '#setting-filter-help',
         help: '表示するアイテムを制限することができます。'
       }),
-      conGroupPopover: new PopoverController({
+      new PopoverController({
         name: 'Group Popover',
         selector: '#setting-group-help',
         help: 'グループ化して表示することができます。'
       }),
-      conSortPopover: new PopoverController({
+      new PopoverController({
         name: 'Sort Popover',
         selector: '#setting-sort-help',
         help: '指定した順序で並び替えることができます。'
       }),
-      conQualityPopover: new PopoverController({
+      new PopoverController({
         name: 'Quality Popover',
         selector: '#setting-quality-help',
         help: 'チェックを入れると、全てのクオリティを表示します。'
       }),
-      conSizePopover: new PopoverController({
+      new PopoverController({
         name: 'Size Popover',
         selector: '#setting-size-help',
         help: 'アイテムの表示サイズを変更できます。'
       }),
-      conStylePopover: new PopoverController({
+      new PopoverController({
         name: 'Style Popover',
         selector: '#setting-style-help',
         help: 'PAYDAY 2 Skin Manager のスタイルを変更できます。'
@@ -102,7 +102,7 @@ class PD2SMProcess extends CommonProcess {
     // Reset Storage
     Log.log();
     Log.log('Start up Confirms', Log.ALIGN_LEFT, Log.STYLE_COLOR_MAGENTA);
-    const conResetStorage = new ConfirmController({
+    new ConfirmController({
       name: 'Reset Storage Confirm',
       destroy: false,
       confirmId: 'confirm-reset-storage',
