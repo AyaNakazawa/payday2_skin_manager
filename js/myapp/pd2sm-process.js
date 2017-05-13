@@ -55,42 +55,42 @@ class PD2SMProcess extends CommonProcess {
     Log.log('Start up popover', Log.ALIGN_LEFT, Log.STYLE_COLOR_MAGENTA);
     const conPopover = {
       conSteamidPopover: new PopoverController({
-        name: 'Steamid PO',
+        name: 'Steamid Popover',
         selector: '#setting-steamid-help',
         help: '18桁の steamid か CustomURL を入力してください。'
       }),
       conSearchPopover: new PopoverController({
-        name: 'Search PO',
+        name: 'Search Popover',
         selector: '#setting-search-help',
         help: '表示するアイテムを制限することができます。空の場合は全て表示されます。'
       }),
       conFilterPopover: new PopoverController({
-        name: 'Filter PO',
+        name: 'Filter Popover',
         selector: '#setting-filter-help',
         help: '表示するアイテムを制限することができます。'
       }),
       conGroupPopover: new PopoverController({
-        name: 'Group PO',
+        name: 'Group Popover',
         selector: '#setting-group-help',
         help: 'グループ化して表示することができます。'
       }),
       conSortPopover: new PopoverController({
-        name: 'Sort PO',
+        name: 'Sort Popover',
         selector: '#setting-sort-help',
         help: '指定した順序で並び替えることができます。'
       }),
       conQualityPopover: new PopoverController({
-        name: 'Quality PO',
+        name: 'Quality Popover',
         selector: '#setting-quality-help',
         help: 'チェックを入れると、全てのクオリティを表示します。'
       }),
       conSizePopover: new PopoverController({
-        name: 'Size PO',
+        name: 'Size Popover',
         selector: '#setting-size-help',
         help: 'アイテムの表示サイズを変更できます。'
       }),
       conStylePopover: new PopoverController({
-        name: 'Style PO',
+        name: 'Style Popover',
         selector: '#setting-style-help',
         help: 'PAYDAY 2 Skin Manager のスタイルを変更できます。'
       })
