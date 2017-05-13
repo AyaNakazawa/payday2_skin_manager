@@ -1462,12 +1462,32 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
 // ----------------------------------------------------------------
 // Process
 
-class PD2SMProcess {
+class CommonProcess extends CommonClass {
+  constructor({
+    name = null,
+    viewName = true
+  } = {}) {
+    super();
+    
+    if (name != null && viewName) {
+      this.NAME = name;
+      super.viewNameModel(name);
+    }
+  }
+}
+
+class PD2SMProcess extends CommonProcess {
   constructor({
     name = `${Project.NAME} Process`
   } = {}) {
-    this.model = new CommonModel({
+    super({
       name: name
+    });
+    
+    this.NAME = name;
+    
+    this.model = new CommonModel({
+      name: `${Project.NAME} Model`
     });
     this.view = new CommonView(this.model);
     
@@ -1580,7 +1600,8 @@ class PD2SMProcess {
   
   initView() {
     this.model.$BODY.show();
-    Log.logClassKey(Project.NAME, this.model.NAME, 'Start up');
+    this.viewNameModel(this.NAME, this);
+    Log.logClassKey(Project.NAME, this.NAME, 'Start up');
   }
 }
 
