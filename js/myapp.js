@@ -67,7 +67,7 @@ class Log {
   static get STYLE_CAUTION_HEADER() { return 'color:#440;'; }
   static get STYLE_CAUTION_CONTENT() { return 'color:#111;'; }
   
-   static logError(...array) {
+  static logError(...array) {
     // View permission
     if (this.LOG_VIEW_ERROR) {
       // Draw line
@@ -83,7 +83,7 @@ class Log {
     }
   }
   
-   static logCaution(...array) {
+  static logCaution(...array) {
     // View permission
     if (this.LOG_VIEW_CAUTION) {
       // Draw line
@@ -99,7 +99,7 @@ class Log {
     }
   }
   
-   static logObj(_obj) {
+  static logObj(_obj) {
     // View permission
     if (this.LOG_VIEW_OBJECT) {
       // Write object
@@ -107,7 +107,7 @@ class Log {
     }
   }
   
-   static logClass(_class = 'Class', _value = 'value', _style1 = this.STYLE_CLASS, _style2 = this.STYLE_VALUE) {
+  static logClass(_class = 'Class', _value = 'value', _style1 = this.STYLE_CLASS, _style2 = this.STYLE_VALUE) {
     // View permission
     if (this.LOG_VIEW_CLASS) {
       // Set style
@@ -129,7 +129,7 @@ class Log {
     }
   }
   
-   static logClassKey(_class = 'Class', _key = 'key', _value = 'value', _arrow = Log.ARROW_OUTPUT, _style1 = this.STYLE_CLASS, _style2 = this.STYLE_KEY, _style3 = this.STYLE_VALUE) {
+  static logClassKey(_class = 'Class', _key = 'key', _value = 'value', _arrow = Log.ARROW_OUTPUT, _style1 = this.STYLE_CLASS, _style2 = this.STYLE_KEY, _style3 = this.STYLE_VALUE) {
     // View permission
     if (this.LOG_VIEW_CLASS_KEY) {
       // Set style
@@ -164,7 +164,7 @@ class Log {
     }
   }
   
-   static log(_string, _align = this.ALIGN_LEFT, _style = this.STYLE_RESET) {
+  static log(_string, _align = this.ALIGN_LEFT, _style = this.STYLE_RESET) {
     // View permission
     if (this.LOG_VIEW) {
       let result = '';
@@ -959,7 +959,7 @@ class SettingView extends SwitchView {
       return;
     }
     LocalStorage.setItem(this.model.lsKeySteamId, _steamId);
-    $(document).trigger('loadSI');
+    $(document).trigger('loadPD2SI');
   }
   
   updateQuality(_quality = this.getQuality(), _overwrite = false) {
@@ -1439,7 +1439,7 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
     name = 'PAYDAY2 Steam Inventory Event',
     appId = '218620',
     steamId = null,
-    event = 'loadSI'
+    event = 'loadPD2SI'
   } = {}) {
     super({
       appId: appId,
