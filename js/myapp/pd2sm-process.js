@@ -52,7 +52,7 @@ class PD2SMProcess extends CommonProcess {
   
   initPopover() {
     Log.log();
-    Log.log('Start up popover', Log.ALIGN_LEFT, Log.STYLE_COLOR_MAGENTA);
+    Log.log('Start up Popovers', Log.ALIGN_LEFT, Log.STYLE_COLOR_MAGENTA);
     const conPopover = {
       conSteamidPopover: new PopoverController({
         name: 'Steamid Popover',
@@ -101,7 +101,7 @@ class PD2SMProcess extends CommonProcess {
     // ----------------------------------------------------------------
     // Reset Storage
     Log.log();
-    Log.log('Start up confirm', Log.ALIGN_LEFT, Log.STYLE_COLOR_MAGENTA);
+    Log.log('Start up Confirms', Log.ALIGN_LEFT, Log.STYLE_COLOR_MAGENTA);
     const conResetStorage = new ConfirmController({
       name: 'Reset Storage Confirm',
       destroy: false,
