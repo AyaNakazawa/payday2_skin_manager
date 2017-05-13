@@ -1,4 +1,7 @@
 
+// ----------------------------------------------------------------
+// PAYDAY2 SteamInventory
+
 class PD2SteamInventoryEvent extends SteamInventoryEvent {
   constructor({
     name = 'PAYDAY2 Steam Inventory Event',
