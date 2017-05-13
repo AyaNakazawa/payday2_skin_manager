@@ -1,0 +1,19 @@
+@charset "utf-8";
+
+/* setting */
+
+#setting-area .setting-label {
+  display: inline-table;
+}
+
+#setting-area .setting-label label {
+  margin: 0;
+}
+
+#setting-area .help-icon {
+  line-height: 22px;
+  padding: 6px;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+}

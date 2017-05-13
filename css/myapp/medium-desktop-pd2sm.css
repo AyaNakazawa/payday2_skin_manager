@@ -1,0 +1,40 @@
+@charset "utf-8";
+
+/* Medium desktop */
+
+@media (min-width: 992px) {
+  
+  /* detail */
+  
+  #detail-area .content-item {
+    margin: 8px 0;
+    padding-bottom: 4px;
+  }
+  
+  #detail-area .content-item:last-child {
+    margin: 0;
+  }
+  
+  #detail-area .detail-label {
+    line-height: 34px;
+  }
+  
+  #detail-area .detail-item {
+    height: 38px;
+  }
+  
+  #detail-area .detail-value {
+    width: 100%;
+    line-height: 34px;
+    margin: 0;
+    margin-left: -360px;
+    padding-left: 360px;
+    display: inline-table;
+  }
+  
+  #detail-area .detail-link-info {
+    width: 340px;
+    margin: 0 auto;
+    float: right;
+  }
+}
