@@ -338,7 +338,7 @@
     <div id="confirm-view"></div>
     <!-- template -->
     <script type="text/template" id="confirm-view-template">
-      <div id="<%- confirmId %>" class="modal fade" tabindex="-1">
+      <div id="<%- confirmId %>" class="modal fade" data-backdrop="static" data-keyboard="false" data-html="true" tabindex="-1">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -351,8 +351,8 @@
             </div>
             <div class="modal-body"><%- confirmMessage %></div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal" id="<%- confirmId %>-yes">はい</button>
-              <button type="button" class="btn btn-default" data-dismiss="modal" id="<%- confirmId %>-no">いいえ</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal" id="<%- confirmId %>-yes"><%- yes %></button>
+              <button type="button" class="btn btn-default" data-dismiss="modal" id="<%- confirmId %>-no"><%- no %></button>
             </div>
           </div>
         </div>
