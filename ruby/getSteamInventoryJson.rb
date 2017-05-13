@@ -9,15 +9,15 @@ objCgi = CGI.new
 
 result = 'false'
 
-_steamid = objCgi["steamid"]
-_appid = objCgi["appid"]
+_steamId = objCgi["steamId"]
+_appId = objCgi["appId"]
 
 steamInventoryJsonName = 'http://';
 steamInventoryJsonName += 'steamcommunity.com/profiles/';
-steamInventoryJsonName += "#{_steamid}/";
+steamInventoryJsonName += "#{_steamId}/";
 steamInventoryJsonName += 'inventory/';
 steamInventoryJsonName += 'json/';
-steamInventoryJsonName += "#{_appid}/";
+steamInventoryJsonName += "#{_appId}/";
 steamInventoryJsonName += '2.php';
 
 saveDirectory = File.expand_path("..", Dir.pwd);
@@ -31,7 +31,7 @@ end
 
 saveJsonName = saveDirectory;
 saveJsonName += '/';
-saveJsonName += "#{_steamid}_#{_appid}.json";
+saveJsonName += "#{_steamId}_#{_appId}.json";
 
 file = open(steamInventoryJsonName)
 code, message = file.status
