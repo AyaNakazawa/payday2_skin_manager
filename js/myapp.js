@@ -365,7 +365,8 @@ class CommonClass {
 class CommonModel extends CommonClass {
   constructor({
     name = null
-  } = {}) {
+  } = {})
+  {
     super();
     
     this.NAME = name;
@@ -413,7 +414,8 @@ class PopoverModel extends CommonModel {
     selector = null,
     help = 'popover',
     trigger = 'hover'
-  } = {}) {
+  } = {})
+  {
     super({
       name: name
     });
@@ -453,7 +455,8 @@ class ScrollModel extends CommonModel {
     triggerSelector = null,
     scrollDistSelector = null,
     scrollTimeMs = 500
-  } = {}) {
+  } = {})
+  {
     super({
       name: name
     });
@@ -520,7 +523,8 @@ class ConfirmModel extends CommonModel {
     functionYes = () => {},
     functionNo = () => {},
     functionClose = () => {},
-  } = {}) {
+  } = {})
+  {
     super({
       name: name
     });
@@ -663,7 +667,8 @@ class SwitchModel extends CommonModel {
     triggerSelector = 'none',
     switchSelector = 'none',
     toggleTimeMs = 500
-  } = {}) {
+  } = {})
+  {
     super({
       name: name
     });
@@ -959,7 +964,6 @@ class SettingView extends SwitchView {
       return;
     }
     LocalStorage.setItem(this.model.lsKeySteamId, _steamId);
-    $(document).trigger('loadPD2SI');
   }
   
   updateQuality(_quality = this.getQuality(), _overwrite = false) {
@@ -1096,11 +1100,12 @@ class CommonController extends CommonClass {
   constructor({
     name = null,
     viewName = false
-  } = {}) {
+  } = {})
+  {
     super();
     
+    this.NAME = name;
     if (name != null && viewName) {
-      this.NAME = name;
       super.viewNameModel(name);
     }
   }
@@ -1108,7 +1113,9 @@ class CommonController extends CommonClass {
 
 class PopoverController extends CommonController {
   constructor(_obj) {
-    super(_obj);
+    super({
+      name: 'Popover Controller'
+    });
     
     this.model = new PopoverModel(_obj);
     this.view = new PopoverView(this.model);
@@ -1117,7 +1124,9 @@ class PopoverController extends CommonController {
 
 class ScrollController extends CommonController {
   constructor(_obj) {
-    super(_obj);
+    super({
+      name: 'Scroll Controller'
+    });
     
     this.model = new ScrollModel(_obj);
     this.view = new ScrollView(this.model);
@@ -1126,7 +1135,9 @@ class ScrollController extends CommonController {
 
 class ConfirmController extends CommonController {
   constructor(_obj) {
-    super(_obj);
+    super({
+      name: 'Confirm Controller'
+    });
     
     this.model = new ConfirmModel(_obj);
     this.view = new ConfirmView(this.model);
@@ -1135,7 +1146,9 @@ class ConfirmController extends CommonController {
 
 class SwitchController extends CommonController {
   constructor(_obj) {
-    super(_obj);
+    super({
+      name: 'Switch Controller'
+    });
     
     this.model = new SwitchModel(_obj);
     this.view = new SwitchView(this.model);
@@ -1147,13 +1160,13 @@ class SwitchController extends CommonController {
 
 class SettingController extends CommonController {
   constructor(_obj) {
-    super(_obj);
+    super({
+      name: 'Setting Controller'
+    });
     
     this.model = new SettingModel(_obj);
     this.setKeys();
     this.view = new SettingView(this.model);
-    
-    // Init SettingView
     this.initSetting();
   }
   
@@ -1282,7 +1295,8 @@ class CommonEvent extends CommonClass {
   constructor({
     name = null,
     viewName = true
-  } = {}) {
+  } = {})
+  {
     super();
     
     if (name != null && viewName) {
@@ -1298,7 +1312,8 @@ class CommonEvent extends CommonClass {
 class SettingEvent extends CommonEvent {
   constructor({
     name = 'Setting Event'
-  } = {}) {
+  } = {})
+  {
     super({
       name: name
     });
@@ -1311,27 +1326,60 @@ class SettingEvent extends CommonEvent {
       switchSelector: '#setting-area'
     });
     
+    // Item
+    this.ITEM = new ItemEvent();
+    
     this.setOn();
+    this.updateInit();
+  }
+  
+  updateInit() {
+    this.ITEM.PD2SI.setSteamId(this.CONTROLLER.view.getSteamId());
+    $(document).trigger(this.ITEM.PD2SI.LOAD_EVENT);
   }
   
   setOn() {
-    $(document).on('change', this.CONTROLLER.model.SETTING_STYLE_SELECTOR, () => {this.CONTROLLER.view.updateStyle()});
-    $(document).on('change', this.CONTROLLER.model.SETTING_SIZE_SELECTOR, () => {this.CONTROLLER.view.updateSize()});
-    $(document).on('change', this.CONTROLLER.model.SETTING_STEAMID_SELECTOR, () => {this.CONTROLLER.view.updateSteamId()});
-    $(document).on('change', this.CONTROLLER.model.SETTING_QUALITY_SELECTOR, () => {this.CONTROLLER.view.updateQuality()});
-    $(document).on('change', this.CONTROLLER.model.SETTING_SEARCH_SELECTOR, () => {this.CONTROLLER.view.updateSearch()});
-    $(document).on('change', this.CONTROLLER.model.SETTING_FILTER_SELECTOR, () => {this.CONTROLLER.view.updateFilter()});
-    $(document).on('change', this.CONTROLLER.model.SETTING_GROUP_SELECTOR, () => {this.CONTROLLER.view.updateGroup()});
-    $(document).on('change', this.CONTROLLER.model.SETTING_SORT_SELECTOR, () => {this.CONTROLLER.view.updateSort()});
-    $(document).on('click', this.CONTROLLER.model.SETTING_SORT_ASC_SELECTOR, () => {this.CONTROLLER.view.updateSortMode('asc')});
-    $(document).on('click', this.CONTROLLER.model.SETTING_SORT_DESC_SELECTOR, () => {this.CONTROLLER.view.updateSortMode('desc')});
+    Log.logClass(this.NAME, 'setOn');
+    $(document).on('change', this.CONTROLLER.model.SETTING_STYLE_SELECTOR, () => {
+      this.CONTROLLER.view.updateStyle();
+    });
+    $(document).on('change', this.CONTROLLER.model.SETTING_SIZE_SELECTOR, () => {
+      this.CONTROLLER.view.updateSize();
+    });
+    $(document).on('change', this.CONTROLLER.model.SETTING_STEAMID_SELECTOR, () => {
+      this.CONTROLLER.view.updateSteamId();
+      this.ITEM.PD2SI.setSteamId(this.CONTROLLER.view.getSteamId());
+      $(document).trigger(this.ITEM.PD2SI.LOAD_EVENT);
+    });
+    $(document).on('change', this.CONTROLLER.model.SETTING_QUALITY_SELECTOR, () => {
+      this.CONTROLLER.view.updateQuality();
+    });
+    $(document).on('change', this.CONTROLLER.model.SETTING_SEARCH_SELECTOR, () => {
+      this.CONTROLLER.view.updateSearch();
+    });
+    $(document).on('change', this.CONTROLLER.model.SETTING_FILTER_SELECTOR, () => {
+      this.CONTROLLER.view.updateFilter();
+    });
+    $(document).on('change', this.CONTROLLER.model.SETTING_GROUP_SELECTOR, () => {
+      this.CONTROLLER.view.updateGroup();
+    });
+    $(document).on('change', this.CONTROLLER.model.SETTING_SORT_SELECTOR, () => {
+      this.CONTROLLER.view.updateSort();
+    });
+    $(document).on('click', this.CONTROLLER.model.SETTING_SORT_ASC_SELECTOR, () => {
+      this.CONTROLLER.view.updateSortMode('asc');
+    });
+    $(document).on('click', this.CONTROLLER.model.SETTING_SORT_DESC_SELECTOR, () => {
+      this.CONTROLLER.view.updateSortMode('desc');
+    });
   }
 }
 
 class ItemEvent extends CommonEvent {
   constructor({
     name = 'Item Event'
-  } = {}) {
+  } = {})
+  {
     super({
       name: name
     });
@@ -1343,13 +1391,19 @@ class ItemEvent extends CommonEvent {
       triggerSelector: '#action-item',
       switchSelector: '#pd2item-area'
     });
+    
+    // PD2SteamInventory
+    this.PD2SI = new PD2SteamInventoryEvent();
+    // Detail
+    this.DETAIL = new DetailEvent();
   }
 }
 
 class DetailEvent extends CommonEvent {
   constructor({
     name = 'Detail Event'
-  } = {}) {
+  } = {})
+  {
     super({
       name: name
     });
@@ -1367,7 +1421,8 @@ class DetailEvent extends CommonEvent {
 class ItemGroupEvent extends CommonEvent {
   constructor({
     name = 'Item Group Event'
-  } = {}) {
+  } = {})
+  {
     super({
       name: name
     });
@@ -1387,7 +1442,8 @@ class SteamInventoryEvent extends CommonEvent {
     name = 'Steam Inventory Event',
     appId = null,
     steamId = null
-  } = {}) {
+  } = {})
+  {
     super({
       name: name
     });
@@ -1399,7 +1455,7 @@ class SteamInventoryEvent extends CommonEvent {
     this.CONTROLLER = new SteamInventoryController();
   }
   
-  getSteamInventory(_appid = this.APPID, _steamid = this.STEAMID) {
+  getSteamInventory(_appId = this.APPID, _steamId = this.STEAMID) {
     Log.logClass(this.NAME, 'Get Steam Inventory');
     Log.logClassKey(this.NAME, 'App ID', _appId);
     Log.logClassKey(this.NAME, 'Steam ID', _steamId);
@@ -1439,23 +1495,36 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
     name = 'PAYDAY2 Steam Inventory Event',
     appId = '218620',
     steamId = null,
-    event = 'loadPD2SI'
-  } = {}) {
+    loadEvent = 'loadPD2SI'
+  } = {})
+  {
     super({
       appId: appId,
       steamId: steamId
     });
     
     this.NAME = name;
-    this.EVENT = event;
+    this.APPID = appId;
+    this.STEAMID = steamId;
+    this.LOAD_EVENT = loadEvent;
+    
+    this.setOn();
   }
   
   setOn() {
-    $(document).on(this.EVENT, () => {this.getPD2SteamInventory()});
+    $(document).on(this.LOAD_EVENT, () => {this.getPD2SteamInventory()});
+  }
+  
+  setSteamId(_steamId = null) {
+    this.STEAMID = _steamId;
+  }
+  
+  generateItemGroup(_obj) {
+    this.ITEMGROUP = new ItemGroupEvent(_obj);
   }
   
   getPD2SteamInventory() {
-    super.getSteamInventory(appId, steamId);
+    super.getSteamInventory(this.APPID, this.STEAMID);
   }
 }
 
@@ -1466,7 +1535,8 @@ class CommonProcess extends CommonClass {
   constructor({
     name = null,
     viewName = true
-  } = {}) {
+  } = {})
+  {
     super();
     
     if (name != null && viewName) {
@@ -1479,7 +1549,8 @@ class CommonProcess extends CommonClass {
 class PD2SMProcess extends CommonProcess {
   constructor({
     name = `${Project.NAME} Process`
-  } = {}) {
+  } = {})
+  {
     super({
       name: name
     });
@@ -1514,16 +1585,8 @@ class PD2SMProcess extends CommonProcess {
   initEvent() {
     Log.log();
     Log.log('Start up Events', Log.ALIGN_LEFT, Log.STYLE_COLOR_MAGENTA);
-    // PAYDAY2 Steam Inventory
-    const evPD2SteamInventory = new PD2SteamInventoryEvent();
     // Setting
     const evSetting = new SettingEvent();
-    // Item
-    const evItem = new ItemEvent();
-    // ItemGroup test
-    const evItemGroup = new ItemGroupEvent();
-    // Detail
-    const evDetail = new DetailEvent();
   }
   
   initController() {
