@@ -1,3 +1,7 @@
+
+// ----------------------------------------------------------------
+// Model
+
 class SteamInventoryModel extends CommonModel {
   constructor(_obj) {
     super(_obj);
@@ -10,8 +14,9 @@ class SteamInventoryModel extends CommonModel {
     this.DOWNLOAD_JSON_SUCCESS = 21;
   }
 }
+
 // ----------------------------------------------------------------
-// SteamInventory
+// Event
 
 class SteamInventoryEvent extends CommonEvent {
   constructor({
