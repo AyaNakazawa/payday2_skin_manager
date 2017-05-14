@@ -64,4 +64,9 @@ class ItemEvent extends CommonEvent {
     });
   }
   
+  buildPD2Item() {
+    Log.logClass(this.NAME, 'buildPD2Item');
+    const JSON = this.PD2SI.JSON;
+    Log.logObj(JSON);
+  }
 }
