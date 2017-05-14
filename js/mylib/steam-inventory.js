@@ -1,33 +1,6 @@
 
 // ----------------------------------------------------------------
-// SteamInventory Class
-
-class SteamInventoryModel extends CommonModel {
-  constructor(_obj) {
-    super(_obj);
-  }
-}
-
-class SteamInventoryView extends CommonView {
-  constructor(_model = new SteamInventoryModel()) {
-    super(_model);
-  }
-}
-
-// ----------------------------------------------------------------
-// Controllers
-
-class SteamInventoryController extends CommonController {
-  constructor(_obj) {
-    super(_obj);
-    
-    this.model = new SteamInventoryModel(_obj);
-    this.view = new SteamInventoryView(this.model);
-  }
-}
-
-// ----------------------------------------------------------------
-// Events
+// SteamInventory
 
 class SteamInventoryEvent extends CommonEvent {
   constructor({
@@ -43,8 +16,6 @@ class SteamInventoryEvent extends CommonEvent {
     this.NAME = name;
     this.APPID = appId;
     this.STEAMID = steamId;
-    
-    this.CONTROLLER = new SteamInventoryController();
   }
   
   getSteamInventoryFileName() {
