@@ -99,10 +99,12 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
       } else if (hashName.indexOf('Safe') == hashName.length - 4) {
         // Safe
         this.instanceJson[_i]['type'] = this.model.TYPE_SAFE;
+        this.instanceJson[_i]['safeName'] = hashName;
         
       } else {
         // Also Safe
         this.instanceJson[_i]['type'] = this.model.TYPE_SAFE;
+        this.instanceJson[_i]['safeName'] = hashName;
         
       }
       Log.logObj(this.instanceJson[_i]);
