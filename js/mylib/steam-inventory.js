@@ -99,19 +99,20 @@ class SteamInventoryEvent extends CommonEvent {
   }
   
   downloadSteamInventoryFile(_fileName = this.getSteamInventoryFileName()) {
-    Log.logClass(this.NAME, 'downloadSteamInventoryFile');
+    Log.logClass(this.NAME, 'Download Steam Inventory File');
     $.ajax({
       url: _fileName,
       dataType: 'json',
       success: (_data, _datatype) => {
-        Log.logClass(this.NAME, 'Download JSON success.');
+        Log.logClass(this.NAME, 'ajax download Steam Inventory File');
+        Log.logClass(this.NAME, 'Download File success.');
         this.JSON = _data;
         if (this.DOWNLOAD_COMPLETE_EVENT != null) {
           $(document).trigger(this.DOWNLOAD_COMPLETE_EVENT);
         }
       },
       error: (_XMLHttpRequest, _textStatus, _errorThrown) => {
-        Log.logClass(this.NAME, 'Download JSON failed.');
+        Log.logClass(this.NAME, 'Download File failed.');
         Log.logCaution('SteamInventoryEvent', 'downloadSteamInventoryFile', 'ajax error', _XMLHttpRequest, _textStatus, _errorThrown);
       }
     });
@@ -146,10 +147,10 @@ class SteamInventoryEvent extends CommonEvent {
         appId: _appId
       },
       success: (_data, _datatype) => {
-        Log.logClass(this.NAME, 'ajax download Steam Inventory JSON');
+        Log.logClass(this.NAME, 'ajax download Steam Inventory');
         
         if (~_data.indexOf('true')) {
-          Log.logClass(this.NAME, 'Download JSON success.');
+          Log.logClass(this.NAME, 'Download success.');
           this.downloadJsonFlag = this.model.DOWNLOAD_JSON_SUCCESS;
           this.checkDownloadJsonFlag();
         } else {
@@ -159,7 +160,7 @@ class SteamInventoryEvent extends CommonEvent {
         }
       },
       error: (_XMLHttpRequest, _textStatus, _errorThrown) => {
-        Log.logClass(this.NAME, 'Download JSON failed.');
+        Log.logClass(this.NAME, 'Download failed.');
         Log.logCaution('SteamInventoryEvent', 'downloadSteamInventory', 'ajax error', _XMLHttpRequest, _textStatus, _errorThrown);
       }
     });
