@@ -1,4 +1,15 @@
-
+class SteamInventoryModel extends CommonModel {
+  constructor(_obj) {
+    super(_obj);
+    
+    this.DOWNLOAD_JSON_NOT_YET = -1;
+    this.DOWNLOAD_JSON_STEAMID_LENGTH_FAILED = 1;
+    this.DOWNLOAD_JSON_STEAMID_FAILED = 2;
+    this.DOWNLOAD_JSON_APPID_FAILED = 3;
+    this.DOWNLOAD_JSON_FAILED = 11;
+    this.DOWNLOAD_JSON_SUCCESS = 21;
+  }
+}
 // ----------------------------------------------------------------
 // SteamInventory
 
@@ -19,7 +30,11 @@ class SteamInventoryEvent extends CommonEvent {
     this.STEAMID = steamId;
     this.JSON = json;
     
-    this.downloadJsonFlag = -1;
+    this.model = new SteamInventoryModel({
+      name: 'Steam Inventory Model'
+    });
+    
+    this.downloadJsonFlag = this.model.DOWNLOAD_JSON_NOT_YET;
   }
   
   getSteamInventoryFileName() {
@@ -40,7 +55,15 @@ class SteamInventoryEvent extends CommonEvent {
     
     if (_steamId.length != 17) {
       Log.logCaution('Steam ID', _steamId, _steamId.length, 'Not 17 digits.');
-      this.downloadJsonFlag = 0;
+      this.downloadJsonFlag = this.model.DOWNLOAD_JSON_STEAMID_LENGTH_FAILED;
+      return;
+    } else if (_steamId == null) {
+      Log.logCaution('Steam ID', _steamId);
+      this.downloadJsonFlag = this.model.DOWNLOAD_JSON_STEAMID_FAILED;
+      return;
+    } else if (_appId == null) {
+      Log.logCaution('App ID', _appId);
+      this.downloadJsonFlag = this.model.DOWNLOAD_JSON_APPID_FAILED;
       return;
     }
     
@@ -55,10 +78,10 @@ class SteamInventoryEvent extends CommonEvent {
         
         if (~_data.indexOf('true')) {
           Log.logClass(this.NAME, 'Download JSON success.');
-          this.downloadJsonFlag = 2;
+          this.downloadJsonFlag = this.model.DOWNLOAD_JSON_SUCCESS;
         } else {
           Log.logCaution('SteamInventoryEvent', 'downloadSteamInventory', 'ajax success', 'download failed');
-          this.downloadJsonFlag = 1;
+          this.downloadJsonFlag = this.model.DOWNLOAD_JSON_FAILED;
         }
       },
       error: (_XMLHttpRequest, _textStatus, _errorThrown) => {
