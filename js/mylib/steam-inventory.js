@@ -19,11 +19,15 @@ class SteamInventoryEvent extends CommonEvent {
   }
   
   getSteamInventoryFileName() {
-    return `downloads/${this,STEAMID}_${this.APPID}.json`;
+    let result = null;
+    if (this.STEAMID != null && this.APPID != null) {
+      result = `downloads/json/${this.STEAMID}_${this.APPID}.json`;
+    }
+    return result;
   }
   
   downloadSteamInventory(_appId = this.APPID, _steamId = this.STEAMID) {
-    Log.logClass(this.NAME, 'Get Steam Inventory');
+    Log.logClass(this.NAME, 'Download Steam Inventory');
     Log.logClassKey(this.NAME, 'App ID', _appId);
     Log.logClassKey(this.NAME, 'Steam ID', _steamId);
     
@@ -35,8 +39,6 @@ class SteamInventoryEvent extends CommonEvent {
       return;
     }
     
-    Log.logClass(this.NAME, 'Load Steam Inventory');
-    
     $.ajax({
       url: 'ruby/getSteamInventoryJson.rb',
       data: {
@@ -44,7 +46,7 @@ class SteamInventoryEvent extends CommonEvent {
         appId: _appId
       },
       success: (_data, _datatype) => {
-        Log.logClass(this.NAME, 'ajax load Steam Inventory JSON');
+        Log.logClass(this.NAME, 'ajax download Steam Inventory JSON');
         
         if (~_data.indexOf('true')) {
           Log.logClass(this.NAME, 'Download JSON success.');
