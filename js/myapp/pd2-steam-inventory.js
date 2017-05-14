@@ -33,7 +33,7 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
       this.getPD2SteamInventory()
     });
     $(document).on(this.DOWNLOAD_COMPLETE_EVENT, () => {
-      this.buildPD2Item();
+      this.buildPD2ClassJson();
     });
   }
   
@@ -49,7 +49,7 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
     super.downloadSteamInventory(this.APPID, this.STEAMID);
   }
   
-  buildPD2Item() {
+  buildPD2ClassJson() {
     Log.logClass(this.NAME, 'buildPD2Item');
     Log.logObj(this.JSON);
   }
