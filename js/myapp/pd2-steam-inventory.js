@@ -70,6 +70,10 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
   }
   
   buildPD2InstanceJson() {
+    if (this.JSON == null) {
+      Log.logCaution(this.NAME, 'buildPD2InstanceJson', 'JSON is null');
+      return;
+    }
     Log.logObj(this.JSON);
     
     this.instanceJson = {};
