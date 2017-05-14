@@ -77,7 +77,6 @@ class SteamInventoryEvent extends CommonEvent {
     } else if (this.downloadJsonFlag == this.model.DOWNLOAD_JSON_FAILED) {
       // Download failed
       Log.logCaution(this.NAME, 'downloadSteamInventoryFile', 'JSON download failed');
-      return;
       
     } else if (this.downloadJsonFlag == this.model.DOWNLOAD_JSON_SUCCESS) {
       // Download success
@@ -95,6 +94,27 @@ class SteamInventoryEvent extends CommonEvent {
       Log.logCaution('file name is null', 'App ID', this.APPID, 'Steam ID', this.STEAMID);
       return;
     }
+    
+    this.downloadSteamInventoryFile(fileName);
+  }
+  
+  downloadSteamInventoryFile(_fileName = this.getSteamInventoryFileName()) {
+    Log.logClass(this.NAME, 'downloadSteamInventoryFile');
+    $.ajax({
+      url: _fileName,
+      dataType: 'json',
+      success: (_data, _datatype) => {
+        Log.logClass(this.NAME, 'Download JSON success.');
+        this.JSON = _data;
+        if (this.DOWNLOAD_COMPLETE_EVENT != null) {
+          $(document).trigger(this.DOWNLOAD_COMPLETE_EVENT);
+        }
+      },
+      error: (_XMLHttpRequest, _textStatus, _errorThrown) => {
+        Log.logClass(this.NAME, 'Download JSON failed.');
+        Log.logCaution('SteamInventoryEvent', 'downloadSteamInventoryFile', 'ajax error', _XMLHttpRequest, _textStatus, _errorThrown);
+      }
+    });
   }
   
   downloadSteamInventory(_appId = this.APPID, _steamId = this.STEAMID) {
@@ -135,10 +155,11 @@ class SteamInventoryEvent extends CommonEvent {
         } else {
           Log.logCaution('SteamInventoryEvent', 'downloadSteamInventory', 'ajax success', 'download failed');
           this.downloadJsonFlag = this.model.DOWNLOAD_JSON_FAILED;
+          this.checkDownloadJsonFlag();
         }
       },
       error: (_XMLHttpRequest, _textStatus, _errorThrown) => {
-        Log.logClass(this.NAME, 'Load Steam Inventory JSON');
+        Log.logClass(this.NAME, 'Download JSON failed.');
         Log.logCaution('SteamInventoryEvent', 'downloadSteamInventory', 'ajax error', _XMLHttpRequest, _textStatus, _errorThrown);
       }
     });
