@@ -42,6 +42,9 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
       name: 'PAYDAY 2 Steam Inventory Model'
     });
     
+    this.instanceJson = {};
+    this.classJson = {};
+    
     this.setOn();
   }
   
@@ -68,5 +71,18 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
   
   buildPD2InstanceJson() {
     Log.logObj(this.JSON);
+    
+    this.instanceJson = {};
+    
+    $.each(this.JSON['rgInventory'], (_i, _val) => {
+      const key = `${_val['classid']}_${_val['instanceid']}`;
+      if (this.instanceJson[key] == null) {
+        this.instanceJson[key] = {
+          amount: 1
+        }
+      } else {
+        this.instanceJson[key]['amount'] ++;
+      }
+    });
   }
 }
