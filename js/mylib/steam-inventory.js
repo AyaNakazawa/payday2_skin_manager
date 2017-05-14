@@ -23,7 +23,8 @@ class SteamInventoryEvent extends CommonEvent {
     name = 'Steam Inventory Event',
     appId = null,
     steamId = null,
-    json = null
+    json = null,
+    downloadCompleteEvent = null
   } = {})
   {
     super({
@@ -34,6 +35,7 @@ class SteamInventoryEvent extends CommonEvent {
     this.APPID = appId;
     this.STEAMID = steamId;
     this.JSON = json;
+    this.DOWNLOAD_COMPLETE_EVENT = downloadCompleteEvent;
     
     this.model = new SteamInventoryModel({
       name: 'Steam Inventory Model'
