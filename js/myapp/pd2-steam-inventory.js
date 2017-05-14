@@ -91,6 +91,31 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
       if (~hashName.indexOf('|')) {
         // Weapon
         this.instanceJson[_i]['type'] = this.model.TYPE_WEAPON;
+        const weaponName = hashName.substring(0, hashName.indexOf('|') - 1);
+        const skinName = hashName.substring(hashName.indexOf('|') + 2, hashName.indexOf(','));
+        let condition = hashName.substr(hashName.indexOf(',') + 2);
+        let statBoost = false;
+        if (~condition.indexOf('Stat Boost')) {
+          condition = condition.substring(0, condition.indexOf('Stat Boost') - 2);
+          statBoost = true; 
+        }
+        
+        this.instanceJson[_i]['weaponName'] = weaponName;
+        this.instanceJson[_i]['skinName'] = skinName;
+        this.instanceJson[_i]['condition'] = condition;
+        if (statBoost) {
+          const desc = _val['descriptions'][0]['value'];
+          const boost = desc.substring(
+            desc.indexOf('Stat Boost:') + 12,
+            desc.indexOf(' ', desc.indexOf('Stat Boost:') + 12)
+          );
+          const stat = desc.substring(
+            desc.indexOf(' ', desc.indexOf('Stat Boost:') + 12) + 1,
+            desc.indexOf('<', desc.indexOf(' ', desc.indexOf('Stat Boost:') + 12))
+          );
+          this.instanceJson[_i]['boost'] = boost;
+          this.instanceJson[_i]['stat'] = stat;
+        }
         
       } else if (hashName.indexOf('Armor') == hashName.length - 5) {
         // Armor
