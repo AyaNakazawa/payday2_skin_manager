@@ -68,6 +68,14 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
     super.downloadSteamInventory(this.APPID, this.STEAMID);
   }
   
+  buildClassJson() {
+    if (this.instanceJson == null) {
+      Log.logCaution(this.NAME, 'buildClassJson', 'instanceJson is null');
+      return;
+    }
+    Log.logObj(this.instanceJson);
+  }
+  
   buildInstanceJson() {
     if (this.JSON == null) {
       Log.logCaution(this.NAME, 'buildInstanceJson', 'JSON is null');
