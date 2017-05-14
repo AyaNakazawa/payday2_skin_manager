@@ -1,6 +1,19 @@
 
 // ----------------------------------------------------------------
-// PAYDAY2 SteamInventory
+// Model
+
+class PD2SteamInventoryModel extends SteamInventoryModel {
+  constructor(_obj) {
+    super(_obj);
+    
+    this.TYPE_WEAPON = 1;
+    this.TYPE_SAFE = 2;
+    this.TYPE_ARMOR = 3;
+  }
+}
+
+// ----------------------------------------------------------------
+// Event
 
 class PD2SteamInventoryEvent extends SteamInventoryEvent {
   constructor({
@@ -25,6 +38,10 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
     this.LOAD_EVENT = loadEvent;
     this.DOWNLOAD_COMPLETE_EVENT = downloadCompleteEvent;
     
+    this.model = new PD2SteamInventoryModel({
+      name: 'PAYDAY 2 Steam Inventory Model'
+    });
+    
     this.setOn();
   }
   
@@ -33,7 +50,7 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
       this.getPD2SteamInventory()
     });
     $(document).on(this.DOWNLOAD_COMPLETE_EVENT, () => {
-      this.buildPD2ClassJson();
+      this.buildPD2InstanceJson();
     });
   }
   
@@ -49,8 +66,7 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
     super.downloadSteamInventory(this.APPID, this.STEAMID);
   }
   
-  buildPD2ClassJson() {
-    Log.logClass(this.NAME, 'buildPD2Item');
+  buildPD2InstanceJson() {
     Log.logObj(this.JSON);
   }
 }
