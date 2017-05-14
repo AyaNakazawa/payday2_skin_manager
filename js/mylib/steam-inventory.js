@@ -16,6 +16,8 @@ class SteamInventoryEvent extends CommonEvent {
     this.NAME = name;
     this.APPID = appId;
     this.STEAMID = steamId;
+    
+    this.downloadJsonFlag = -1;
   }
   
   getSteamInventoryFileName() {
@@ -36,6 +38,7 @@ class SteamInventoryEvent extends CommonEvent {
     
     if (_steamId.length != 17) {
       Log.logCaution('Steam ID', _steamId, _steamId.length, 'Not 17 digits.');
+      this.downloadJsonFlag = 0;
       return;
     }
     
@@ -50,8 +53,10 @@ class SteamInventoryEvent extends CommonEvent {
         
         if (~_data.indexOf('true')) {
           Log.logClass(this.NAME, 'Download JSON success.');
+          this.downloadJsonFlag = 2;
         } else {
           Log.logCaution('SteamInventoryEvent', 'downloadSteamInventory', 'ajax success', 'download failed');
+          this.downloadJsonFlag = 1;
         }
       },
       error: (_XMLHttpRequest, _textStatus, _errorThrown) => {
