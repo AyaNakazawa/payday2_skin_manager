@@ -95,6 +95,7 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
       } else if (hashName.indexOf('Armor') == hashName.length - 5) {
         // Armor
         this.instanceJson[_i]['type'] = this.model.TYPE_ARMOR;
+        this.instanceJson[_i]['skinName'] = hashName;
         
       } else if (hashName.indexOf('Safe') == hashName.length - 4) {
         // Safe
