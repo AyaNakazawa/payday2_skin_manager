@@ -47,7 +47,7 @@ class SteamInventoryEvent extends CommonEvent {
     this.CONTROLLER = new SteamInventoryController();
   }
   
-  getSteamInventory(_appId = this.APPID, _steamId = this.STEAMID) {
+  downloadSteamInventory(_appId = this.APPID, _steamId = this.STEAMID) {
     Log.logClass(this.NAME, 'Get Steam Inventory');
     Log.logClassKey(this.NAME, 'App ID', _appId);
     Log.logClassKey(this.NAME, 'Steam ID', _steamId);
@@ -71,12 +71,12 @@ class SteamInventoryEvent extends CommonEvent {
         if (~_data.indexOf('true')) {
           Log.logClass(this.NAME, 'Download JSON success.');
         } else {
-          Log.logCaution('SteamInventoryEvent', 'getSteamInventory', 'ajax success', 'download failed');
+          Log.logCaution('SteamInventoryEvent', 'downloadSteamInventory', 'ajax success', 'download failed');
         }
       },
       error: (_XMLHttpRequest, _textStatus, _errorThrown) => {
         Log.logClass(this.NAME, 'Load Steam Inventory JSON');
-        Log.logCaution('SteamInventoryEvent', 'getSteamInventory', 'ajax error', _XMLHttpRequest, _textStatus, _errorThrown);
+        Log.logCaution('SteamInventoryEvent', 'downloadSteamInventory', 'ajax error', _XMLHttpRequest, _textStatus, _errorThrown);
       }
     });
   }

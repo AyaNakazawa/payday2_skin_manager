@@ -36,6 +36,6 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
   }
   
   getPD2SteamInventory() {
-    super.getSteamInventory(this.APPID, this.STEAMID);
+    super.downloadSteamInventory(this.APPID, this.STEAMID);
   }
 }
