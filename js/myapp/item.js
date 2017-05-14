@@ -54,5 +54,14 @@ class ItemEvent extends CommonEvent {
     });
     // Detail
     this.DETAIL = new DetailEvent();
+    
+    this.setOn();
   }
+  
+  setOn() {
+    $(document).on(this.DOWNLOAD_COMPLETE_EVENT, () => {
+      this.buildPD2Item();
+    });
+  }
+  
 }
