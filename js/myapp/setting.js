@@ -26,8 +26,8 @@ class SettingModel extends SwitchModel {
     this.$SETTING_SORT_ASC_SELECTOR = $(this.SETTING_SORT_ASC_SELECTOR);
     this.SETTING_SORT_DESC_SELECTOR = '#setting-sort-desc';
     this.$SETTING_SORT_DESC_SELECTOR = $(this.SETTING_SORT_DESC_SELECTOR);
-    this.SETTING_QUALITY_SELECTOR = '#setting-quality';
-    this.$SETTING_QUALITY_SELECTOR = $(this.SETTING_QUALITY_SELECTOR);
+    this.SETTING_UNIQUE_SELECTOR = '#setting-unique';
+    this.$SETTING_UNIQUE_SELECTOR = $(this.SETTING_UNIQUE_SELECTOR);
     this.SETTING_SIZE_SELECTOR = '#setting-size';
     this.$SETTING_SIZE_SELECTOR = $(this.SETTING_SIZE_SELECTOR);
     this.SETTING_STYLE_SELECTOR = '#setting-style';
@@ -55,9 +55,9 @@ class SettingView extends SwitchView {
     return steamId;
   }
   
-  getQuality() {
-    const quality = this.model.$SETTING_QUALITY_SELECTOR.prop('checked');
-    return quality;
+  getUnique() {
+    const unique = this.model.$SETTING_UNIQUE_SELECTOR.prop('checked');
+    return unique;
   }
   
   getSearch() {
@@ -117,15 +117,15 @@ class SettingView extends SwitchView {
     this.model.$SETTING_STEAMID_SELECTOR.val(_steamId);
   }
   
-  setQuality(_quality = null) {
-    if (_quality == null) {
+  setUnique(_unique = null) {
+    if (_unique == null) {
       return;
     }
-    Log.logClassKey('Setting', 'Quality', _quality, Log.ARROW_INPUT);
-    if (_quality == 'true') {
-      this.model.$SETTING_QUALITY_SELECTOR.prop('checked', true);
+    Log.logClassKey('Setting', 'Unique', _unique, Log.ARROW_INPUT);
+    if (_unique == 'true') {
+      this.model.$SETTING_UNIQUE_SELECTOR.prop('checked', true);
     } else {
-      this.model.$SETTING_QUALITY_SELECTOR.prop('checked', false);
+      this.model.$SETTING_UNIQUE_SELECTOR.prop('checked', false);
     }
   }
   
@@ -216,13 +216,13 @@ class SettingView extends SwitchView {
     LocalStorage.setItem(this.model.lsKeySteamId, _steamId);
   }
   
-  updateQuality(_quality = this.getQuality(), _overwrite = false) {
-    const beforeQuality = LocalStorage.getItem(this.model.lsKeyQuality);
-    Log.logClassKey(this.model.NAME, 'View.Setting', _quality);
-    if (beforeQuality == _quality && !_overwrite) {
+  updateUnique(_unique = this.getUnique(), _overwrite = false) {
+    const beforeUnique = LocalStorage.getItem(this.model.lsKeyUnique);
+    Log.logClassKey(this.model.NAME, 'View.Setting', _unique);
+    if (beforeUnique == _unique && !_overwrite) {
       return;
     }
-    LocalStorage.setItem(this.model.lsKeyQuality, _quality);
+    LocalStorage.setItem(this.model.lsKeyUnique, _unique);
   }
   
   updateSearch(_search = this.getSearch(), _overwrite = false) {
@@ -306,7 +306,7 @@ class SettingController extends CommonController {
     this.model.lsKeyGroup = 'Setting.Group';
     this.model.lsKeySort = 'Setting.Sort';
     this.model.lsKeySortMode = 'Setting.SortMode';
-    this.model.lsKeyQuality = 'Setting.Quality';
+    this.model.lsKeyUnique = 'Setting.Unique';
     this.model.lsKeySize = 'Setting.Size';
     this.model.lsKeyStyle = 'Setting.Style';
   }
@@ -342,9 +342,9 @@ class SettingController extends CommonController {
     if (this.initLsValSortMode == null) {
       this.initLsValSortMode = this.view.getSortMode();
     }
-    this.initLsValQuality = LocalStorage.getItem(this.model.lsKeyQuality);
-    if (this.initLsValQuality == null) {
-      this.initLsValQuality = this.view.getQuality();
+    this.initLsValUnique = LocalStorage.getItem(this.model.lsKeyUnique);
+    if (this.initLsValUnique == null) {
+      this.initLsValUnique = this.view.getUnique();
     }
     this.initLsValSize = LocalStorage.getItem(this.model.lsKeySize);
     if (this.initLsValSize == null) {
@@ -360,7 +360,7 @@ class SettingController extends CommonController {
     this.view.setStyle(this.initLsValStyle);
     this.view.setSize(this.initLsValSize);
     this.view.setSteamId(this.initLsValSteamId);
-    this.view.setQuality(this.initLsValQuality);
+    this.view.setUnique(this.initLsValUnique);
     this.view.setSearch(this.initLsValSearch);
     this.view.setFilter(this.initLsValFilter);
     this.view.setGroup(this.initLsValGroup);
@@ -372,7 +372,7 @@ class SettingController extends CommonController {
     this.view.updateStyle(this.initLsValStyle, true);
     this.view.updateSize(this.initLsValSize, true);
     this.view.updateSteamId(this.initLsValSteamId, true);
-    this.view.updateQuality(this.initLsValQuality, true);
+    this.view.updateUnique(this.initLsValUnique, true);
     this.view.updateSearch(this.initLsValSearch, true);
     this.view.updateFilter(this.initLsValFilter, true);
     this.view.updateGroup(this.initLsValGroup, true);
@@ -425,8 +425,8 @@ class SettingEvent extends CommonEvent {
       this.ITEM.PD2SI.setSteamId(this.CONTROLLER.view.getSteamId());
       $(document).trigger(this.ITEM.PD2SI.LOAD_EVENT);
     });
-    $(document).on('change', this.CONTROLLER.model.SETTING_QUALITY_SELECTOR, () => {
-      this.CONTROLLER.view.updateQuality();
+    $(document).on('change', this.CONTROLLER.model.SETTING_UNIQUE_SELECTOR, () => {
+      this.CONTROLLER.view.updateUnique();
     });
     $(document).on('change', this.CONTROLLER.model.SETTING_SEARCH_SELECTOR, () => {
       this.CONTROLLER.view.updateSearch();
