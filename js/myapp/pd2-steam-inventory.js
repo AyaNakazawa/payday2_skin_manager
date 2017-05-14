@@ -22,13 +22,13 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
     steamId = null,
     json = null,
     loadEvent = 'loadPD2SI',
-    downloadCompleteEvent = 'buildPD2SI'
+    buildInstanceEvent = 'buildInstancePD2SI'
   } = {})
   {
     super({
       appId: appId,
       steamId: steamId,
-      downloadCompleteEvent: downloadCompleteEvent
+      downloadCompleteEvent: buildInstanceEvent
     });
     
     this.NAME = name;
@@ -36,7 +36,7 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
     this.STEAMID = steamId;
     this.JSON = json;
     this.LOAD_EVENT = loadEvent;
-    this.DOWNLOAD_COMPLETE_EVENT = downloadCompleteEvent;
+    this.BUILD_INSTANCE_EVENT = buildInstanceEvent;
     
     this.model = new PD2SteamInventoryModel({
       name: 'PAYDAY 2 Steam Inventory Model'
@@ -52,9 +52,8 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
     $(document).on(this.LOAD_EVENT, () => {
       this.getPD2SteamInventory()
     });
-    $(document).on(this.DOWNLOAD_COMPLETE_EVENT, () => {
-      this.buildPD2InstanceJson();
-    });
+    $(document).on(this.BUILD_INSTANCE_EVENT, () => {
+      this.buildInstanceJson();
   }
   
   setSteamId(_steamId = null) {
@@ -69,9 +68,9 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
     super.downloadSteamInventory(this.APPID, this.STEAMID);
   }
   
-  buildPD2InstanceJson() {
+  buildInstanceJson() {
     if (this.JSON == null) {
-      Log.logCaution(this.NAME, 'buildPD2InstanceJson', 'JSON is null');
+      Log.logCaution(this.NAME, 'buildInstanceJson', 'JSON is null');
       return;
     }
     Log.logObj(this.JSON);
