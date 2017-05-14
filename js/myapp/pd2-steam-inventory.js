@@ -22,7 +22,8 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
     steamId = null,
     json = null,
     loadEvent = 'loadPD2SI',
-    buildInstanceEvent = 'buildInstancePD2SI'
+    buildInstanceEvent = 'buildInstancePD2SI',
+    buildClassEvent = 'buildClassPD2SI'
   } = {})
   {
     super({
@@ -37,6 +38,7 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
     this.JSON = json;
     this.LOAD_EVENT = loadEvent;
     this.BUILD_INSTANCE_EVENT = buildInstanceEvent;
+    this.BUILD_CLASS_EVENT = buildClassEvent;
     
     this.model = new PD2SteamInventoryModel({
       name: 'PAYDAY 2 Steam Inventory Model'
@@ -54,6 +56,10 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
     });
     $(document).on(this.BUILD_INSTANCE_EVENT, () => {
       this.buildInstanceJson();
+    });
+    $(document).on(this.BUILD_CLASS_EVENT, () => {
+      this.buildClassJson();
+    });
   }
   
   setSteamId(_steamId = null) {
