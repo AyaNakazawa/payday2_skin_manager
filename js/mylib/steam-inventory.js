@@ -52,6 +52,51 @@ class SteamInventoryEvent extends CommonEvent {
     return result;
   }
   
+  checkDownloadJsonFlag() {
+    // Check Download JSON Flag
+    if (this.downloadJsonFlag == this.model.DOWNLOAD_JSON_NOT_YET) {
+      // Not download
+      Log.logCaution('Not downloaded yet', 'App ID', this.APPID, 'Steam ID', this.STEAMID);
+      return;
+      
+    } else if (this.downloadJsonFlag == this.model.DOWNLOAD_JSON_STEAMID_LENGTH_FAILED) {
+      // Steam ID length failed
+      Log.logCaution('Steam ID failed', _steamId, _steamId.length);
+      return;
+      
+    } else if (this.downloadJsonFlag == this.model.DOWNLOAD_JSON_STEAMID_FAILED) {
+      // Steam ID failed
+      Log.logCaution('Steam ID failed', _steamId, _steamId.length);
+      return;
+      
+    } else if (this.downloadJsonFlag == this.model.DOWNLOAD_JSON_APPID_FAILED) {
+      // App ID failed
+      Log.logCaution('App ID failed', _appId, _appId.length);
+      return;
+      
+    } else if (this.downloadJsonFlag == this.model.DOWNLOAD_JSON_FAILED) {
+      // Download failed
+      Log.logCaution(this.NAME, 'downloadSteamInventoryFile', 'JSON download failed');
+      return;
+      
+    } else if (this.downloadJsonFlag == this.model.DOWNLOAD_JSON_SUCCESS) {
+      // Download success
+      Log.logClass(this.NAME, 'Download Steam Inventory JSON file');
+      
+    } else {
+      // downloadJsonFlag error
+      Log.logError(this.NAME, 'downloadSteamInventoryFile', 'downloadJsonFlag Error', this.downloadJsonFlag);
+      return;
+      
+    }
+    const fileName = this.getSteamInventoryFileName();
+    if (fileName == null) {
+      // file name error
+      Log.logCaution('file name is null', 'App ID', this.APPID, 'Steam ID', this.STEAMID);
+      return;
+    }
+  }
+  
   downloadSteamInventory(_appId = this.APPID, _steamId = this.STEAMID) {
     Log.logClass(this.NAME, 'Download Steam Inventory');
     Log.logClassKey(this.NAME, 'App ID', _appId);
@@ -86,6 +131,7 @@ class SteamInventoryEvent extends CommonEvent {
         if (~_data.indexOf('true')) {
           Log.logClass(this.NAME, 'Download JSON success.');
           this.downloadJsonFlag = this.model.DOWNLOAD_JSON_SUCCESS;
+          this.checkDownloadJsonFlag();
         } else {
           Log.logCaution('SteamInventoryEvent', 'downloadSteamInventory', 'ajax success', 'download failed');
           this.downloadJsonFlag = this.model.DOWNLOAD_JSON_FAILED;
