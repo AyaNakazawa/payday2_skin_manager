@@ -84,5 +84,28 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
         this.instanceJson[key]['amount'] ++;
       }
     });
+    $.each(this.JSON['rgDescriptions'], (_i, _val) => {
+      const hashName = _val['market_hash_name'];
+      // this.instanceJson[_i]['hashName'] = hashName;
+      
+      if (~hashName.indexOf('|')) {
+        // Weapon
+        this.instanceJson[_i]['type'] = this.model.TYPE_WEAPON;
+        
+      } else if (hashName.indexOf('Armor') == hashName.length - 5) {
+        // Armor
+        this.instanceJson[_i]['type'] = this.model.TYPE_ARMOR;
+        
+      } else if (hashName.indexOf('Safe') == hashName.length - 4) {
+        // Safe
+        this.instanceJson[_i]['type'] = this.model.TYPE_SAFE;
+        
+      } else {
+        // Also Safe
+        this.instanceJson[_i]['type'] = this.model.TYPE_SAFE;
+        
+      }
+      Log.logObj(this.instanceJson[_i]);
+    });
   }
 }
