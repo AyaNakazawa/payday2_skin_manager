@@ -47,10 +47,17 @@ class SteamInventoryEvent extends CommonEvent {
     this.CONTROLLER = new SteamInventoryController();
   }
   
+  getSteamInventoryFileName() {
+    return `downloads/${this,STEAMID}_${this.APPID}.json`;
+  }
+  
   downloadSteamInventory(_appId = this.APPID, _steamId = this.STEAMID) {
     Log.logClass(this.NAME, 'Get Steam Inventory');
     Log.logClassKey(this.NAME, 'App ID', _appId);
     Log.logClassKey(this.NAME, 'Steam ID', _steamId);
+    
+    this.APPID = _appId;
+    this.STEAMID = _steamId;
     
     if (_steamId.length != 17) {
       Log.logCaution('Steam ID', _steamId, _steamId.length, 'Not 17 digits.');
