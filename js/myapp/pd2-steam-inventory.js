@@ -4,7 +4,7 @@
 
 class PD2SteamInventoryEvent extends SteamInventoryEvent {
   constructor({
-    name = 'PAYDAY2 Steam Inventory Event',
+    name = 'PAYDAY 2 Steam Inventory Event',
     appId = '218620',
     steamId = null,
     loadEvent = 'loadPD2SI',
@@ -21,12 +21,18 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
     this.APPID = appId;
     this.STEAMID = steamId;
     this.LOAD_EVENT = loadEvent;
+    this.DOWNLOAD_COMPLETE_EVENT = downloadCompleteEvent;
     
     this.setOn();
   }
   
   setOn() {
-    $(document).on(this.LOAD_EVENT, () => {this.getPD2SteamInventory()});
+    $(document).on(this.LOAD_EVENT, () => {
+      this.getPD2SteamInventory()
+    });
+    $(document).on(this.DOWNLOAD_COMPLETE_EVENT, () => {
+      this.buildPD2Item();
+    });
   }
   
   setSteamId(_steamId = null) {
@@ -39,5 +45,10 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
   
   getPD2SteamInventory() {
     super.downloadSteamInventory(this.APPID, this.STEAMID);
+  }
+  
+  buildPD2Item() {
+    Log.logClass(this.NAME, 'buildPD2Item');
+    Log.logObj(this.JSON);
   }
 }

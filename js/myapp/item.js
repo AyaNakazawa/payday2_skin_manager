@@ -46,27 +46,9 @@ class ItemEvent extends CommonEvent {
       switchSelector: '#pd2item-area'
     });
     
-    this.DOWNLOAD_COMPLETE_EVENT = 'buildPD2SI';
-    
     // PD2SteamInventory
-    this.PD2SI = new PD2SteamInventoryEvent({
-      downloadCompleteEvent: this.DOWNLOAD_COMPLETE_EVENT
-    });
+    this.PD2SI = new PD2SteamInventoryEvent();
     // Detail
     this.DETAIL = new DetailEvent();
-    
-    this.setOn();
-  }
-  
-  setOn() {
-    $(document).on(this.DOWNLOAD_COMPLETE_EVENT, () => {
-      this.buildPD2Item();
-    });
-  }
-  
-  buildPD2Item() {
-    Log.logClass(this.NAME, 'buildPD2Item');
-    const JSON = this.PD2SI.JSON;
-    Log.logObj(JSON);
   }
 }
