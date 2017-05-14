@@ -89,37 +89,47 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
     }
     Log.logObj(this.JSON);
     
-    this.instanceJson = {};
+    let tempInstanceJson = {};
     
     $.each(this.JSON['rgInventory'], (_i, _val) => {
       const key = `${_val['classid']}_${_val['instanceid']}`;
-      if (this.instanceJson[key] == null) {
-        this.instanceJson[key] = {
+      if (tempInstanceJson[key] == null) {
+        tempInstanceJson[key] = {
           amount: 1
         }
       } else {
-        this.instanceJson[key]['amount'] ++;
+        tempInstanceJson[key]['amount'] ++;
       }
     });
+    
+    this.instanceJson = {};
+    
     $.each(this.JSON['rgDescriptions'], (_i, _val) => {
       const hashName = _val['market_hash_name'];
-      // this.instanceJson[_i]['hashName'] = hashName;
+      if (this.instanceJson[hashName] == null) {
+        this.instanceJson[hashName] = {};
+      }
+      
+      // this.instanceJson[hashName]['hashName'] = hashName;
+      this.instanceJson[hashName]['amount'] = tempInstanceJson[_i]['amount'];
+      this.instanceJson[hashName]['url'] = _val['icon_url'];
+      this.instanceJson[hashName]['urlLarge'] = _val['icon_url_large'];
       
       if (~hashName.indexOf('|')) {
         // Weapon
-        this.instanceJson[_i]['type'] = this.model.TYPE_WEAPON;
+        this.instanceJson[hashName]['type'] = this.model.TYPE_WEAPON;
         const weaponName = hashName.substring(0, hashName.indexOf('|') - 1);
         const skinName = hashName.substring(hashName.indexOf('|') + 2, hashName.indexOf(','));
-        let condition = hashName.substr(hashName.indexOf(',') + 2);
+        let quality = hashName.substr(hashName.indexOf(',') + 2);
         let statBoost = false;
-        if (~condition.indexOf('Stat Boost')) {
-          condition = condition.substring(0, condition.indexOf('Stat Boost') - 2);
+        if (~quality.indexOf('Stat Boost')) {
+          quality = quality.substring(0, quality.indexOf('Stat Boost') - 2);
           statBoost = true; 
         }
         
-        this.instanceJson[_i]['weaponName'] = weaponName;
-        this.instanceJson[_i]['skinName'] = skinName;
-        this.instanceJson[_i]['condition'] = condition;
+        this.instanceJson[hashName]['weaponName'] = weaponName;
+        this.instanceJson[hashName]['skinName'] = skinName;
+        this.instanceJson[hashName]['quality'] = PAYDAY2.getQualityId(quality);
         if (statBoost) {
           const desc = _val['descriptions'][0]['value'];
           const boost = desc.substring(
@@ -130,27 +140,29 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
             desc.indexOf(' ', desc.indexOf('Stat Boost:') + 12) + 1,
             desc.indexOf('<', desc.indexOf(' ', desc.indexOf('Stat Boost:') + 12))
           );
-          this.instanceJson[_i]['boost'] = boost;
-          this.instanceJson[_i]['stat'] = stat;
+          this.instanceJson[hashName]['boost'] = boost;
+          this.instanceJson[hashName]['stat'] = stat;
         }
         
       } else if (hashName.indexOf('Armor') == hashName.length - 5) {
         // Armor
-        this.instanceJson[_i]['type'] = this.model.TYPE_ARMOR;
-        this.instanceJson[_i]['skinName'] = hashName;
+        this.instanceJson[hashName]['type'] = this.model.TYPE_ARMOR;
+        this.instanceJson[hashName]['skinName'] = hashName;
         
       } else if (hashName.indexOf('Safe') == hashName.length - 4) {
         // Safe
-        this.instanceJson[_i]['type'] = this.model.TYPE_SAFE;
-        this.instanceJson[_i]['safeName'] = hashName;
+        this.instanceJson[hashName]['type'] = this.model.TYPE_SAFE;
+        this.instanceJson[hashName]['safeName'] = hashName;
         
       } else {
         // Also Safe
-        this.instanceJson[_i]['type'] = this.model.TYPE_SAFE;
-        this.instanceJson[_i]['safeName'] = hashName;
+        this.instanceJson[hashName]['type'] = this.model.TYPE_SAFE;
+        this.instanceJson[hashName]['safeName'] = hashName;
         
       }
-      Log.logObj(this.instanceJson[_i]);
+      // Log.logObj(this.instanceJson[hashName]);
     });
+    
+    this.buildClassJson();
   }
 }
