@@ -7,6 +7,7 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
     name = 'PAYDAY 2 Steam Inventory Event',
     appId = '218620',
     steamId = null,
+    json = null,
     loadEvent = 'loadPD2SI',
     downloadCompleteEvent = 'buildPD2SI'
   } = {})
@@ -20,6 +21,7 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
     this.NAME = name;
     this.APPID = appId;
     this.STEAMID = steamId;
+    this.JSON = json;
     this.LOAD_EVENT = loadEvent;
     this.DOWNLOAD_COMPLETE_EVENT = downloadCompleteEvent;
     
