@@ -6,7 +6,8 @@ class SteamInventoryEvent extends CommonEvent {
   constructor({
     name = 'Steam Inventory Event',
     appId = null,
-    steamId = null
+    steamId = null,
+    json = null
   } = {})
   {
     super({
@@ -16,6 +17,7 @@ class SteamInventoryEvent extends CommonEvent {
     this.NAME = name;
     this.APPID = appId;
     this.STEAMID = steamId;
+    this.JSON = json;
     
     this.downloadJsonFlag = -1;
   }
