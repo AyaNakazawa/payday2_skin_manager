@@ -152,12 +152,11 @@ class SteamInventoryEvent extends CommonEvent {
         if (~_data.indexOf('true')) {
           Log.logClass(this.NAME, 'Download success.');
           this.downloadJsonFlag = this.model.DOWNLOAD_JSON_SUCCESS;
-          this.checkDownloadJsonFlag();
         } else {
           Log.logCaution('SteamInventoryEvent', 'downloadSteamInventory', 'ajax success', 'download failed');
           this.downloadJsonFlag = this.model.DOWNLOAD_JSON_FAILED;
-          this.checkDownloadJsonFlag();
         }
+        this.checkDownloadJsonFlag();
       },
       error: (_XMLHttpRequest, _textStatus, _errorThrown) => {
         Log.logClass(this.NAME, 'Download failed.');
