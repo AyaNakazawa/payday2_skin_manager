@@ -73,5 +73,44 @@ main {
   width: 100%;
   padding: 8px;
   overflow: hidden;
-  border-radius: 8px;
+}
+
+.content-item:nth-child(even) {
+  background: #f8f8f8;
+}
+
+.content-item li {
+  margin: 8px;
+}
+
+.content-header {
+  width: 100%;
+  margin-bottom: 8px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.content-header button {
+  margin-left: 8px;
+}
+
+.content-item-name {
+  width: 100%;
+  padding-bottom: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.content-item-keys {
+  width: 100%;
+  padding: 8px 16px;
+}
+.content-item-key {
+  margin-bottom: 8px;
+}
+
+.content-item-key:last-child {
+  margin-bottom: 0;
 }
