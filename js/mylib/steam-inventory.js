@@ -6,6 +6,7 @@ class SteamInventoryModel extends CommonModel {
   constructor(_obj) {
     super(_obj);
     
+    // JSON Download status
     this.DOWNLOAD_JSON_NOT_YET = -1;
     this.DOWNLOAD_JSON_STEAMID_LENGTH_FAILED = 1;
     this.DOWNLOAD_JSON_STEAMID_FAILED = 2;
@@ -100,20 +101,27 @@ class SteamInventoryEvent extends CommonEvent {
   
   downloadSteamInventoryFile(_fileName = this.getSteamInventoryFileName()) {
     Log.logClass(this.NAME, 'Download Steam Inventory File');
-    $.ajax({
-      url: _fileName,
-      dataType: 'json',
-      success: (_data, _datatype) => {
-        Log.logClass(this.NAME, 'ajax download Steam Inventory File');
-        Log.logClass(this.NAME, 'Download File success.');
-        this.JSON = _data;
-        if (this.DOWNLOAD_COMPLETE_EVENT != null) {
-          $(document).trigger(this.DOWNLOAD_COMPLETE_EVENT);
-        }
-      },
-      error: (_XMLHttpRequest, _textStatus, _errorThrown) => {
-        Log.logClass(this.NAME, 'Download File failed.');
-        Log.logCaution('SteamInventoryEvent', 'downloadSteamInventoryFile', 'ajax error', _XMLHttpRequest, _textStatus, _errorThrown);
+    PST.push({
+      name: `downloadSteamInventoryFile(FileName: ${_fileName})`,
+      func: (callback) => {
+        $.ajax({
+          url: _fileName,
+          dataType: 'json',
+          success: (_data, _datatype) => {
+            Log.logClass(this.NAME, 'ajax download Steam Inventory File');
+            Log.logClass(this.NAME, 'Download File success.');
+            this.JSON = _data;
+            if (this.DOWNLOAD_COMPLETE_EVENT != null) {
+              $(document).trigger(this.DOWNLOAD_COMPLETE_EVENT);
+            }
+            callback();
+          },
+          error: (_XMLHttpRequest, _textStatus, _errorThrown) => {
+            Log.logClass(this.NAME, 'Download File failed.');
+            Log.logCaution('SteamInventoryEvent', 'downloadSteamInventoryFile', 'ajax error', _XMLHttpRequest, _textStatus, _errorThrown);
+            callback();
+          }
+        });
       }
     });
   }
@@ -140,27 +148,34 @@ class SteamInventoryEvent extends CommonEvent {
       return;
     }
     
-    $.ajax({
-      url: 'ruby/getSteamInventoryJson.rb',
-      data: {
-        steamId: _steamId,
-        appId: _appId
-      },
-      success: (_data, _datatype) => {
-        Log.logClass(this.NAME, 'ajax download Steam Inventory');
-        
-        if (~_data.indexOf('true')) {
-          Log.logClass(this.NAME, 'Download success.');
-          this.downloadJsonFlag = this.model.DOWNLOAD_JSON_SUCCESS;
-        } else {
-          Log.logCaution('SteamInventoryEvent', 'downloadSteamInventory', 'ajax success', 'download failed');
-          this.downloadJsonFlag = this.model.DOWNLOAD_JSON_FAILED;
-        }
-        this.checkDownloadJsonFlag();
-      },
-      error: (_XMLHttpRequest, _textStatus, _errorThrown) => {
-        Log.logClass(this.NAME, 'Download failed.');
-        Log.logCaution('SteamInventoryEvent', 'downloadSteamInventory', 'ajax error', _XMLHttpRequest, _textStatus, _errorThrown);
+    PST.push({
+      name: `downloadSteamInventory(AppID: ${_appId}, SteamID: ${_steamId})`,
+      func: (callback) => {
+        $.ajax({
+          url: 'ruby/getSteamInventoryJson.rb',
+          data: {
+            appId: _appId,
+            steamId: _steamId
+          },
+          success: (_data, _datatype) => {
+            Log.logClass(this.NAME, 'ajax download Steam Inventory');
+            
+            if (~_data.indexOf('true')) {
+              Log.logClass(this.NAME, 'Download success.');
+              this.downloadJsonFlag = this.model.DOWNLOAD_JSON_SUCCESS;
+            } else {
+              Log.logCaution('SteamInventoryEvent', 'downloadSteamInventory', 'ajax success', 'download failed');
+              this.downloadJsonFlag = this.model.DOWNLOAD_JSON_FAILED;
+            }
+            this.checkDownloadJsonFlag();
+            callback();
+          },
+          error: (_XMLHttpRequest, _textStatus, _errorThrown) => {
+            Log.logClass(this.NAME, 'Download failed.');
+            Log.logCaution('SteamInventoryEvent', 'downloadSteamInventory', 'ajax error', _XMLHttpRequest, _textStatus, _errorThrown);
+            callback();
+          }
+        });
       }
     });
   }
