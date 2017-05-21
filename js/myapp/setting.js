@@ -400,49 +400,68 @@ class SettingEvent extends CommonEvent {
       switchSelector: '#setting-area'
     });
     
-    // Item
-    this.ITEM = new ItemEvent();
-    
     this.setOn();
     this.updateInit();
   }
   
   updateInit() {
-    this.ITEM.PD2SI.setSteamId(this.CONTROLLER.view.getSteamId());
-    $(document).trigger(this.ITEM.PD2SI.LOAD_EVENT);
+    Log.logObj(PS);
+    PS.PD2SI.getPD2SteamInventory(undefined, this.CONTROLLER.view.getSteamId());
   }
   
   setOn() {
     Log.logClass(this.NAME, 'setOn');
+    
+    // Style
     $(document).on('change', this.CONTROLLER.model.SETTING_STYLE_SELECTOR, () => {
       this.CONTROLLER.view.updateStyle();
+      PS.PD2SI.setStyle(this.CONTROLLER.view.getStyle());
+      $(document).trigger(PS.PD2SI.SET_STYLE);
     });
+    
+    // Size
     $(document).on('change', this.CONTROLLER.model.SETTING_SIZE_SELECTOR, () => {
       this.CONTROLLER.view.updateSize();
     });
+    
+    // SteamId
     $(document).on('change', this.CONTROLLER.model.SETTING_STEAMID_SELECTOR, () => {
       this.CONTROLLER.view.updateSteamId();
-      this.ITEM.PD2SI.setSteamId(this.CONTROLLER.view.getSteamId());
-      $(document).trigger(this.ITEM.PD2SI.LOAD_EVENT);
+      PS.PD2SI.setSteamId(this.CONTROLLER.view.getSteamId());
+      $(document).trigger(PS.PD2SI.SET_STEAMID);
     });
+    
+    // Unique
     $(document).on('change', this.CONTROLLER.model.SETTING_UNIQUE_SELECTOR, () => {
       this.CONTROLLER.view.updateUnique();
     });
+    
+    // Search
     $(document).on('change', this.CONTROLLER.model.SETTING_SEARCH_SELECTOR, () => {
       this.CONTROLLER.view.updateSearch();
     });
+    
+    // Filter
     $(document).on('change', this.CONTROLLER.model.SETTING_FILTER_SELECTOR, () => {
       this.CONTROLLER.view.updateFilter();
     });
+    
+    // Group
     $(document).on('change', this.CONTROLLER.model.SETTING_GROUP_SELECTOR, () => {
       this.CONTROLLER.view.updateGroup();
     });
+    
+    // Sort
     $(document).on('change', this.CONTROLLER.model.SETTING_SORT_SELECTOR, () => {
       this.CONTROLLER.view.updateSort();
     });
+    
+    // SortMode
     $(document).on('click', this.CONTROLLER.model.SETTING_SORT_ASC_SELECTOR, () => {
       this.CONTROLLER.view.updateSortMode('asc');
     });
+    
+    // SortMode
     $(document).on('click', this.CONTROLLER.model.SETTING_SORT_DESC_SELECTOR, () => {
       this.CONTROLLER.view.updateSortMode('desc');
     });
