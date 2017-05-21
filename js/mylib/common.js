@@ -16,18 +16,23 @@ class CommonClass {
       // Exists name
       // Write name
       Log.log(_name, Log.ALIGN_CENTER);
+      return;
     } else {
       // Not exists name
-      // Check this.model name
-      if (this.model.NAME != null){
-        // Exists this.model name
-        // Write this.model name
-        Log.log(this.model.NAME, Log.ALIGN_CENTER);
-      } else {
-        // Not exists this.model name
-        // Write this name
-        Log.log(this.NAME, Log.ALIGN_CENTER);
+      // Check this.model
+      if (this.model != null){
+        // Exists this.model
+        // Check this.model name
+        if (this.model.NAME != null) {
+          // Exists this.model name
+          // Write this.model name
+          Log.log(this.model.NAME, Log.ALIGN_CENTER);
+          return;
+        }
       }
+      // Not exists this.model name
+      // Write this name
+      Log.log(this.NAME, Log.ALIGN_CENTER);
     }
   }
   
