@@ -22,13 +22,31 @@ class PD2SMProcess extends CommonProcess {
     this.initPD2SM();
   }
   
+  updatePS() {
+    PS = this;
+    // Log.logClass(this.NAME, 'updatePS');
+    // Log.logObj(PS);
+  }
+  
   initPD2SM() {
     this.initStartUp();
+    this.updatePS();
+    
     this.initEvent();
+    this.updatePS();
+    
     this.initController();
+    this.updatePS();
+    
     this.initPopover();
+    this.updatePS();
+    
     this.initConfirm();
+    this.updatePS();
+    
     this.initView();
+    this.updatePS();
+    
   }
   
   initStartUp() {
@@ -41,8 +59,21 @@ class PD2SMProcess extends CommonProcess {
   initEvent() {
     Log.log();
     Log.log('Start up Events', Log.ALIGN_LEFT, Log.STYLE_COLOR_MAGENTA);
+    // Detail
+    this.DETAIL = new DetailEvent();
+    this.updatePS();
+    
+    // PD2SteamInventory
+    this.PD2SI = new PD2SteamInventoryEvent();
+    this.updatePS();
+    
+    // Item
+    this.ITEM = new ItemEvent();
+    this.updatePS();
+    
     // Setting
-    new SettingEvent();
+    this.SET = new SettingEvent();
+    this.updatePS();
   }
   
   initController() {
