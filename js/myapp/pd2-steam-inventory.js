@@ -75,14 +75,6 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
     super.downloadSteamInventory(this.APPID, this.STEAMID);
   }
   
-  buildClassJson() {
-    if (this.instanceJson == null) {
-      Log.logCaution(this.NAME, 'buildClassJson', 'instanceJson is null');
-      return;
-    }
-    Log.logObj(this.instanceJson);
-  }
-  
   buildInstanceJson() {
     if (this.JSON == null) {
       Log.logCaution(this.NAME, 'buildInstanceJson', 'JSON is null');
@@ -111,7 +103,6 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
         this.instanceJson[hashName] = {};
       }
       
-      // this.instanceJson[hashName]['hashName'] = hashName;
       this.instanceJson[hashName]['amount'] = tempInstanceJson[_i]['amount'];
       
       if (~hashName.indexOf('|')) {
@@ -154,6 +145,14 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
       // Log.logObj(this.instanceJson[hashName]);
     });
     
-    this.buildClassJson();
+    $(document).trigger(this.BUILD_CLASS_EVENT);
+  }
+  
+  buildClassJson() {
+    if (this.instanceJson == null) {
+      Log.logCaution(this.NAME, 'buildClassJson', 'instanceJson is null');
+      return;
+    }
+    Log.logObj(this.instanceJson);
   }
 }
