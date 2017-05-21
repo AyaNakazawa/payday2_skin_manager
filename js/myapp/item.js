@@ -45,10 +45,5 @@ class ItemEvent extends CommonEvent {
       triggerSelector: '#action-item',
       switchSelector: '#pd2item-area'
     });
-    
-    // PD2SteamInventory
-    this.PD2SI = new PD2SteamInventoryEvent();
-    // Detail
-    this.DETAIL = new DetailEvent();
   }
 }
