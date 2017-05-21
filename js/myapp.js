@@ -1,4 +1,4 @@
 
 $(() => {
-  new PD2SMProcess();
+  PS = new PD2SMProcess();
 });
