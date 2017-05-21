@@ -21,45 +21,21 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
     name = 'PAYDAY 2 Steam Inventory Event',
     appId = '218620',
     steamId = null,
-    json = null,
-    loadEvent = 'loadPD2SI',
-    buildInstanceEvent = 'buildInstancePD2SI',
-    buildClassEvent = 'buildClassPD2SI'
+    json = null
   } = {})
   {
     super({
       appId: appId,
-      steamId: steamId,
-      downloadCompleteEvent: buildInstanceEvent
+      steamId: steamId
     });
     
     this.NAME = name;
     this.APPID = appId;
     this.STEAMID = steamId;
     this.JSON = json;
-    this.LOAD_EVENT = loadEvent;
-    this.BUILD_INSTANCE_EVENT = buildInstanceEvent;
-    this.BUILD_CLASS_EVENT = buildClassEvent;
     
     this.model = new PD2SteamInventoryModel({
       name: 'PAYDAY 2 Steam Inventory Model'
-    });
-    
-    this.instanceJson = {};
-    this.classJson = {};
-    
-    this.setOn();
-  }
-  
-  setOn() {
-    $(document).on(this.LOAD_EVENT, () => {
-      this.getPD2SteamInventory()
-    });
-    $(document).on(this.BUILD_INSTANCE_EVENT, () => {
-      this.buildInstanceJson();
-    });
-    $(document).on(this.BUILD_CLASS_EVENT, () => {
-      this.buildClassJson();
     });
   }
   
@@ -71,8 +47,8 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
     this.ITEMGROUP = new ItemGroupEvent(_obj);
   }
   
-  getPD2SteamInventory() {
-    super.downloadSteamInventory(this.APPID, this.STEAMID);
+  getPD2SteamInventory(_appId = this.APPID, _steamId = this.STEAMID) {
+    super.downloadSteamInventory(_appId, _steamId);
   }
   
   buildInstanceJson() {
@@ -145,7 +121,7 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
       // Log.logObj(this.instanceJson[hashName]);
     });
     
-    $(document).trigger(this.BUILD_CLASS_EVENT);
+    this.buildClassJson();
   }
   
   buildClassJson() {
@@ -154,5 +130,8 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
       return;
     }
     Log.logObj(this.instanceJson);
+    
+    this.classJson = {};
+    
   }
 }
