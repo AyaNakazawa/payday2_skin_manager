@@ -8,7 +8,8 @@ class PD2SteamInventoryModel extends SteamInventoryModel {
     
     this.TYPE_WEAPON = 1;
     this.TYPE_SAFE = 2;
-    this.TYPE_ARMOR = 3;
+    this.TYPE_DRILL = 3;
+    this.TYPE_ARMOR = 4;
   }
 }
 
@@ -112,8 +113,6 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
       
       // this.instanceJson[hashName]['hashName'] = hashName;
       this.instanceJson[hashName]['amount'] = tempInstanceJson[_i]['amount'];
-      this.instanceJson[hashName]['url'] = _val['icon_url'];
-      this.instanceJson[hashName]['urlLarge'] = _val['icon_url_large'];
       
       if (~hashName.indexOf('|')) {
         // Weapon
@@ -127,37 +126,29 @@ class PD2SteamInventoryEvent extends SteamInventoryEvent {
           statBoost = true; 
         }
         
-        this.instanceJson[hashName]['weaponName'] = weaponName;
-        this.instanceJson[hashName]['skinName'] = skinName;
+        this.instanceJson[hashName]['skin'] = PAYDAY2.getSkinId(skinName);
         this.instanceJson[hashName]['quality'] = PAYDAY2.getQualityId(quality);
-        if (statBoost) {
-          const desc = _val['descriptions'][0]['value'];
-          const boost = desc.substring(
-            desc.indexOf('Stat Boost:') + 12,
-            desc.indexOf(' ', desc.indexOf('Stat Boost:') + 12)
-          );
-          const stat = desc.substring(
-            desc.indexOf(' ', desc.indexOf('Stat Boost:') + 12) + 1,
-            desc.indexOf('<', desc.indexOf(' ', desc.indexOf('Stat Boost:') + 12))
-          );
-          this.instanceJson[hashName]['boost'] = boost;
-          this.instanceJson[hashName]['stat'] = stat;
-        }
+        this.instanceJson[hashName]['statBoost'] = statBoost;
         
       } else if (hashName.indexOf('Armor') == hashName.length - 5) {
         // Armor
         this.instanceJson[hashName]['type'] = this.model.TYPE_ARMOR;
-        this.instanceJson[hashName]['skinName'] = hashName;
+        this.instanceJson[hashName]['skin'] = PAYDAY2.getSkinId(hashName);
         
       } else if (hashName.indexOf('Safe') == hashName.length - 4) {
         // Safe
         this.instanceJson[hashName]['type'] = this.model.TYPE_SAFE;
-        this.instanceJson[hashName]['safeName'] = hashName;
+        this.instanceJson[hashName]['safe'] = PAYDAY2.getSafeId(hashName);
+        
+      } else if (hashName.indexOf('Drill') == hashName.length - 5) {
+        // Drill
+        this.instanceJson[hashName]['type'] = this.model.TYPE_DRILL;
+        this.instanceJson[hashName]['drillName'] = hashName;
         
       } else {
         // Also Safe
         this.instanceJson[hashName]['type'] = this.model.TYPE_SAFE;
-        this.instanceJson[hashName]['safeName'] = hashName;
+        this.instanceJson[hashName]['safe'] = PAYDAY2.getSafeId(hashName);
         
       }
       // Log.logObj(this.instanceJson[hashName]);
