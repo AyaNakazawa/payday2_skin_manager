@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Design documents of PAYDAY 2 Skin Manager</title>
+    <!-- stylesheet -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome.min.css" rel="stylesheet">
+    <!-- mylib -->
+    <link href="../../css/mylib/common.css" rel="stylesheet">
+    <link href="../../css/mylib/main.css" rel="stylesheet">
+    <link href="../../css/mylib/tablet.css" rel="stylesheet">
+    <link href="../../css/mylib/medium-desktop.css" rel="stylesheet">
+    <link href="../../css/mylib/large-desktop.css" rel="stylesheet">
+    <link href="../../css/mylib/debug.css" rel="stylesheet">
+    <!-- mystyle -->
+    <style>
+      
+      /* header */
+      
+      header {
+        margin-top: 80px;
+      }
+      
+      /* navbar */
+      
+      .navbar {
+        background: #f8f8f8;
+        border-bottom: 1px solid #ddd;
+        text-align: center;
+      }
+      
+      .nav {
+        display: inline-block;
+        float: none;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <!-- header -->
+    <header>
+      <h1>Design documents</h1>
+    </header>
+    <!-- nav -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarTop">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarTop">
+          <ul class="nav navbar-nav">
+            <li id="action-top"><a>TOP</a></li>
+            <li id="action-payday2"><a>PAYDAY2 DATA</a></li>
+            <li id="action-generate"><a>GENERATE</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- main -->
+    <main>
+      <div class="content" id="payday2-area">
+        <div class="content-header">PAYDAY2 DATA</div>
+        <div class="content-item">
+          <ol>
+            <li>てｓｔ</li>
+            <li>あ</li>
+          </ol>
+        </div>
+      </div>
+      <div class="content" id="generate-area">
+        <div class="content-header">GENERATE</div>
+        <div class="content-item">
+          item
+        </div>
+        <div class="content-item">
+          item
+        </div>
+      </div>
+    </main>
+    <!-- footer -->
+    <footer>
+      <p id="footer-text">
+        © 2017 <a href="https://github.com/AyaNakazawa/payday2_skin_manager" target="_blank">PAYDAY 2 Skin Manager</a> @ <a href="https://github.com/AyaNakazawa/" alt="Aya Nakazawa Github" target="_blank">Aya Nakazawa</a>
+      </p>
+    </footer>
+    <scripts>
+      <!-- script -->
+      <script src="../../js/lib/underscore-min.js"></script>
+      <script src="../../js/lib/jquery-3.2.0.min.js"></script>
+      <script src="../../js/lib/bootstrap.min.js"></script>
+      <!-- mylib -->
+      <script src="../../js/mylib/static-class.js"></script>
+      <script src="../../js/mylib/util-class.js"></script>
+      <script src="../../js/mylib/common.js"></script>
+      <script src="../../js/mylib/popover.js"></script>
+      <script src="../../js/mylib/scroll.js"></script>
+      <script src="../../js/mylib/switch.js"></script>
+      <script src="../../js/mylib/confirm.js"></script>
+      <script src="../../js/mylib/init.js"></script>
+      <!-- myapp -->
+      <script>
+        {
+          positionOffset = -64;
+          new ScrollController({
+            name: 'Scroll TOP',
+            positionOffset: positionOffset,
+            triggerSelector: '#action-top',
+            scrollDistSelector: 'header'
+          });
+          new ScrollController({
+            name: 'Scroll PAYDAY2',
+            positionOffset: positionOffset,
+            triggerSelector: '#action-payday2',
+            scrollDistSelector: '#payday2-area'
+          });
+          new ScrollController({
+            name: 'Scroll GENERATE',
+            positionOffset: positionOffset,
+            triggerSelector: '#action-generate',
+            scrollDistSelector: '#generate-area'
+          });
+        }
+      </script>
+    </scripts>
+  </body>
+</html>
