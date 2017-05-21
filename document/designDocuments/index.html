@@ -68,18 +68,29 @@
         <div class="content-header">PAYDAY2 DATA</div>
         <div class="content-item">
           <ol>
-            <li>てｓｔ</li>
-            <li>あ</li>
+            <li>グローバルにインスタンスを作る</li>
+            <li>データベースからデータを持ってくる</li>
+            <li>持ってこれたらフラグを立てる</li>
           </ol>
         </div>
       </div>
       <div class="content" id="generate-area">
         <div class="content-header">GENERATE</div>
         <div class="content-item">
-          item
-        </div>
-        <div class="content-item">
-          item
+          <ol>
+            <li>設定を確認する</li>
+            <li>アイテムグループを作る</li>
+            <ol>
+              <li>Steam ID からデータを取得</li>
+              <ol>
+                <li>Filter からデータをフィルタ</li>
+                <li>Search からデータをフィルタ</li>
+                <li>Unique からデータをフィルタ＆整形</li>
+              </ol>
+              <li>データをソート</li>
+              <li>データをグルーピング</li>
+            </ol>
+          </ol>
         </div>
       </div>
     </main>
@@ -95,6 +106,7 @@
       <script src="../../js/lib/jquery-3.2.0.min.js"></script>
       <script src="../../js/lib/bootstrap.min.js"></script>
       <!-- mylib -->
+      <script src="../../js/mylib/project.js"></script>
       <script src="../../js/mylib/static-class.js"></script>
       <script src="../../js/mylib/util-class.js"></script>
       <script src="../../js/mylib/common.js"></script>
