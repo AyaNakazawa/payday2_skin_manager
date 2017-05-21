@@ -8,6 +8,10 @@ header {
   border-bottom: 1px solid #ddd;
 }
 
+header * {
+  font-weight: bold;
+}
+
 /* footer */
 
 footer {
