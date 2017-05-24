@@ -415,7 +415,6 @@ class SettingEvent extends CommonEvent {
     // Style
     $(document).on('change', this.CONTROLLER.model.SETTING_STYLE_SELECTOR, () => {
       this.CONTROLLER.view.updateStyle();
-      PS.PD2SI.setStyle(this.CONTROLLER.view.getStyle());
       $(document).trigger(PS.PD2SI.SET_STYLE);
     });
     
