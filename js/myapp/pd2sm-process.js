@@ -111,9 +111,9 @@ class PD2SMProcess extends CommonProcess {
         help: '指定した順序で並び替えることができます。'
       }),
       new PopoverController({
-        name: 'Quality Popover',
-        selector: '#setting-quality-help',
-        help: 'チェックを入れると、全てのクオリティを表示します。'
+        name: 'Unique Popover',
+        selector: '#setting-unique-help',
+        help: 'チェックを入れると、クオリティやステータスが違う全てのスキンを表示します。'
       }),
       new PopoverController({
         name: 'Size Popover',
