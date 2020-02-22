@@ -1,4 +1,4 @@
 
-const PST = new ProcessStack(100);
+const PST = new ProcessStack();
 const PD2 = new PAYDAY2();
 let PS = {};
